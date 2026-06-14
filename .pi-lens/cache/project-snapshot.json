@@ -1,8 +1,8 @@
 {
   "version": 1,
   "projectRoot": "/home/user/chinamart",
-  "generatedAt": "2026-06-14T12:30:20.425Z",
-  "seq": 43,
+  "generatedAt": "2026-06-14T12:43:32.546Z",
+  "seq": 54,
   "files": {
     "/home/user/chinamart/capacitor.config.ts": {
       "path": "/home/user/chinamart/capacitor.config.ts",
@@ -63,8 +63,7 @@
       "mtimeMs": 1781434440331.2444,
       "size": 465,
       "imports": [
-        "/home/user/chinamart/src/components/AmbientMusicPlayer.tsx",
-        "/home/user/chinamart/src/components/AutoMusicStarter.tsx",
+        "/home/user/chinamart/src/components/BackgroundMusic.tsx",
         "/home/user/chinamart/src/components/Footer.tsx",
         "/home/user/chinamart/src/components/Header.tsx"
       ],
@@ -284,6 +283,13 @@
         "/home/user/chinamart/src/utils/ambientMusic.ts"
       ],
       "lastSeq": 0
+    },
+    "/home/user/chinamart/src/components/BackgroundMusic.tsx": {
+      "path": "/home/user/chinamart/src/components/BackgroundMusic.tsx",
+      "mtimeMs": 1781440958370.7278,
+      "size": 3528,
+      "imports": [],
+      "lastSeq": 0
     }
   },
   "symbols": {},
@@ -293,10 +299,9 @@
     "/home/user/chinamart/src/App.tsx": [
       "/home/user/chinamart/src/main.tsx"
     ],
-    "/home/user/chinamart/src/components/AmbientMusicPlayer.tsx": [
-      "/home/user/chinamart/src/components/Layout.tsx"
-    ],
-    "/home/user/chinamart/src/components/AutoMusicStarter.tsx": [
+    "/home/user/chinamart/src/components/AmbientMusicPlayer.tsx": [],
+    "/home/user/chinamart/src/components/AutoMusicStarter.tsx": [],
+    "/home/user/chinamart/src/components/BackgroundMusic.tsx": [
       "/home/user/chinamart/src/components/Layout.tsx"
     ],
     "/home/user/chinamart/src/components/CategoryCard.tsx": [

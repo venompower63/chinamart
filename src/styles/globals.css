@@ -19,7 +19,9 @@
 }
 
 /* STRICT - prevent horizontal scroll */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -69,12 +71,19 @@ button {
 	max-width: 100%;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
 	font-family: inherit;
 	max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	max-width: 100%;
 	overflow-wrap: break-word;
 }

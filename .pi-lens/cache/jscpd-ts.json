@@ -2,14 +2,6 @@
   "success": true,
   "clones": [
     {
-      "fileA": "./resources/icon.svg",
-      "startA": 1,
-      "fileB": "./resources/splash.svg",
-      "startB": 1,
-      "lines": 8,
-      "tokens": 54
-    },
-    {
       "fileA": "./src/pages/CheckoutPage.tsx",
       "startA": 190,
       "fileB": "./src/pages/CheckoutPage.tsx",
@@ -88,9 +80,17 @@
       "startB": 284,
       "lines": 8,
       "tokens": 54
+    },
+    {
+      "fileA": "./src/utils/ambientMusic.ts",
+      "startA": 55,
+      "fileB": "./src/utils/ambientMusic.ts",
+      "startB": 89,
+      "lines": 9,
+      "tokens": 55
     }
   ],
-  "duplicatedLines": 148,
-  "totalLines": 8668,
-  "percentage": 1.7074296262113522
+  "duplicatedLines": 149,
+  "totalLines": 9353,
+  "percentage": 1.5930717416871594
 }

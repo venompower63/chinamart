@@ -8,8 +8,23 @@
     },
     {
       "type": "file",
-      "name": "dist/assets/index-C8eZoF9M.js",
-      "file": "dist/assets/index-C8eZoF9M.js"
+      "name": "dist/assets/index-D9RESBaJ.js",
+      "file": "dist/assets/index-D9RESBaJ.js"
+    },
+    {
+      "type": "file",
+      "name": "src/components/AmbientMusicPlayer.tsx",
+      "file": "src/components/AmbientMusicPlayer.tsx"
+    },
+    {
+      "type": "file",
+      "name": "src/components/AutoMusicStarter.tsx",
+      "file": "src/components/AutoMusicStarter.tsx"
+    },
+    {
+      "type": "file",
+      "name": "src/utils/ambientMusic.ts",
+      "file": "src/utils/ambientMusic.ts"
     },
     {
       "type": "file",
@@ -38,13 +53,13 @@
     },
     {
       "type": "file",
-      "name": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js",
-      "file": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
+      "name": "android/app/src/main/assets/public/assets/index-D9RESBaJ.js",
+      "file": "android/app/src/main/assets/public/assets/index-D9RESBaJ.js"
     },
     {
       "type": "file",
@@ -58,8 +73,8 @@
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-D9RESBaJ.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-D9RESBaJ.js"
     },
     {
       "type": "dependency",
@@ -150,8 +165,23 @@
     },
     {
       "type": "file",
-      "name": "dist/assets/index-C8eZoF9M.js",
-      "file": "dist/assets/index-C8eZoF9M.js"
+      "name": "dist/assets/index-D9RESBaJ.js",
+      "file": "dist/assets/index-D9RESBaJ.js"
+    },
+    {
+      "type": "file",
+      "name": "src/components/AmbientMusicPlayer.tsx",
+      "file": "src/components/AmbientMusicPlayer.tsx"
+    },
+    {
+      "type": "file",
+      "name": "src/components/AutoMusicStarter.tsx",
+      "file": "src/components/AutoMusicStarter.tsx"
+    },
+    {
+      "type": "file",
+      "name": "src/utils/ambientMusic.ts",
+      "file": "src/utils/ambientMusic.ts"
     },
     {
       "type": "file",
@@ -180,13 +210,13 @@
     },
     {
       "type": "file",
-      "name": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js",
-      "file": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
+      "name": "android/app/src/main/assets/public/assets/index-D9RESBaJ.js",
+      "file": "android/app/src/main/assets/public/assets/index-D9RESBaJ.js"
     },
     {
       "type": "file",
@@ -200,8 +230,8 @@
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-D9RESBaJ.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-D9RESBaJ.js"
     }
   ],
   "unusedDeps": [
@@ -237,5 +267,5 @@
     }
   ],
   "unlistedDeps": [],
-  "summary": "Found 21 issues"
+  "summary": "Found 24 issues"
 }
