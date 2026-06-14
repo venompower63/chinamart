@@ -1,8 +1,8 @@
 {
   "version": 1,
   "projectRoot": "/home/user/chinamart",
-  "generatedAt": "2026-06-14T12:03:52.153Z",
-  "seq": 12,
+  "generatedAt": "2026-06-14T12:11:52.208Z",
+  "seq": 27,
   "files": {
     "/home/user/chinamart/capacitor.config.ts": {
       "path": "/home/user/chinamart/capacitor.config.ts",
