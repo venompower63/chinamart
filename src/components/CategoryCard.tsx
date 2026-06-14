@@ -1,27 +1,29 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 interface Category {
-  id: string
-  name: string
-  icon: string
-  count: number
-  color: string
+	id: string;
+	name: string;
+	icon: string;
+	count: number;
+	color: string;
 }
 
 interface CategoryCardProps {
-  category: Category
+	category: Category;
 }
 
 export default function CategoryCard({ category }: CategoryCardProps) {
-  return (
-    <Link to={`/catalog?category=${category.id}`} className="category-card">
-      <div className="category-icon" style={{ background: category.color }}>
-        {category.icon}
-      </div>
-      <div className="category-name">{category.name}</div>
-      <div className="category-count">{category.count.toLocaleString('ru-RU')} товаров</div>
+	return (
+		<Link to={`/catalog?category=${category.id}`} className="category-card">
+			<div className="category-icon" style={{ background: category.color }}>
+				{category.icon}
+			</div>
+			<div className="category-name">{category.name}</div>
+			<div className="category-count">
+				{category.count.toLocaleString("ru-RU")} товаров
+			</div>
 
-      <style>{`
+			<style>{`
         .category-card {
           background: var(--bg-white);
           border-radius: var(--radius-md);
@@ -71,6 +73,6 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           }
         }
       `}</style>
-    </Link>
-  )
+		</Link>
+	);
 }

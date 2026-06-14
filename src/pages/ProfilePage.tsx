@@ -1,140 +1,150 @@
-import { useState } from 'react'
-import { useAuth } from '../context/AuthContext'
-import { useToast } from '../context/ToastContext'
-import { User, Mail, Phone, Store, Save } from 'lucide-react'
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useToast } from "../context/ToastContext";
+import { User, Mail, Phone, Store, Save } from "lucide-react";
 
 export default function ProfilePage() {
-  const { user, updateUser } = useAuth()
-  const { showToast } = useToast()
+	const { user, updateUser } = useAuth();
+	const { showToast } = useToast();
 
-  const [formData, setFormData] = useState({
-    name: user?.name || '',
-    phone: user?.phone || '',
-    email: user?.email || ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+	const [formData, setFormData] = useState({
+		name: user?.name || "",
+		phone: user?.phone || "",
+		email: user?.email || "",
+	});
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
-  if (!user) {
-    return null
-  }
+	if (!user) {
+		return null;
+	}
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setIsSubmitting(true);
 
-    updateUser({
-      name: formData.name,
-      phone: formData.phone
-    })
+		updateUser({
+			name: formData.name,
+			phone: formData.phone,
+		});
 
-    setIsSubmitting(false)
-    showToast('success', 'Профиль обновлён')
-  }
+		setIsSubmitting(false);
+		showToast("success", "Профиль обновлён");
+	};
 
-  return (
-    <div className="profile-page">
-      <div className="container">
-        <h1>Личный кабинет</h1>
+	return (
+		<div className="profile-page">
+			<div className="container">
+				<h1>Личный кабинет</h1>
 
-        <div className="profile-grid">
-          <div className="profile-card">
-            <div className="profile-header">
-              <div className="avatar">
-                {user.name.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <h2>{user.name}</h2>
-                <p>{user.email}</p>
-              </div>
-            </div>
+				<div className="profile-grid">
+					<div className="profile-card">
+						<div className="profile-header">
+							<div className="avatar">{user.name.charAt(0).toUpperCase()}</div>
+							<div>
+								<h2>{user.name}</h2>
+								<p>{user.email}</p>
+							</div>
+						</div>
 
-            <form onSubmit={handleSubmit} className="profile-form">
-              <div className="form-group">
-                <label>
-                  <User size={18} />
-                  Имя
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={e => setFormData({...formData, name: e.target.value})}
-                  required
-                />
-              </div>
+						<form onSubmit={handleSubmit} className="profile-form">
+							<div className="form-group">
+								<label>
+									<User size={18} />
+									Имя
+								</label>
+								<input
+									type="text"
+									value={formData.name}
+									onChange={(e) =>
+										setFormData({ ...formData, name: e.target.value })
+									}
+									required
+								/>
+							</div>
 
-              <div className="form-group">
-                <label>
-                  <Mail size={18} />
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  disabled
-                  className="disabled"
-                />
-              </div>
+							<div className="form-group">
+								<label>
+									<Mail size={18} />
+									Email
+								</label>
+								<input
+									type="email"
+									value={formData.email}
+									disabled
+									className="disabled"
+								/>
+							</div>
 
-              <div className="form-group">
-                <label>
-                  <Phone size={18} />
-                  Телефон
-                </label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={e => setFormData({...formData, phone: e.target.value})}
-                  required
-                />
-              </div>
+							<div className="form-group">
+								<label>
+									<Phone size={18} />
+									Телефон
+								</label>
+								<input
+									type="tel"
+									value={formData.phone}
+									onChange={(e) =>
+										setFormData({ ...formData, phone: e.target.value })
+									}
+									required
+								/>
+							</div>
 
-              <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                <Save size={18} />
-                {isSubmitting ? 'Сохранение...' : 'Сохранить'}
-              </button>
-            </form>
-          </div>
+							<button
+								type="submit"
+								className="btn btn-primary"
+								disabled={isSubmitting}
+							>
+								<Save size={18} />
+								{isSubmitting ? "Сохранение..." : "Сохранить"}
+							</button>
+						</form>
+					</div>
 
-          {user.role === 'seller' && user.sellerData && (
-            <div className="profile-card">
-              <h3>
-                <Store size={20} />
-                Информация о магазине
-              </h3>
+					{user.role === "seller" && user.sellerData && (
+						<div className="profile-card">
+							<h3>
+								<Store size={20} />
+								Информация о магазине
+							</h3>
 
-              <div className="seller-info">
-                <div className="info-row">
-                  <span>Название</span>
-                  <strong>{user.sellerData.storeName || 'Не указано'}</strong>
-                </div>
-                <div className="info-row">
-                  <span>Категория</span>
-                  <strong>{user.sellerData.category || 'Не указана'}</strong>
-                </div>
-                <div className="info-row">
-                  <span>Рейтинг</span>
-                  <strong>{user.sellerData.rating.toFixed(1)} ★</strong>
-                </div>
-                <div className="info-row">
-                  <span>Продаж</span>
-                  <strong>{user.sellerData.salesCount}</strong>
-                </div>
-                <div className="info-row">
-                  <span>Дата регистрации</span>
-                  <strong>{new Date(user.sellerData.createdAt).toLocaleDateString('ru-RU')}</strong>
-                </div>
-              </div>
-            </div>
-          )}
+							<div className="seller-info">
+								<div className="info-row">
+									<span>Название</span>
+									<strong>{user.sellerData.storeName || "Не указано"}</strong>
+								</div>
+								<div className="info-row">
+									<span>Категория</span>
+									<strong>{user.sellerData.category || "Не указана"}</strong>
+								</div>
+								<div className="info-row">
+									<span>Рейтинг</span>
+									<strong>{user.sellerData.rating.toFixed(1)} ★</strong>
+								</div>
+								<div className="info-row">
+									<span>Продаж</span>
+									<strong>{user.sellerData.salesCount}</strong>
+								</div>
+								<div className="info-row">
+									<span>Дата регистрации</span>
+									<strong>
+										{new Date(user.sellerData.createdAt).toLocaleDateString(
+											"ru-RU",
+										)}
+									</strong>
+								</div>
+							</div>
+						</div>
+					)}
 
-          <div className="profile-card">
-            <h3>Безопасность</h3>
-            <button className="btn btn-secondary">Изменить пароль</button>
-          </div>
-        </div>
-      </div>
+					<div className="profile-card">
+						<h3>Безопасность</h3>
+						<button className="btn btn-secondary">Изменить пароль</button>
+					</div>
+				</div>
+			</div>
 
-      <style>{`
+			<style>{`
         .profile-page {
           padding: 32px 0 60px;
         }
@@ -278,6 +288,6 @@ export default function ProfilePage() {
           color: var(--text-dark);
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

@@ -1,220 +1,383 @@
-import { useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { getProductById, products } from '../data/mockData'
-import { useCart } from '../context/CartContext'
-import { useToast } from '../context/ToastContext'
-import { ShoppingCart, Heart, Check, Minus, Plus, Star, Truck, Shield, RotateCcw } from 'lucide-react'
+import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { getProductById, products } from "../data/mockData";
+import { useCart } from "../context/CartContext";
+import { useToast } from "../context/ToastContext";
+import {
+	ShoppingCart,
+	Heart,
+	Check,
+	Minus,
+	Plus,
+	Star,
+	Truck,
+	Shield,
+	RotateCcw,
+} from "lucide-react";
 
 export default function ProductPage() {
-  const { id } = useParams<{ id: string }>()
-  const product = getProductById(id || '')
-  const { addItem, isInCart } = useCart()
-  const { showToast } = useToast()
-  const [quantity, setQuantity] = useState(1)
-  const [activeImage, setActiveImage] = useState(0)
+	const { id } = useParams<{ id: string }>();
+	const product = getProductById(id || "");
+	const { addItem, isInCart } = useCart();
+	const { showToast } = useToast();
+	const [quantity, setQuantity] = useState(1);
+	const [activeImage, setActiveImage] = useState(0);
 
-  if (!product) {
-    return (
-      <div className="container" style={{ padding: '60px 0', textAlign: 'center' }}>
-        <h2>Товар не найден</h2>
-        <Link to="/catalog" className="btn btn-primary">Вернуться в каталог</Link>
-      </div>
-    )
-  }
+	if (!product) {
+		return (
+			<div
+				className="container"
+				style={{ padding: "60px 0", textAlign: "center" }}
+			>
+				<h2>Товар не найден</h2>
+				<Link to="/catalog" className="btn btn-primary">
+					Вернуться в каталог
+				</Link>
+			</div>
+		);
+	}
 
-  const inCart = isInCart(product.id)
-  const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4)
+	const inCart = isInCart(product.id);
 
-  const handleAddToCart = () => {
-    if (product.stock > 0) {
-      addItem(product, quantity)
-      showToast('success', `Товар добавлен в корзину (${quantity} шт.)`)
-    }
-  }
+	// Рекомендации: похожие товары из той же категории
+	const relatedProducts = products
+		.filter((p) => p.category === product.category && p.id !== product.id)
+		.slice(0, 4);
 
-  return (
-    <div className="product-page">
-      <div className="container">
-        {/* Breadcrumbs */}
-        <nav className="breadcrumbs">
-          <Link to="/">Главная</Link>
-          <span>/</span>
-          <Link to="/catalog">Каталог</Link>
-          <span>/</span>
-          <Link to={`/catalog?category=${product.category}`}>{product.category}</Link>
-          <span>/</span>
-          <span>{product.title.slice(0, 30)}...</span>
-        </nav>
+	// Рекомендации: часто покупают вместе (случайные товары из разных категорий)
+	const frequentlyBoughtTogether = products
+		.filter((p) => p.id !== product.id)
+		.sort(() => Math.random() - 0.5)
+		.slice(0, 4);
 
-        <div className="product-main">
-          {/* Images */}
-          <div className="product-images">
-            <div className="main-image">
-              <img src={product.images[activeImage]} alt={product.title} />
-              {product.badge && (
-                <span className={`badge badge-${product.badge}`}>
-                  {product.badge === 'sale' ? `-${Math.round((1 - product.price / (product.oldPrice || product.price)) * 100)}%` : 
-                   product.badge === 'hit' ? 'Хит' : 'Новинка'}
-                </span>
-              )}
-            </div>
-            <div className="thumbnail-list">
-              {product.images.map((img, idx) => (
-                <button 
-                  key={idx}
-                  className={`thumbnail ${activeImage === idx ? 'active' : ''}`}
-                  onClick={() => setActiveImage(idx)}
-                >
-                  <img src={img} alt={`Thumbnail ${idx + 1}`} />
-                </button>
-              ))}
-            </div>
-          </div>
+	// Рекомендации: популярные товары (по продажам)
+	const popularProducts = [...products]
+		.filter((p) => p.id !== product.id)
+		.sort((a, b) => b.salesCount - a.salesCount)
+		.slice(0, 4);
 
-          {/* Info */}
-          <div className="product-info">
-            <div className="product-seller">
-              <span className="seller-avatar">{product.sellerName[0]}</span>
-              <Link to={`/catalog?seller=${product.sellerId}`}>{product.sellerName}</Link>
-            </div>
+	// Рекомендации: товары того же продавца
+	const sameSellerProducts = products
+		.filter((p) => p.sellerId === product.sellerId && p.id !== product.id)
+		.slice(0, 4);
 
-            <h1>{product.title}</h1>
+	const handleAddToCart = () => {
+		if (product.stock > 0) {
+			addItem(product, quantity);
+			showToast("success", `Товар добавлен в корзину (${quantity} шт.)`);
+		}
+	};
 
-            <div className="product-rating">
-              <div className="stars">
-                {[1, 2, 3, 4, 5].map(i => (
-                  <Star 
-                    key={i} 
-                    size={18} 
-                    fill={i <= Math.round(product.rating) ? '#f4a261' : 'none'}
-                    color={i <= Math.round(product.rating) ? '#f4a261' : '#ccc'}
-                  />
-                ))}
-              </div>
-              <span className="rating-value">{product.rating}</span>
-              <span className="rating-count">({product.reviewsCount.toLocaleString()} отзывов)</span>
-              <span className="sales-count">• {product.salesCount.toLocaleString()} продано</span>
-            </div>
+	return (
+		<div className="product-page">
+			<div className="container">
+				{/* Breadcrumbs */}
+				<nav className="breadcrumbs">
+					<Link to="/">Главная</Link>
+					<span>/</span>
+					<Link to="/catalog">Каталог</Link>
+					<span>/</span>
+					<Link to={`/catalog?category=${product.category}`}>
+						{product.category}
+					</Link>
+					<span>/</span>
+					<span>{product.title.slice(0, 30)}...</span>
+				</nav>
 
-            <div className="product-price-section">
-              <div className="price">
-                <span className="current">{product.price.toLocaleString('ru-RU')} ₽</span>
-                {product.oldPrice && (
-                  <span className="old">{product.oldPrice.toLocaleString('ru-RU')} ₽</span>
-                )}
-              </div>
-              <span className="commission-note">+2% комиссия покупателя при оплате</span>
-            </div>
+				<div className="product-main">
+					{/* Images */}
+					<div className="product-images">
+						<div className="main-image">
+							<img src={product.images[activeImage]} alt={product.title} />
+							{product.badge && (
+								<span className={`badge badge-${product.badge}`}>
+									{product.badge === "sale"
+										? `-${Math.round((1 - product.price / (product.oldPrice || product.price)) * 100)}%`
+										: product.badge === "hit"
+											? "Хит"
+											: "Новинка"}
+								</span>
+							)}
+						</div>
+						<div className="thumbnail-list">
+							{product.images.map((img, idx) => (
+								<button
+									key={idx}
+									className={`thumbnail ${activeImage === idx ? "active" : ""}`}
+									onClick={() => setActiveImage(idx)}
+								>
+									<img src={img} alt={`Thumbnail ${idx + 1}`} />
+								</button>
+							))}
+						</div>
+					</div>
 
-            <div className="product-stock">
-              {product.stock > 0 ? (
-                <span className="in-stock">✓ В наличии ({product.stock} шт.)</span>
-              ) : (
-                <span className="out-stock">✕ Нет в наличии</span>
-              )}
-            </div>
+					{/* Info */}
+					<div className="product-info">
+						<div className="product-seller">
+							<span className="seller-avatar">{product.sellerName[0]}</span>
+							<Link to={`/catalog?seller=${product.sellerId}`}>
+								{product.sellerName}
+							</Link>
+						</div>
 
-            <div className="quantity-selector">
-              <span>Количество:</span>
-              <div className="quantity-controls">
-                <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>
-                  <Minus size={16} />
-                </button>
-                <input 
-                  type="number" 
-                  value={quantity} 
-                  onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  min={1}
-                  max={product.stock}
-                />
-                <button onClick={() => setQuantity(q => Math.min(product.stock, q + 1))}>
-                  <Plus size={16} />
-                </button>
-              </div>
-            </div>
+						<h1>{product.title}</h1>
 
-            <div className="product-actions">
-              <button 
-                className={`btn-add-cart ${inCart ? 'in-cart' : ''}`}
-                onClick={handleAddToCart}
-                disabled={product.stock === 0}
-              >
-                {inCart ? <Check size={20} /> : <ShoppingCart size={20} />}
-                {inCart ? 'В корзине' : 'В корзину'}
-              </button>
-              <button className="btn-wishlist">
-                <Heart size={20} />
-              </button>
-            </div>
+						<div className="product-rating">
+							<div className="stars">
+								{[1, 2, 3, 4, 5].map((i) => (
+									<Star
+										key={i}
+										size={18}
+										fill={i <= Math.round(product.rating) ? "#f4a261" : "none"}
+										color={i <= Math.round(product.rating) ? "#f4a261" : "#ccc"}
+									/>
+								))}
+							</div>
+							<span className="rating-value">{product.rating}</span>
+							<span className="rating-count">
+								({product.reviewsCount.toLocaleString()} отзывов)
+							</span>
+							<span className="sales-count">
+								• {product.salesCount.toLocaleString()} продано
+							</span>
+						</div>
 
-            <div className="delivery-info">
-              <div className="delivery-item">
-                <Truck size={20} />
-                <div>
-                  <strong>Доставка</strong>
-                  <p>5-7 рабочих дней</p>
-                </div>
-              </div>
-              <div className="delivery-item">
-                <Shield size={20} />
-                <div>
-                  <strong>Гарантия</strong>
-                  <p>Защита покупателя</p>
-                </div>
-              </div>
-              <div className="delivery-item">
-                <RotateCcw size={20} />
-                <div>
-                  <strong>Возврат</strong>
-                  <p>14 дней</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+						<div className="product-price-section">
+							<div className="price">
+								<span className="current">
+									{product.price.toLocaleString("ru-RU")} ₽
+								</span>
+								{product.oldPrice && (
+									<span className="old">
+										{product.oldPrice.toLocaleString("ru-RU")} ₽
+									</span>
+								)}
+							</div>
+							<span className="commission-note">
+								+2% комиссия покупателя при оплате
+							</span>
+						</div>
 
-        {/* Description & Characteristics */}
-        <div className="product-details">
-          <div className="details-section">
-            <h2>Описание</h2>
-            <p>{product.description}</p>
-          </div>
+						<div className="product-stock">
+							{product.stock > 0 ? (
+								<span className="in-stock">
+									✓ В наличии ({product.stock} шт.)
+								</span>
+							) : (
+								<span className="out-stock">✕ Нет в наличии</span>
+							)}
+						</div>
 
-          <div className="details-section">
-            <h2>Характеристики</h2>
-            <table className="characteristics">
-              <tbody>
-                {Object.entries(product.characteristics).map(([key, value]) => (
-                  <tr key={key}>
-                    <th>{key}</th>
-                    <td>{value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+						<div className="quantity-selector">
+							<span>Количество:</span>
+							<div className="quantity-controls">
+								<button onClick={() => setQuantity((q) => Math.max(1, q - 1))}>
+									<Minus size={16} />
+								</button>
+								<input
+									type="number"
+									value={quantity}
+									onChange={(e) =>
+										setQuantity(Math.max(1, parseInt(e.target.value) || 1))
+									}
+									min={1}
+									max={product.stock}
+								/>
+								<button
+									onClick={() =>
+										setQuantity((q) => Math.min(product.stock, q + 1))
+									}
+								>
+									<Plus size={16} />
+								</button>
+							</div>
+						</div>
 
-        {/* Related Products */}
-        {relatedProducts.length > 0 && (
-          <div className="related-products">
-            <h2>Похожие товары</h2>
-            <div className="related-grid">
-              {relatedProducts.map(p => (
-                <Link key={p.id} to={`/product/${p.id}`} className="related-card">
-                  <img src={p.images[0]} alt={p.title} />
-                  <div className="related-info">
-                    <h3>{p.title}</h3>
-                    <span className="related-price">{p.price.toLocaleString('ru-RU')} ₽</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+						<div className="product-actions">
+							<button
+								className={`btn-add-cart ${inCart ? "in-cart" : ""}`}
+								onClick={handleAddToCart}
+								disabled={product.stock === 0}
+							>
+								{inCart ? <Check size={20} /> : <ShoppingCart size={20} />}
+								{inCart ? "В корзине" : "В корзину"}
+							</button>
+							<button className="btn-wishlist">
+								<Heart size={20} />
+							</button>
+						</div>
 
-      <style>{`
+						<div className="delivery-info">
+							<div className="delivery-item">
+								<Truck size={20} />
+								<div>
+									<strong>Доставка</strong>
+									<p>5-7 рабочих дней</p>
+								</div>
+							</div>
+							<div className="delivery-item">
+								<Shield size={20} />
+								<div>
+									<strong>Гарантия</strong>
+									<p>Защита покупателя</p>
+								</div>
+							</div>
+							<div className="delivery-item">
+								<RotateCcw size={20} />
+								<div>
+									<strong>Возврат</strong>
+									<p>14 дней</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{/* Description & Characteristics */}
+				<div className="product-details">
+					<div className="details-section">
+						<h2>Описание</h2>
+						<p>{product.description}</p>
+					</div>
+
+					<div className="details-section">
+						<h2>Характеристики</h2>
+						<table className="characteristics">
+							<tbody>
+								{Object.entries(product.characteristics).map(([key, value]) => (
+									<tr key={key}>
+										<th>{key}</th>
+										<td>{value}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				{/* Recommendations */}
+				<div className="recommendations">
+					{sameSellerProducts.length > 0 && (
+						<div className="recommendation-section">
+							<div className="recommendation-header">
+								<span className="rec-badge">🏪 Другие товары продавца</span>
+							</div>
+							<div className="recommendation-grid">
+								{sameSellerProducts.map((p) => (
+									<Link
+										key={p.id}
+										to={`/product/${p.id}`}
+										className="recommendation-card"
+									>
+										<div className="rec-image">
+											<img src={p.images[0]} alt={p.title} />
+										</div>
+										<div className="rec-info">
+											<span className="rec-title">{p.title}</span>
+											<div className="rec-footer">
+												<span className="rec-price">
+													{p.price.toLocaleString("ru-RU")} ₽
+												</span>
+												<span className="rec-rating">★ {p.rating}</span>
+											</div>
+										</div>
+									</Link>
+								))}
+							</div>
+						</div>
+					)}
+					{frequentlyBoughtTogether.length > 0 && (
+						<div className="recommendation-section">
+							<div className="recommendation-header">
+								<span className="rec-badge hot">🔥 Часто покупают вместе</span>
+							</div>
+							<div className="recommendation-grid">
+								{frequentlyBoughtTogether.map((p) => (
+									<Link
+										key={p.id}
+										to={`/product/${p.id}`}
+										className="recommendation-card"
+									>
+										<div className="rec-image">
+											<img src={p.images[0]} alt={p.title} />
+										</div>
+										<div className="rec-info">
+											<span className="rec-title">{p.title}</span>
+											<div className="rec-footer">
+												<span className="rec-price">
+													{p.price.toLocaleString("ru-RU")} ₽
+												</span>
+												<span className="rec-rating">★ {p.rating}</span>
+											</div>
+										</div>
+									</Link>
+								))}
+							</div>
+						</div>
+					)}
+					{relatedProducts.length > 0 && (
+						<div className="recommendation-section">
+							<div className="recommendation-header">
+								<span className="rec-badge">👆 Похожие товары</span>
+							</div>
+							<div className="recommendation-grid">
+								{relatedProducts.map((p) => (
+									<Link
+										key={p.id}
+										to={`/product/${p.id}`}
+										className="recommendation-card"
+									>
+										<div className="rec-image">
+											<img src={p.images[0]} alt={p.title} />
+										</div>
+										<div className="rec-info">
+											<span className="rec-title">{p.title}</span>
+											<div className="rec-footer">
+												<span className="rec-price">
+													{p.price.toLocaleString("ru-RU")} ₽
+												</span>
+												<span className="rec-rating">★ {p.rating}</span>
+											</div>
+										</div>
+									</Link>
+								))}
+							</div>
+						</div>
+					)}
+					{popularProducts.length > 0 && (
+						<div className="recommendation-section">
+							<div className="recommendation-header">
+								<span className="rec-badge">⭐ Популярные товары</span>
+							</div>
+							<div className="recommendation-grid">
+								{popularProducts.map((p) => (
+									<Link
+										key={p.id}
+										to={`/product/${p.id}`}
+										className="recommendation-card"
+									>
+										<div className="rec-image">
+											<img src={p.images[0]} alt={p.title} />
+										</div>
+										<div className="rec-info">
+											<span className="rec-title">{p.title}</span>
+											<div className="rec-footer">
+												<span className="rec-price">
+													{p.price.toLocaleString("ru-RU")} ₽
+												</span>
+												<span className="rec-rating">★ {p.rating}</span>
+											</div>
+										</div>
+									</Link>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
+
+			<style>{`
         .product-page {
           padding: 24px 0 60px;
         }
@@ -536,48 +699,92 @@ export default function ProductPage() {
         .characteristics td {
           color: var(--text-dark);
         }
-        .related-products h2 {
-          font-size: 24px;
-          font-weight: 700;
-          margin-bottom: 24px;
+        .recommendations {
+          margin-top: 48px;
+          padding-top: 48px;
+          border-top: 1px solid var(--border);
         }
-        .related-grid {
+        .recommendation-section {
+          margin-bottom: 40px;
+        }
+        .recommendation-section:last-child {
+          margin-bottom: 0;
+        }
+        .recommendation-header {
+          margin-bottom: 20px;
+        }
+        .rec-badge {
+          display: inline-block;
+          padding: 8px 16px;
+          background: var(--bg-light);
+          border-radius: 100px;
+          font-size: 15px;
+          font-weight: 600;
+          color: var(--text-dark);
+        }
+        .rec-badge.hot {
+          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+          color: white;
+        }
+        .recommendation-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 20px;
         }
-        .related-card {
+        .recommendation-card {
           background: var(--bg-white);
           border: 1px solid var(--border);
           border-radius: var(--radius-md);
           overflow: hidden;
           transition: all 0.3s;
+          display: block;
         }
-        .related-card:hover {
+        .recommendation-card:hover {
           transform: translateY(-4px);
           box-shadow: var(--shadow-md);
         }
-        .related-card img {
-          width: 100%;
+        .rec-image {
           aspect-ratio: 1;
-          object-fit: cover;
+          overflow: hidden;
         }
-        .related-info {
+        .rec-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s;
+        }
+        .recommendation-card:hover .rec-image img {
+          transform: scale(1.05);
+        }
+        .rec-info {
           padding: 12px;
         }
-        .related-info h3 {
+        .rec-title {
+          display: block;
           font-size: 14px;
           font-weight: 500;
           color: var(--text-dark);
           margin-bottom: 8px;
+          line-height: 1.4;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          min-height: 40px;
         }
-        .related-price {
+        .rec-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .rec-price {
           font-weight: 700;
           color: var(--primary);
+          font-size: 16px;
+        }
+        .rec-rating {
+          font-size: 13px;
+          color: var(--accent);
         }
         @media (max-width: 992px) {
           .product-main {
@@ -590,7 +797,7 @@ export default function ProductPage() {
           .product-details {
             grid-template-columns: 1fr;
           }
-          .related-grid {
+          .recommendation-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
@@ -605,12 +812,15 @@ export default function ProductPage() {
             width: 60px;
             height: 60px;
           }
-          .related-grid {
+          .recommendation-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
           }
+          .rec-title {
+            font-size: 13px;
+          }
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

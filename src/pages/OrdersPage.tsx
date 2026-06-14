@@ -1,117 +1,130 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { ShoppingBag, ChevronRight } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ShoppingBag, ChevronRight } from "lucide-react";
 
 interface Order {
-  id: string
-  items: { product: { id: string; title: string; price: number; images: string[] }; quantity: number }[]
-  total: number
-  buyerCommission: number
-  createdAt: string
-  status: string
-  address: string
+	id: string;
+	items: {
+		product: { id: string; title: string; price: number; images: string[] };
+		quantity: number;
+	}[];
+	total: number;
+	buyerCommission: number;
+	createdAt: string;
+	status: string;
+	address: string;
 }
 
 export default function OrdersPage() {
-  const [orders, setOrders] = useState<Order[]>([])
-  const [loading, setLoading] = useState(true)
+	const [orders, setOrders] = useState<Order[]>([]);
+	const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const storedOrders = JSON.parse(localStorage.getItem('chinamart_orders') || '[]')
-    setOrders(storedOrders)
-    setLoading(false)
-  }, [])
+	useEffect(() => {
+		const storedOrders = JSON.parse(
+			localStorage.getItem("chinamart_orders") || "[]",
+		);
+		setOrders(storedOrders);
+		setLoading(false);
+	}, []);
 
-  const formatStatus = (status: string) => {
-    const statuses: Record<string, { label: string; color: string }> = {
-      pending: { label: 'Ожидает оплаты', color: 'blue' },
-      processing: { label: 'В обработке', color: 'orange' },
-      shipped: { label: 'Отправлен', color: 'purple' },
-      delivered: { label: 'Доставлен', color: 'green' }
-    }
-    return statuses[status] || { label: status, color: 'gray' }
-  }
+	const formatStatus = (status: string) => {
+		const statuses: Record<string, { label: string; color: string }> = {
+			pending: { label: "Ожидает оплаты", color: "blue" },
+			processing: { label: "В обработке", color: "orange" },
+			shipped: { label: "Отправлен", color: "purple" },
+			delivered: { label: "Доставлен", color: "green" },
+		};
+		return statuses[status] || { label: status, color: "gray" };
+	};
 
-  if (loading) {
-    return (
-      <div className="orders-page">
-        <div className="container">
-          <h1>Загрузка...</h1>
-        </div>
-      </div>
-    )
-  }
+	if (loading) {
+		return (
+			<div className="orders-page">
+				<div className="container">
+					<h1>Загрузка...</h1>
+				</div>
+			</div>
+		);
+	}
 
-  return (
-    <div className="orders-page">
-      <div className="container">
-        <h1>Мои заказы</h1>
+	return (
+		<div className="orders-page">
+			<div className="container">
+				<h1>Мои заказы</h1>
 
-        {orders.length > 0 ? (
-          <div className="orders-list">
-            {orders.map(order => (
-              <div key={order.id} className="order-card">
-                <div className="order-header">
-                  <div className="order-info">
-                    <span className="order-id">{order.id}</span>
-                    <span className="order-date">
-                      {new Date(order.createdAt).toLocaleDateString('ru-RU', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
-                      })}
-                    </span>
-                  </div>
-                  <span className={`order-status ${formatStatus(order.status).color}`}>
-                    {formatStatus(order.status).label}
-                  </span>
-                </div>
+				{orders.length > 0 ? (
+					<div className="orders-list">
+						{orders.map((order) => (
+							<div key={order.id} className="order-card">
+								<div className="order-header">
+									<div className="order-info">
+										<span className="order-id">{order.id}</span>
+										<span className="order-date">
+											{new Date(order.createdAt).toLocaleDateString("ru-RU", {
+												day: "numeric",
+												month: "long",
+												year: "numeric",
+											})}
+										</span>
+									</div>
+									<span
+										className={`order-status ${formatStatus(order.status).color}`}
+									>
+										{formatStatus(order.status).label}
+									</span>
+								</div>
 
-                <div className="order-items">
-                  {order.items.slice(0, 3).map((item, idx) => (
-                    <div key={idx} className="order-item">
-                      <img src={item.product.images[0]} alt={item.product.title} />
-                      <div className="item-details">
-                        <span className="item-title">{item.product.title}</span>
-                        <span className="item-qty">×{item.quantity}</span>
-                      </div>
-                      <span className="item-price">
-                        {(item.product.price * item.quantity).toLocaleString('ru-RU')} ₽
-                      </span>
-                    </div>
-                  ))}
-                  {order.items.length > 3 && (
-                    <div className="more-items">
-                      +{order.items.length - 3} товар(ов)
-                    </div>
-                  )}
-                </div>
+								<div className="order-items">
+									{order.items.slice(0, 3).map((item, idx) => (
+										<div key={idx} className="order-item">
+											<img
+												src={item.product.images[0]}
+												alt={item.product.title}
+											/>
+											<div className="item-details">
+												<span className="item-title">{item.product.title}</span>
+												<span className="item-qty">×{item.quantity}</span>
+											</div>
+											<span className="item-price">
+												{(item.product.price * item.quantity).toLocaleString(
+													"ru-RU",
+												)}{" "}
+												₽
+											</span>
+										</div>
+									))}
+									{order.items.length > 3 && (
+										<div className="more-items">
+											+{order.items.length - 3} товар(ов)
+										</div>
+									)}
+								</div>
 
-                <div className="order-footer">
-                  <div className="order-total">
-                    <span>Итого (с комиссией {order.buyerCommission} ₽):</span>
-                    <strong>{order.total.toLocaleString('ru-RU')} ₽</strong>
-                  </div>
-                  <Link to={`/order/${order.id}`} className="order-link">
-                    Подробнее <ChevronRight size={18} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="empty-orders">
-            <ShoppingBag size={80} />
-            <h2>У вас пока нет заказов</h2>
-            <p>Оформите первый заказ в нашем каталоге</p>
-            <Link to="/catalog" className="btn btn-primary">
-              Перейти в каталог
-            </Link>
-          </div>
-        )}
-      </div>
+								<div className="order-footer">
+									<div className="order-total">
+										<span>Итого (с комиссией {order.buyerCommission} ₽):</span>
+										<strong>{order.total.toLocaleString("ru-RU")} ₽</strong>
+									</div>
+									<Link to={`/order/${order.id}`} className="order-link">
+										Подробнее <ChevronRight size={18} />
+									</Link>
+								</div>
+							</div>
+						))}
+					</div>
+				) : (
+					<div className="empty-orders">
+						<ShoppingBag size={80} />
+						<h2>У вас пока нет заказов</h2>
+						<p>Оформите первый заказ в нашем каталоге</p>
+						<Link to="/catalog" className="btn btn-primary">
+							Перейти в каталог
+						</Link>
+					</div>
+				)}
+			</div>
 
-      <style>{`
+			<style>{`
         .orders-page {
           padding: 32px 0 60px;
         }
@@ -292,6 +305,6 @@ export default function OrdersPage() {
           }
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

@@ -1,59 +1,68 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  return (
-    <footer className="footer">
-      <div className="footer-inner container">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <Link to="/" className="logo">
-              <div className="logo-icon">CM</div>
-              <span>ChinaMart</span>
-            </Link>
-            <p>Маркетплейс проверенных товаров из Китая. Прямые поставки от надёжных продавцов с гарантией качества и быстрой доставкой.</p>
-          </div>
+	return (
+		<footer className="footer">
+			<div className="footer-inner container">
+				<div className="footer-grid">
+					<div className="footer-brand">
+						<Link to="/" className="logo">
+							<div className="logo-icon">CM</div>
+							<span>ChinaMart</span>
+						</Link>
+						<p>
+							Маркетплейс проверенных товаров из Китая. Прямые поставки от
+							надёжных продавцов с гарантией качества и быстрой доставкой.
+						</p>
+					</div>
 
-          <div className="footer-section">
-            <h4>Покупателям</h4>
-            <nav className="footer-links">
-              <Link to="/catalog">Каталог</Link>
-              <Link to="/cart">Корзина</Link>
-              <Link to="/orders">Мои заказы</Link>
-              <Link to="/register">Регистрация</Link>
-            </nav>
-          </div>
+					<div className="footer-section">
+						<h4>Покупателям</h4>
+						<nav className="footer-links">
+							<Link to="/catalog">Каталог</Link>
+							<Link to="/cart">Корзина</Link>
+							<Link to="/orders">Мои заказы</Link>
+							<Link to="/register">Регистрация</Link>
+						</nav>
+					</div>
 
-          <div className="footer-section">
-            <h4>Продавцам</h4>
-            <nav className="footer-links">
-              <Link to="/register">Стать продавцом</Link>
-              <Link to="/seller">Кабинет продавца</Link>
-              <Link to="/seller/add-product">Добавить товар</Link>
-            </nav>
-          </div>
+					<div className="footer-section">
+						<h4>Продавцам</h4>
+						<nav className="footer-links">
+							<Link to="/register">Стать продавцом</Link>
+							<Link to="/seller">Кабинет продавца</Link>
+							<Link to="/seller/add-product">Добавить товар</Link>
+						</nav>
+					</div>
 
-          <div className="footer-section">
-            <h4>Помощь</h4>
-            <nav className="footer-links">
-              <a href="#">Как заказать</a>
-              <a href="#">Доставка и оплата</a>
-              <a href="#">Возврат товара</a>
-              <a href="#">Контакты</a>
-            </nav>
-          </div>
-        </div>
+					<div className="footer-section">
+						<h4>Помощь</h4>
+						<nav className="footer-links">
+							<a href="#">Как заказать</a>
+							<a href="#">Доставка и оплата</a>
+							<a href="#">Возврат товара</a>
+							<a href="#">Контакты</a>
+						</nav>
+					</div>
+				</div>
 
-        <div className="footer-bottom">
-          <p>© 2024 ChinaMart. Все права защищены.</p>
-          <div className="footer-socials">
-            <a href="#" aria-label="Telegram">📱</a>
-            <a href="#" aria-label="VK">💬</a>
-            <a href="#" aria-label="WhatsApp">💬</a>
-          </div>
-        </div>
-      </div>
+				<div className="footer-bottom">
+					<p>© 2024 ChinaMart. Все права защищены.</p>
+					<div className="footer-socials">
+						<a href="#" aria-label="Telegram">
+							📱
+						</a>
+						<a href="#" aria-label="VK">
+							💬
+						</a>
+						<a href="#" aria-label="WhatsApp">
+							💬
+						</a>
+					</div>
+				</div>
+			</div>
 
-      <style>{`
+			<style>{`
         .footer {
           background: var(--secondary);
           color: white;
@@ -159,6 +168,6 @@ export default function Footer() {
           }
         }
       `}</style>
-    </footer>
-  )
+		</footer>
+	);
 }

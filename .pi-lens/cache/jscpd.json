@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "clones": [
+    {
+      "fileA": "./src/pages/CheckoutPage.tsx",
+      "startA": 190,
+      "fileB": "./src/pages/CheckoutPage.tsx",
+      "startB": 214,
+      "lines": 12,
+      "tokens": 52
+    },
+    {
+      "fileA": "./src/pages/CheckoutPage.tsx",
+      "startA": 261,
+      "fileB": "./src/pages/CheckoutPage.tsx",
+      "startB": 284,
+      "lines": 12,
+      "tokens": 52
+    },
+    {
+      "fileA": "./src/pages/LoginPage.tsx",
+      "startA": 16,
+      "fileB": "./src/pages/RegisterPage.tsx",
+      "startB": 22,
+      "lines": 7,
+      "tokens": 50
+    },
+    {
+      "fileA": "./src/pages/LoginPage.tsx",
+      "startA": 28,
+      "fileB": "./src/pages/RegisterPage.tsx",
+      "startB": 53,
+      "lines": 13,
+      "tokens": 57
+    },
+    {
+      "fileA": "./src/pages/LoginPage.tsx",
+      "startA": 45,
+      "fileB": "./src/pages/RegisterPage.tsx",
+      "startB": 88,
+      "lines": 19,
+      "tokens": 90
+    },
+    {
+      "fileA": "./src/pages/OrdersPage.tsx",
+      "startA": 32,
+      "fileB": "./src/pages/SellerDashboard.tsx",
+      "startB": 79,
+      "lines": 9,
+      "tokens": 64
+    },
+    {
+      "fileA": "./src/pages/SellerDashboard.tsx",
+      "startA": 270,
+      "fileB": "./src/pages/SellerDashboard.tsx",
+      "startB": 284,
+      "lines": 8,
+      "tokens": 54
+    }
+  ],
+  "duplicatedLines": 73,
+  "totalLines": 7355,
+  "percentage": 0.9925220938137321
+}

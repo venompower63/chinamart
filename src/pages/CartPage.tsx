@@ -1,112 +1,130 @@
-import { Link } from 'react-router-dom'
-import { useCart } from '../context/CartContext'
-import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
 
 export default function CartPage() {
-  const { items, updateQuantity, removeItem, subtotal, buyerCommission, total } = useCart()
+	const {
+		items,
+		updateQuantity,
+		removeItem,
+		subtotal,
+		buyerCommission,
+		total,
+	} = useCart();
 
-  if (items.length === 0) {
-    return (
-      <div className="cart-page empty">
-        <div className="container">
-          <div className="empty-cart">
-            <ShoppingBag size={80} />
-            <h2>Корзина пуста</h2>
-            <p>Добавьте товары из каталога, чтобы оформить заказ</p>
-            <Link to="/catalog" className="btn btn-primary">Перейти в каталог</Link>
-          </div>
-        </div>
-      </div>
-    )
-  }
+	if (items.length === 0) {
+		return (
+			<div className="cart-page empty">
+				<div className="container">
+					<div className="empty-cart">
+						<ShoppingBag size={80} />
+						<h2>Корзина пуста</h2>
+						<p>Добавьте товары из каталога, чтобы оформить заказ</p>
+						<Link to="/catalog" className="btn btn-primary">
+							Перейти в каталог
+						</Link>
+					</div>
+				</div>
+			</div>
+		);
+	}
 
-  return (
-    <div className="cart-page">
-      <div className="container">
-        <h1>Корзина</h1>
+	return (
+		<div className="cart-page">
+			<div className="container">
+				<h1>Корзина</h1>
 
-        <div className="cart-layout">
-          <div className="cart-items">
-            {items.map(({ product, quantity }) => (
-              <div key={product.id} className="cart-item">
-                <Link to={`/product/${product.id}`} className="item-image">
-                  <img src={product.images[0]} alt={product.title} />
-                </Link>
+				<div className="cart-layout">
+					<div className="cart-items">
+						{items.map(({ product, quantity }) => (
+							<div key={product.id} className="cart-item">
+								<Link to={`/product/${product.id}`} className="item-image">
+									<img src={product.images[0]} alt={product.title} />
+								</Link>
 
-                <div className="item-details">
-                  <Link to={`/product/${product.id}`} className="item-title">
-                    {product.title}
-                  </Link>
-                  <p className="item-seller">Продавец: {product.sellerName}</p>
-                </div>
+								<div className="item-details">
+									<Link to={`/product/${product.id}`} className="item-title">
+										{product.title}
+									</Link>
+									<p className="item-seller">Продавец: {product.sellerName}</p>
+								</div>
 
-                <div className="item-quantity">
-                  <div className="quantity-controls">
-                    <button onClick={() => updateQuantity(product.id, quantity - 1)}>
-                      <Minus size={16} />
-                    </button>
-                    <span>{quantity}</span>
-                    <button onClick={() => updateQuantity(product.id, quantity + 1)}>
-                      <Plus size={16} />
-                    </button>
-                  </div>
-                </div>
+								<div className="item-quantity">
+									<div className="quantity-controls">
+										<button
+											onClick={() => updateQuantity(product.id, quantity - 1)}
+										>
+											<Minus size={16} />
+										</button>
+										<span>{quantity}</span>
+										<button
+											onClick={() => updateQuantity(product.id, quantity + 1)}
+										>
+											<Plus size={16} />
+										</button>
+									</div>
+								</div>
 
-                <div className="item-price">
-                  <span className="current">
-                    {(product.price * quantity).toLocaleString('ru-RU')} ₽
-                  </span>
-                  {quantity > 1 && (
-                    <span className="unit">
-                      {product.price.toLocaleString('ru-RU')} ₽/шт.
-                    </span>
-                  )}
-                </div>
+								<div className="item-price">
+									<span className="current">
+										{(product.price * quantity).toLocaleString("ru-RU")} ₽
+									</span>
+									{quantity > 1 && (
+										<span className="unit">
+											{product.price.toLocaleString("ru-RU")} ₽/шт.
+										</span>
+									)}
+								</div>
 
-                <button className="item-remove" onClick={() => removeItem(product.id)}>
-                  <Trash2 size={18} />
-                </button>
-              </div>
-            ))}
-          </div>
+								<button
+									className="item-remove"
+									onClick={() => removeItem(product.id)}
+								>
+									<Trash2 size={18} />
+								</button>
+							</div>
+						))}
+					</div>
 
-          <div className="cart-summary">
-            <h2>Итого</h2>
+					<div className="cart-summary">
+						<h2>Итого</h2>
 
-            <div className="summary-rows">
-              <div className="summary-row">
-                <span>Товары ({items.length})</span>
-                <span>{subtotal.toLocaleString('ru-RU')} ₽</span>
-              </div>
-              <div className="summary-row">
-                <span>Комиссия покупателя (2%)</span>
-                <span>{buyerCommission.toLocaleString('ru-RU')} ₽</span>
-              </div>
-              <div className="summary-row">
-                <span>Доставка</span>
-                <span className="free">Бесплатно</span>
-              </div>
-            </div>
+						<div className="summary-rows">
+							<div className="summary-row">
+								<span>Товары ({items.length})</span>
+								<span>{subtotal.toLocaleString("ru-RU")} ₽</span>
+							</div>
+							<div className="summary-row">
+								<span>Комиссия покупателя (2%)</span>
+								<span>{buyerCommission.toLocaleString("ru-RU")} ₽</span>
+							</div>
+							<div className="summary-row">
+								<span>Доставка</span>
+								<span className="free">Бесплатно</span>
+							</div>
+						</div>
 
-            <div className="summary-total">
-              <span>К оплате</span>
-              <span className="total-value">{total.toLocaleString('ru-RU')} ₽</span>
-            </div>
+						<div className="summary-total">
+							<span>К оплате</span>
+							<span className="total-value">
+								{total.toLocaleString("ru-RU")} ₽
+							</span>
+						</div>
 
-            <Link to="/checkout" className="btn-checkout">
-              Оформить заказ
-              <ArrowRight size={20} />
-            </Link>
+						<Link to="/checkout" className="btn-checkout">
+							Оформить заказ
+							<ArrowRight size={20} />
+						</Link>
 
-            <div className="summary-note">
-              <p>💳 Безопасная оплата через escrow-систему</p>
-              <p>🛡️ Защита покупателя включена в комиссию</p>
-            </div>
-          </div>
-        </div>
-      </div>
+						<div className="summary-note">
+							<p>💳 Безопасная оплата через escrow-систему</p>
+							<p>🛡️ Защита покупателя включена в комиссию</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <style>{`
+			<style>{`
         .cart-page {
           padding: 24px 0 60px;
         }
@@ -342,6 +360,6 @@ export default function CartPage() {
           }
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

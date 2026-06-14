@@ -1,148 +1,224 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Search, Heart, ShoppingCart, User, Menu, X } from 'lucide-react'
-import { useAuth } from '../context/AuthContext'
-import { useCart } from '../context/CartContext'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Search, Heart, ShoppingCart, User, Menu, X } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
-  const { user, logout } = useAuth()
-  const { totalItems } = useCart()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-  const navigate = useNavigate()
+	const { user, logout } = useAuth();
+	const { totalItems } = useCart();
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [searchQuery, setSearchQuery] = useState("");
+	const navigate = useNavigate();
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      navigate(`/catalog?search=${encodeURIComponent(searchQuery.trim())}`)
-      setSearchQuery('')
-    }
-  }
+	const handleSearch = (e: React.FormEvent) => {
+		e.preventDefault();
+		if (searchQuery.trim()) {
+			navigate(`/catalog?search=${encodeURIComponent(searchQuery.trim())}`);
+			setSearchQuery("");
+		}
+	};
 
-  return (
-    <header className="header">
-      <div className="header-inner container">
-        <Link to="/" className="logo">
-          <div className="logo-icon">CM</div>
-          <span>ChinaMart</span>
-        </Link>
+	return (
+		<header className="header">
+			<div className="header-inner container">
+				<Link to="/" className="logo">
+					<div className="logo-icon">CM</div>
+					<span>ChinaMart</span>
+				</Link>
 
-        <nav className="nav-desktop">
-          <Link to="/catalog" className="nav-link">Каталог</Link>
-          <Link to="/catalog?category=electronics" className="nav-link">Электроника</Link>
-          <Link to="/catalog?category=clothing" className="nav-link">Одежда</Link>
-          {user?.role === 'seller' && (
-            <Link to="/seller" className="nav-link">Кабинет продавца</Link>
-          )}
-        </nav>
+				<nav className="nav-desktop">
+					<Link to="/catalog" className="nav-link">
+						Каталог
+					</Link>
+					<Link to="/catalog?category=electronics" className="nav-link">
+						Электроника
+					</Link>
+					<Link to="/catalog?category=clothing" className="nav-link">
+						Одежда
+					</Link>
+					{user?.role === "seller" && (
+						<Link to="/seller" className="nav-link">
+							Кабинет продавца
+						</Link>
+					)}
+				</nav>
 
-        <form className="search-form" onSubmit={handleSearch}>
-          <Search size={18} className="search-icon" />
-          <input
-            type="text"
-            placeholder="Поиск товаров..."
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            className="search-input"
-          />
-        </form>
+				<form className="search-form" onSubmit={handleSearch}>
+					<Search size={18} className="search-icon" />
+					<input
+						type="text"
+						placeholder="Поиск товаров..."
+						value={searchQuery}
+						onChange={(e) => setSearchQuery(e.target.value)}
+						className="search-input"
+					/>
+				</form>
 
-        <div className="header-actions">
-          <Link to="/catalog" className="action-btn" title="Избранное">
-            <Heart size={22} />
-          </Link>
-          <Link to="/cart" className="action-btn cart-btn">
-            <ShoppingCart size={22} />
-            {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
-          </Link>
+				<div className="header-actions">
+					<Link to="/catalog" className="action-btn" title="Избранное">
+						<Heart size={22} />
+					</Link>
+					<Link to="/cart" className="action-btn cart-btn">
+						<ShoppingCart size={22} />
+						{totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
+					</Link>
 
-          {user ? (
-            <div className="user-menu">
-              <button className="user-btn">
-                <User size={20} />
-                <span>{user.name}</span>
-              </button>
-              <div className="user-dropdown">
-                <Link to="/profile" className="dropdown-item">Профиль</Link>
-                <Link to="/orders" className="dropdown-item">Мои заказы</Link>
-                {user.role === 'seller' && (
-                  <Link to="/seller" className="dropdown-item">Кабинет продавца</Link>
-                )}
-                <button onClick={logout} className="dropdown-item logout">Выйти</button>
-              </div>
-            </div>
-          ) : (
-            <div className="auth-btns">
-              <Link to="/login" className="btn btn-ghost">Войти</Link>
-              <Link to="/register" className="btn btn-primary">Регистрация</Link>
-            </div>
-          )}
+					{user ? (
+						<div className="user-menu">
+							<button className="user-btn">
+								<User size={20} />
+								<span>{user.name}</span>
+							</button>
+							<div className="user-dropdown">
+								<Link to="/profile" className="dropdown-item">
+									Профиль
+								</Link>
+								<Link to="/orders" className="dropdown-item">
+									Мои заказы
+								</Link>
+								{user.role === "seller" && (
+									<Link to="/seller" className="dropdown-item">
+										Кабинет продавца
+									</Link>
+								)}
+								<button onClick={logout} className="dropdown-item logout">
+									Выйти
+								</button>
+							</div>
+						</div>
+					) : (
+						<div className="auth-btns">
+							<Link to="/login" className="btn btn-ghost">
+								Войти
+							</Link>
+							<Link to="/register" className="btn btn-primary">
+								Регистрация
+							</Link>
+						</div>
+					)}
 
-          <button 
-            className="burger-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Меню"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
+					<button
+						className="burger-btn"
+						onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+						aria-label="Меню"
+					>
+						{mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+					</button>
+				</div>
+			</div>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
-        <div className="mobile-menu-panel">
-          <div className="mobile-menu-header">
-            <Link to="/" className="logo" onClick={() => setMobileMenuOpen(false)}>
-              <div className="logo-icon">CM</div>
-              <span>ChinaMart</span>
-            </Link>
-            <button className="close-btn" onClick={() => setMobileMenuOpen(false)}>
-              <X size={24} />
-            </button>
-          </div>
+			{/* Mobile Menu */}
+			<div className={`mobile-menu ${mobileMenuOpen ? "active" : ""}`}>
+				<div className="mobile-menu-panel">
+					<div className="mobile-menu-header">
+						<Link
+							to="/"
+							className="logo"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							<div className="logo-icon">CM</div>
+							<span>ChinaMart</span>
+						</Link>
+						<button
+							className="close-btn"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							<X size={24} />
+						</button>
+					</div>
 
-          <nav className="mobile-nav">
-            <Link to="/catalog" onClick={() => setMobileMenuOpen(false)}>Каталог</Link>
-            <Link to="/catalog?category=electronics" onClick={() => setMobileMenuOpen(false)}>Электроника</Link>
-            <Link to="/catalog?category=clothing" onClick={() => setMobileMenuOpen(false)}>Одежда</Link>
-            <Link to="/catalog?category=cosmetics" onClick={() => setMobileMenuOpen(false)}>Косметика</Link>
-            <Link to="/catalog?category=home" onClick={() => setMobileMenuOpen(false)}>Для дома</Link>
-            {user?.role === 'seller' && (
-              <Link to="/seller" onClick={() => setMobileMenuOpen(false)}>Кабинет продавца</Link>
-            )}
-          </nav>
+					<nav className="mobile-nav">
+						<Link to="/catalog" onClick={() => setMobileMenuOpen(false)}>
+							Каталог
+						</Link>
+						<Link
+							to="/catalog?category=electronics"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							Электроника
+						</Link>
+						<Link
+							to="/catalog?category=clothing"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							Одежда
+						</Link>
+						<Link
+							to="/catalog?category=cosmetics"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							Косметика
+						</Link>
+						<Link
+							to="/catalog?category=home"
+							onClick={() => setMobileMenuOpen(false)}
+						>
+							Для дома
+						</Link>
+						{user?.role === "seller" && (
+							<Link to="/seller" onClick={() => setMobileMenuOpen(false)}>
+								Кабинет продавца
+							</Link>
+						)}
+					</nav>
 
-          <div className="mobile-divider" />
+					<div className="mobile-divider" />
 
-          <div className="mobile-actions">
-            {user ? (
-              <>
-                <Link to="/profile" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-                  <User size={20} /> Профиль
-                </Link>
-                <Link to="/orders" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-                  <ShoppingCart size={20} /> Мои заказы
-                </Link>
-                <button onClick={() => { logout(); setMobileMenuOpen(false); }} className="mobile-nav-link logout">
-                  Выйти
-                </button>
-              </>
-            ) : (
-              <>
-                <Link to="/login" className="btn btn-secondary" onClick={() => setMobileMenuOpen(false)}>
-                  Войти
-                </Link>
-                <Link to="/register" className="btn btn-primary" onClick={() => setMobileMenuOpen(false)}>
-                  Регистрация
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-        <div className="mobile-menu-backdrop" onClick={() => setMobileMenuOpen(false)} />
-      </div>
+					<div className="mobile-actions">
+						{user ? (
+							<>
+								<Link
+									to="/profile"
+									className="mobile-nav-link"
+									onClick={() => setMobileMenuOpen(false)}
+								>
+									<User size={20} /> Профиль
+								</Link>
+								<Link
+									to="/orders"
+									className="mobile-nav-link"
+									onClick={() => setMobileMenuOpen(false)}
+								>
+									<ShoppingCart size={20} /> Мои заказы
+								</Link>
+								<button
+									onClick={() => {
+										logout();
+										setMobileMenuOpen(false);
+									}}
+									className="mobile-nav-link logout"
+								>
+									Выйти
+								</button>
+							</>
+						) : (
+							<>
+								<Link
+									to="/login"
+									className="btn btn-secondary"
+									onClick={() => setMobileMenuOpen(false)}
+								>
+									Войти
+								</Link>
+								<Link
+									to="/register"
+									className="btn btn-primary"
+									onClick={() => setMobileMenuOpen(false)}
+								>
+									Регистрация
+								</Link>
+							</>
+						)}
+					</div>
+				</div>
+				<div
+					className="mobile-menu-backdrop"
+					onClick={() => setMobileMenuOpen(false)}
+				/>
+			</div>
 
-      <style>{`
+			<style>{`
         .header {
           position: sticky;
           top: 0;
@@ -458,6 +534,6 @@ export default function Header() {
           }
         }
       `}</style>
-    </header>
-  )
+		</header>
+	);
 }

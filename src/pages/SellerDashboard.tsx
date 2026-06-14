@@ -1,247 +1,314 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
-import type { Product } from '../context/CartContext'
-import { products as mockProducts } from '../data/mockData'
-import { Plus, Package, ShoppingCart, Star, TrendingUp, Edit2, Trash2 } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import type { Product } from "../context/CartContext";
+import { products as mockProducts } from "../data/mockData";
+import {
+	Plus,
+	Package,
+	ShoppingCart,
+	Star,
+	TrendingUp,
+	Edit2,
+	Trash2,
+} from "lucide-react";
 
 interface Order {
-  id: string
-  items: { product: Product; quantity: number }[]
-  total: number
-  status: string
-  createdAt: string
-  buyerName: string
+	id: string;
+	items: { product: Product; quantity: number }[];
+	total: number;
+	status: string;
+	createdAt: string;
+	buyerName: string;
 }
 
 export default function SellerDashboard() {
-  const { user } = useAuth()
-  const navigate = useNavigate()
-  const [products, setProducts] = useState<Product[]>([])
-  const [orders, setOrders] = useState<Order[]>([])
-  const [activeTab, setActiveTab] = useState('products')
+	const { user } = useAuth();
+	const navigate = useNavigate();
+	const [products, setProducts] = useState<Product[]>([]);
+	const [orders, setOrders] = useState<Order[]>([]);
+	const [activeTab, setActiveTab] = useState("products");
 
-  useEffect(() => {
-    if (!user || user.role !== 'seller') {
-      navigate('/')
-      return
-    }
+	useEffect(() => {
+		if (!user || user.role !== "seller") {
+			navigate("/");
+			return;
+		}
 
-    // Load seller's products
-    const storedProducts = localStorage.getItem('chinamart_products')
-    const allProducts = storedProducts ? [...mockProducts, ...JSON.parse(storedProducts)] : mockProducts
-    const sellerProducts = allProducts.filter(p => p.sellerId === user.id || p.sellerName === user.sellerData?.storeName)
-    setProducts(sellerProducts)
+		// Load seller's products
+		const storedProducts = localStorage.getItem("chinamart_products");
+		const allProducts = storedProducts
+			? [...mockProducts, ...JSON.parse(storedProducts)]
+			: mockProducts;
+		const sellerProducts = allProducts.filter(
+			(p) =>
+				p.sellerId === user.id || p.sellerName === user.sellerData?.storeName,
+		);
+		setProducts(sellerProducts);
 
-    // Load seller's orders
-    const storedOrders = JSON.parse(localStorage.getItem('chinamart_orders') || '[]')
-    const sellerOrders = storedOrders.filter((order: Order) => 
-      order.items.some(item => 
-        sellerProducts.some(p => p.id === item.product.id)
-      )
-    )
-    setOrders(sellerOrders)
-  }, [user, navigate])
+		// Load seller's orders
+		const storedOrders = JSON.parse(
+			localStorage.getItem("chinamart_orders") || "[]",
+		);
+		const sellerOrders = storedOrders.filter((order: Order) =>
+			order.items.some((item) =>
+				sellerProducts.some((p) => p.id === item.product.id),
+			),
+		);
+		setOrders(sellerOrders);
+	}, [user, navigate]);
 
-  const deleteProduct = (productId: string) => {
-    setProducts(prev => prev.filter(p => p.id !== productId))
-    showToast('success', 'Товар удалён')
-  }
+	const deleteProduct = (productId: string) => {
+		setProducts((prev) => prev.filter((p) => p.id !== productId));
+		showToast("success", "Товар удалён");
+	};
 
-  const totalSales = orders.reduce((sum, order) => 
-    sum + order.items.filter(item => 
-      products.some(p => p.id === item.product.id)
-    ).reduce((s, item) => s + item.product.price * item.quantity, 0), 0
-  )
+	const totalSales = orders.reduce(
+		(sum, order) =>
+			sum +
+			order.items
+				.filter((item) => products.some((p) => p.id === item.product.id))
+				.reduce((s, item) => s + item.product.price * item.quantity, 0),
+		0,
+	);
 
-  const sellerRevenue = Math.round(totalSales * 0.95)
+	const sellerRevenue = Math.round(totalSales * 0.95);
 
-  const formatStatus = (status: string) => {
-    const statuses: Record<string, { label: string; color: string }> = {
-      pending: { label: 'Новый', color: 'blue' },
-      processing: { label: 'В обработке', color: 'orange' },
-      shipped: { label: 'Отправлен', color: 'purple' },
-      delivered: { label: 'Доставлен', color: 'green' }
-    }
-    return statuses[status] || { label: status, color: 'gray' }
-  }
+	const formatStatus = (status: string) => {
+		const statuses: Record<string, { label: string; color: string }> = {
+			pending: { label: "Новый", color: "blue" },
+			processing: { label: "В обработке", color: "orange" },
+			shipped: { label: "Отправлен", color: "purple" },
+			delivered: { label: "Доставлен", color: "green" },
+		};
+		return statuses[status] || { label: status, color: "gray" };
+	};
 
-  if (!user || user.role !== 'seller') {
-    return null
-  }
+	if (!user || user.role !== "seller") {
+		return null;
+	}
 
-  return (
-    <div className="seller-dashboard">
-      <div className="container">
-        <div className="dashboard-header">
-          <div>
-            <h1>Кабинет продавца</h1>
-            <p>{user.sellerData?.storeName || 'Ваш магазин'}</p>
-          </div>
-          <Link to="/seller/add-product" className="btn btn-primary">
-            <Plus size={20} />
-            Добавить товар
-          </Link>
-        </div>
+	return (
+		<div className="seller-dashboard">
+			<div className="container">
+				<div className="dashboard-header">
+					<div>
+						<h1>Кабинет продавца</h1>
+						<p>{user.sellerData?.storeName || "Ваш магазин"}</p>
+					</div>
+					<Link to="/seller/add-product" className="btn btn-primary">
+						<Plus size={20} />
+						Добавить товар
+					</Link>
+				</div>
 
-        {/* Stats */}
-        <div className="stats-grid">
-          <div className="stat-card">
-            <div className="stat-icon"><Package size={24} /></div>
-            <div className="stat-info">
-              <span className="stat-value">{products.length}</span>
-              <span className="stat-label">Товаров</span>
-            </div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-icon"><ShoppingCart size={24} /></div>
-            <div className="stat-info">
-              <span className="stat-value">{orders.length}</span>
-              <span className="stat-label">Заказов</span>
-            </div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-icon"><TrendingUp size={24} /></div>
-            <div className="stat-info">
-              <span className="stat-value">{totalSales.toLocaleString('ru-RU')} ₽</span>
-              <span className="stat-label">Продаж</span>
-            </div>
-          </div>
-          <div className="stat-card highlight">
-            <div className="stat-icon"><Star size={24} /></div>
-            <div className="stat-info">
-              <span className="stat-value">{sellerRevenue.toLocaleString('ru-RU')} ₽</span>
-              <span className="stat-label">Выручка (≈95%)</span>
-            </div>
-          </div>
-        </div>
+				{/* Stats */}
+				<div className="stats-grid">
+					<div className="stat-card">
+						<div className="stat-icon">
+							<Package size={24} />
+						</div>
+						<div className="stat-info">
+							<span className="stat-value">{products.length}</span>
+							<span className="stat-label">Товаров</span>
+						</div>
+					</div>
+					<div className="stat-card">
+						<div className="stat-icon">
+							<ShoppingCart size={24} />
+						</div>
+						<div className="stat-info">
+							<span className="stat-value">{orders.length}</span>
+							<span className="stat-label">Заказов</span>
+						</div>
+					</div>
+					<div className="stat-card">
+						<div className="stat-icon">
+							<TrendingUp size={24} />
+						</div>
+						<div className="stat-info">
+							<span className="stat-value">
+								{totalSales.toLocaleString("ru-RU")} ₽
+							</span>
+							<span className="stat-label">Продаж</span>
+						</div>
+					</div>
+					<div className="stat-card highlight">
+						<div className="stat-icon">
+							<Star size={24} />
+						</div>
+						<div className="stat-info">
+							<span className="stat-value">
+								{sellerRevenue.toLocaleString("ru-RU")} ₽
+							</span>
+							<span className="stat-label">Выручка (≈95%)</span>
+						</div>
+					</div>
+				</div>
 
-        {/* Tabs */}
-        <div className="tabs">
-          <button 
-            className={`tab ${activeTab === 'products' ? 'active' : ''}`}
-            onClick={() => setActiveTab('products')}
-          >
-            <Package size={20} />
-            Товары
-          </button>
-          <button 
-            className={`tab ${activeTab === 'orders' ? 'active' : ''}`}
-            onClick={() => setActiveTab('orders')}
-          >
-            <ShoppingCart size={20} />
-            Заказы
-          </button>
-        </div>
+				{/* Tabs */}
+				<div className="tabs">
+					<button
+						className={`tab ${activeTab === "products" ? "active" : ""}`}
+						onClick={() => setActiveTab("products")}
+					>
+						<Package size={20} />
+						Товары
+					</button>
+					<button
+						className={`tab ${activeTab === "orders" ? "active" : ""}`}
+						onClick={() => setActiveTab("orders")}
+					>
+						<ShoppingCart size={20} />
+						Заказы
+					</button>
+				</div>
 
-        {/* Products Tab */}
-        {activeTab === 'products' && (
-          <div className="tab-content">
-            {products.length > 0 ? (
-              <div className="products-table">
-                <div className="table-header">
-                  <span>Товар</span>
-                  <span>Цена</span>
-                  <span>На складе</span>
-                  <span>Продано</span>
-                  <span>Действия</span>
-                </div>
-                {products.map(product => (
-                  <div key={product.id} className="table-row">
-                    <div className="product-cell">
-                      <img src={product.images[0]} alt={product.title} />
-                      <span>{product.title}</span>
-                    </div>
-                    <span className="price">{product.price.toLocaleString('ru-RU')} ₽</span>
-                    <span>{product.stock} шт.</span>
-                    <span>{product.salesCount}</span>
-                    <div className="actions">
-                      <button onClick={() => navigate(`/seller/edit-product/${product.id}`)}>
-                        <Edit2 size={16} />
-                      </button>
-                      <button onClick={() => deleteProduct(product.id)}>
-                        <Trash2 size={16} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="empty-state">
-                <Package size={60} />
-                <h3>У вас пока нет товаров</h3>
-                <p>Добавьте первый товар, чтобы начать продавать</p>
-                <Link to="/seller/add-product" className="btn btn-primary">
-                  <Plus size={20} />
-                  Добавить товар
-                </Link>
-              </div>
-            )}
-          </div>
-        )}
+				{/* Products Tab */}
+				{activeTab === "products" && (
+					<div className="tab-content">
+						{products.length > 0 ? (
+							<div className="products-table">
+								<div className="table-header">
+									<span>Товар</span>
+									<span>Цена</span>
+									<span>На складе</span>
+									<span>Продано</span>
+									<span>Действия</span>
+								</div>
+								{products.map((product) => (
+									<div key={product.id} className="table-row">
+										<div className="product-cell">
+											<img src={product.images[0]} alt={product.title} />
+											<span>{product.title}</span>
+										</div>
+										<span className="price">
+											{product.price.toLocaleString("ru-RU")} ₽
+										</span>
+										<span>{product.stock} шт.</span>
+										<span>{product.salesCount}</span>
+										<div className="actions">
+											<button
+												onClick={() =>
+													navigate(`/seller/edit-product/${product.id}`)
+												}
+											>
+												<Edit2 size={16} />
+											</button>
+											<button onClick={() => deleteProduct(product.id)}>
+												<Trash2 size={16} />
+											</button>
+										</div>
+									</div>
+								))}
+							</div>
+						) : (
+							<div className="empty-state">
+								<Package size={60} />
+								<h3>У вас пока нет товаров</h3>
+								<p>Добавьте первый товар, чтобы начать продавать</p>
+								<Link to="/seller/add-product" className="btn btn-primary">
+									<Plus size={20} />
+									Добавить товар
+								</Link>
+							</div>
+						)}
+					</div>
+				)}
 
-        {/* Orders Tab */}
-        {activeTab === 'orders' && (
-          <div className="tab-content">
-            {orders.length > 0 ? (
-              <div className="orders-list">
-                {orders.map(order => (
-                  <div key={order.id} className="order-card">
-                    <div className="order-header">
-                      <div>
-                        <strong>{order.id}</strong>
-                        <span className="order-date">
-                          {new Date(order.createdAt).toLocaleDateString('ru-RU')}
-                        </span>
-                      </div>
-                      <span className={`status ${formatStatus(order.status).color}`}>
-                        {formatStatus(order.status).label}
-                      </span>
-                    </div>
-                    <div className="order-items">
-                      {order.items.filter(item => products.some(p => p.id === item.product.id)).map(item => (
-                        <div key={item.product.id} className="order-item">
-                          <img src={item.product.images[0]} alt={item.product.title} />
-                          <div>
-                            <span className="item-title">{item.product.title}</span>
-                            <span className="item-qty">×{item.quantity}</span>
-                          </div>
-                          <span className="item-price">
-                            {(item.product.price * item.quantity).toLocaleString('ru-RU')} ₽
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="order-footer">
-                      <span className="order-total">
-                        Итого: {order.items
-                          .filter(item => products.some(p => p.id === item.product.id))
-                          .reduce((s, item) => s + item.product.price * item.quantity, 0)
-                          .toLocaleString('ru-RU')} ₽
-                      </span>
-                      <span className="order-revenue">
-                        Ваша выручка: {Math.round(
-                          order.items
-                            .filter(item => products.some(p => p.id === item.product.id))
-                            .reduce((s, item) => s + item.product.price * item.quantity, 0) * 0.95
-                        ).toLocaleString('ru-RU')} ₽
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="empty-state">
-                <ShoppingCart size={60} />
-                <h3>Заказов пока нет</h3>
-                <p>Ожидайте, когда покупатели сделают заказы</p>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+				{/* Orders Tab */}
+				{activeTab === "orders" && (
+					<div className="tab-content">
+						{orders.length > 0 ? (
+							<div className="orders-list">
+								{orders.map((order) => (
+									<div key={order.id} className="order-card">
+										<div className="order-header">
+											<div>
+												<strong>{order.id}</strong>
+												<span className="order-date">
+													{new Date(order.createdAt).toLocaleDateString(
+														"ru-RU",
+													)}
+												</span>
+											</div>
+											<span
+												className={`status ${formatStatus(order.status).color}`}
+											>
+												{formatStatus(order.status).label}
+											</span>
+										</div>
+										<div className="order-items">
+											{order.items
+												.filter((item) =>
+													products.some((p) => p.id === item.product.id),
+												)
+												.map((item) => (
+													<div key={item.product.id} className="order-item">
+														<img
+															src={item.product.images[0]}
+															alt={item.product.title}
+														/>
+														<div>
+															<span className="item-title">
+																{item.product.title}
+															</span>
+															<span className="item-qty">×{item.quantity}</span>
+														</div>
+														<span className="item-price">
+															{(
+																item.product.price * item.quantity
+															).toLocaleString("ru-RU")}{" "}
+															₽
+														</span>
+													</div>
+												))}
+										</div>
+										<div className="order-footer">
+											<span className="order-total">
+												Итого:{" "}
+												{order.items
+													.filter((item) =>
+														products.some((p) => p.id === item.product.id),
+													)
+													.reduce(
+														(s, item) => s + item.product.price * item.quantity,
+														0,
+													)
+													.toLocaleString("ru-RU")}{" "}
+												₽
+											</span>
+											<span className="order-revenue">
+												Ваша выручка:{" "}
+												{Math.round(
+													order.items
+														.filter((item) =>
+															products.some((p) => p.id === item.product.id),
+														)
+														.reduce(
+															(s, item) =>
+																s + item.product.price * item.quantity,
+															0,
+														) * 0.95,
+												).toLocaleString("ru-RU")}{" "}
+												₽
+											</span>
+										</div>
+									</div>
+								))}
+							</div>
+						) : (
+							<div className="empty-state">
+								<ShoppingCart size={60} />
+								<h3>Заказов пока нет</h3>
+								<p>Ожидайте, когда покупатели сделают заказы</p>
+							</div>
+						)}
+					</div>
+				)}
+			</div>
 
-      <style>{`
+			<style>{`
         .seller-dashboard {
           padding: 32px 0 60px;
         }
@@ -552,12 +619,12 @@ export default function SellerDashboard() {
           }
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }
 
 // Add helper function for toast
 function showToast(type: string, message: string) {
-  const event = new CustomEvent('showToast', { detail: { type, message } })
-  window.dispatchEvent(event)
+	const event = new CustomEvent("showToast", { detail: { type, message } });
+	window.dispatchEvent(event);
 }

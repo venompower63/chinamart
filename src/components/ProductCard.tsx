@@ -1,78 +1,88 @@
-import { Link } from 'react-router-dom'
-import { Heart, Check } from 'lucide-react'
-import type { Product } from '../context/CartContext'
-import { useCart } from '../context/CartContext'
-import { useToast } from '../context/ToastContext'
+import { Link } from "react-router-dom";
+import { Heart, Check } from "lucide-react";
+import type { Product } from "../context/CartContext";
+import { useCart } from "../context/CartContext";
+import { useToast } from "../context/ToastContext";
 
 interface ProductCardProps {
-  product: Product
+	product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { addItem, isInCart } = useCart()
-  const { showToast } = useToast()
-  const inCart = isInCart(product.id)
+	const { addItem, isInCart } = useCart();
+	const { showToast } = useToast();
+	const inCart = isInCart(product.id);
 
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (product.stock > 0) {
-      addItem(product, 1)
-      showToast('success', 'Товар добавлен в корзину')
-    }
-  }
+	const handleAddToCart = (e: React.MouseEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+		if (product.stock > 0) {
+			addItem(product, 1);
+			showToast("success", "Товар добавлен в корзину");
+		}
+	};
 
-  const badgeLabels: Record<string, string> = {
-    sale: `-${Math.round((1 - product.price / (product.oldPrice || product.price)) * 100)}%`,
-    hit: 'Хит',
-    new: 'Новинка'
-  }
+	const badgeLabels: Record<string, string> = {
+		sale: `-${Math.round((1 - product.price / (product.oldPrice || product.price)) * 100)}%`,
+		hit: "Хит",
+		new: "Новинка",
+	};
 
-  return (
-    <Link to={`/product/${product.id}`} className="product-card">
-      <div className="product-image">
-        <img src={product.images[0]} alt={product.title} />
-        {product.badge && (
-          <span className={`product-badge badge-${product.badge}`}>
-            {badgeLabels[product.badge]}
-          </span>
-        )}
-        <button 
-          className={`wishlist-btn ${inCart ? 'in-cart' : ''}`}
-          onClick={handleAddToCart}
-          title={inCart ? 'В корзине' : 'В избранное'}
-        >
-          {inCart ? <Check size={18} /> : <Heart size={18} />}
-        </button>
-      </div>
+	return (
+		<Link to={`/product/${product.id}`} className="product-card">
+			<div className="product-image">
+				<img src={product.images[0]} alt={product.title} />
+				{product.badge && (
+					<span className={`product-badge badge-${product.badge}`}>
+						{badgeLabels[product.badge]}
+					</span>
+				)}
+				<button
+					className={`wishlist-btn ${inCart ? "in-cart" : ""}`}
+					onClick={handleAddToCart}
+					title={inCart ? "В корзине" : "В избранное"}
+				>
+					{inCart ? <Check size={18} /> : <Heart size={18} />}
+				</button>
+			</div>
 
-      <div className="product-info">
-        <div className="product-seller">
-          <span className="seller-avatar">{product.sellerName[0]}</span>
-          <span className="seller-name">{product.sellerName}</span>
-        </div>
+			<div className="product-info">
+				<div className="product-seller">
+					<span className="seller-avatar">{product.sellerName[0]}</span>
+					<span className="seller-name">{product.sellerName}</span>
+				</div>
 
-        <h3 className="product-title">{product.title}</h3>
+				<h3 className="product-title">{product.title}</h3>
 
-        <div className="product-rating">
-          <span className="rating-stars">{'★'.repeat(Math.round(product.rating))}</span>
-          <span className="rating-count">({product.reviewsCount.toLocaleString()})</span>
-        </div>
+				<div className="product-rating">
+					<span className="rating-stars">
+						{"★".repeat(Math.round(product.rating))}
+					</span>
+					<span className="rating-count">
+						({product.reviewsCount.toLocaleString()})
+					</span>
+				</div>
 
-        <div className="product-price">
-          <span className="price-current">{product.price.toLocaleString('ru-RU')} ₽</span>
-          {product.oldPrice && (
-            <span className="price-old">{product.oldPrice.toLocaleString('ru-RU')} ₽</span>
-          )}
-        </div>
+				<div className="product-price">
+					<span className="price-current">
+						{product.price.toLocaleString("ru-RU")} ₽
+					</span>
+					{product.oldPrice && (
+						<span className="price-old">
+							{product.oldPrice.toLocaleString("ru-RU")} ₽
+						</span>
+					)}
+				</div>
 
-        <div className="product-footer">
-          <span className="product-sales">{product.salesCount.toLocaleString()} sold</span>
-          <span className="product-delivery">5-7 дней</span>
-        </div>
-      </div>
+				<div className="product-footer">
+					<span className="product-sales">
+						{product.salesCount.toLocaleString()} sold
+					</span>
+					<span className="product-delivery">5-7 дней</span>
+				</div>
+			</div>
 
-      <style>{`
+			<style>{`
         .product-card {
           background: var(--bg-white);
           border-radius: var(--radius-md);
@@ -223,6 +233,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           font-weight: 500;
         }
       `}</style>
-    </Link>
-  )
+		</Link>
+	);
 }

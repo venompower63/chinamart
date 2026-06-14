@@ -1,0 +1,425 @@
+{
+  "version": 1,
+  "projectRoot": "/home/user/chinamart",
+  "generatedAt": "2026-06-14T11:26:26.400Z",
+  "seq": 0,
+  "files": {
+    "/home/user/chinamart/capacitor.config.ts": {
+      "path": "/home/user/chinamart/capacitor.config.ts",
+      "mtimeMs": 1781436192950.4011,
+      "size": 812,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/App.tsx": {
+      "path": "/home/user/chinamart/src/App.tsx",
+      "mtimeMs": 1781434440304.244,
+      "size": 1839,
+      "imports": [
+        "/home/user/chinamart/src/components/Layout.tsx",
+        "/home/user/chinamart/src/context/AuthContext.tsx",
+        "/home/user/chinamart/src/context/CartContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx",
+        "/home/user/chinamart/src/pages/AddProductPage.tsx",
+        "/home/user/chinamart/src/pages/CartPage.tsx",
+        "/home/user/chinamart/src/pages/CatalogPage.tsx",
+        "/home/user/chinamart/src/pages/CheckoutPage.tsx",
+        "/home/user/chinamart/src/pages/HomePage.tsx",
+        "/home/user/chinamart/src/pages/LoginPage.tsx",
+        "/home/user/chinamart/src/pages/OrdersPage.tsx",
+        "/home/user/chinamart/src/pages/ProductPage.tsx",
+        "/home/user/chinamart/src/pages/ProfilePage.tsx",
+        "/home/user/chinamart/src/pages/RegisterPage.tsx",
+        "/home/user/chinamart/src/pages/SellerDashboard.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/components/CategoryCard.tsx": {
+      "path": "/home/user/chinamart/src/components/CategoryCard.tsx",
+      "mtimeMs": 1781434440383.2456,
+      "size": 1934,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/components/Footer.tsx": {
+      "path": "/home/user/chinamart/src/components/Footer.tsx",
+      "mtimeMs": 1781434440399.2458,
+      "size": 4772,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/components/Header.tsx": {
+      "path": "/home/user/chinamart/src/components/Header.tsx",
+      "mtimeMs": 1781434440346.2446,
+      "size": 14273,
+      "imports": [
+        "/home/user/chinamart/src/context/AuthContext.tsx",
+        "/home/user/chinamart/src/context/CartContext.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/components/Layout.tsx": {
+      "path": "/home/user/chinamart/src/components/Layout.tsx",
+      "mtimeMs": 1781434440331.2444,
+      "size": 465,
+      "imports": [
+        "/home/user/chinamart/src/components/Footer.tsx",
+        "/home/user/chinamart/src/components/Header.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/components/ProductCard.tsx": {
+      "path": "/home/user/chinamart/src/components/ProductCard.tsx",
+      "mtimeMs": 1781434440379.2454,
+      "size": 6428,
+      "imports": [
+        "/home/user/chinamart/src/context/CartContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/context/AuthContext.tsx": {
+      "path": "/home/user/chinamart/src/context/AuthContext.tsx",
+      "mtimeMs": 1781434440338.2446,
+      "size": 4397,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/context/CartContext.tsx": {
+      "path": "/home/user/chinamart/src/context/CartContext.tsx",
+      "mtimeMs": 1781434440315.2441,
+      "size": 4196,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/context/ToastContext.tsx": {
+      "path": "/home/user/chinamart/src/context/ToastContext.tsx",
+      "mtimeMs": 1781434440329.2444,
+      "size": 3601,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/data/mockData.ts": {
+      "path": "/home/user/chinamart/src/data/mockData.ts",
+      "mtimeMs": 1781434440353.2449,
+      "size": 11467,
+      "imports": [
+        "/home/user/chinamart/src/context/CartContext.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/main.tsx": {
+      "path": "/home/user/chinamart/src/main.tsx",
+      "mtimeMs": 1781434440304.244,
+      "size": 242,
+      "imports": [
+        "/home/user/chinamart/src/App.tsx",
+        "/home/user/chinamart/src/styles/globals.css"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/AddProductPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/AddProductPage.tsx",
+      "mtimeMs": 1781434440432.2466,
+      "size": 13898,
+      "imports": [
+        "/home/user/chinamart/src/context/AuthContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx",
+        "/home/user/chinamart/src/data/mockData.ts"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/CartPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/CartPage.tsx",
+      "mtimeMs": 1781434440411.246,
+      "size": 9738,
+      "imports": [
+        "/home/user/chinamart/src/context/CartContext.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/CatalogPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/CatalogPage.tsx",
+      "mtimeMs": 1781434440398.2458,
+      "size": 12414,
+      "imports": [
+        "/home/user/chinamart/src/components/ProductCard.tsx",
+        "/home/user/chinamart/src/context/CartContext.tsx",
+        "/home/user/chinamart/src/data/mockData.ts"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/CheckoutPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/CheckoutPage.tsx",
+      "mtimeMs": 1781434440417.2463,
+      "size": 18717,
+      "imports": [
+        "/home/user/chinamart/src/context/CartContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/HomePage.tsx": {
+      "path": "/home/user/chinamart/src/pages/HomePage.tsx",
+      "mtimeMs": 1781434440412.246,
+      "size": 21670,
+      "imports": [
+        "/home/user/chinamart/src/components/CategoryCard.tsx",
+        "/home/user/chinamart/src/components/ProductCard.tsx",
+        "/home/user/chinamart/src/data/mockData.ts"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/LoginPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/LoginPage.tsx",
+      "mtimeMs": 1781434440444.2468,
+      "size": 6748,
+      "imports": [
+        "/home/user/chinamart/src/context/AuthContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/OrdersPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/OrdersPage.tsx",
+      "mtimeMs": 1781434440455.247,
+      "size": 8550,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/ProductPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/ProductPage.tsx",
+      "mtimeMs": 1781434440417.2463,
+      "size": 17781,
+      "imports": [
+        "/home/user/chinamart/src/context/CartContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx",
+        "/home/user/chinamart/src/data/mockData.ts"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/ProfilePage.tsx": {
+      "path": "/home/user/chinamart/src/pages/ProfilePage.tsx",
+      "mtimeMs": 1781434440464.2473,
+      "size": 7629,
+      "imports": [
+        "/home/user/chinamart/src/context/AuthContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/RegisterPage.tsx": {
+      "path": "/home/user/chinamart/src/pages/RegisterPage.tsx",
+      "mtimeMs": 1781434440462.247,
+      "size": 11018,
+      "imports": [
+        "/home/user/chinamart/src/context/AuthContext.tsx",
+        "/home/user/chinamart/src/context/ToastContext.tsx",
+        "/home/user/chinamart/src/data/mockData.ts"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/pages/SellerDashboard.tsx": {
+      "path": "/home/user/chinamart/src/pages/SellerDashboard.tsx",
+      "mtimeMs": 1781434440433.2466,
+      "size": 17607,
+      "imports": [
+        "/home/user/chinamart/src/context/AuthContext.tsx",
+        "/home/user/chinamart/src/context/CartContext.tsx",
+        "/home/user/chinamart/src/data/mockData.ts"
+      ],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/src/styles/globals.css": {
+      "path": "/home/user/chinamart/src/styles/globals.css",
+      "mtimeMs": 1781434440310.244,
+      "size": 1035,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/vite.config.ts": {
+      "path": "/home/user/chinamart/vite.config.ts",
+      "mtimeMs": 1781434440289.2434,
+      "size": 183,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/scripts/generate-icons.js": {
+      "path": "/home/user/chinamart/scripts/generate-icons.js",
+      "mtimeMs": 1781436252816.65,
+      "size": 7051,
+      "imports": [],
+      "lastSeq": 0
+    },
+    "/home/user/chinamart/scripts/generate-icons.cjs": {
+      "path": "/home/user/chinamart/scripts/generate-icons.cjs",
+      "mtimeMs": 1781436252816.65,
+      "size": 7051,
+      "imports": [],
+      "lastSeq": 0
+    }
+  },
+  "symbols": {},
+  "reverseDeps": {
+    "/home/user/chinamart/capacitor.config.ts": [],
+    "/home/user/chinamart/scripts/generate-icons.cjs": [],
+    "/home/user/chinamart/src/App.tsx": [
+      "/home/user/chinamart/src/main.tsx"
+    ],
+    "/home/user/chinamart/src/components/CategoryCard.tsx": [
+      "/home/user/chinamart/src/pages/HomePage.tsx"
+    ],
+    "/home/user/chinamart/src/components/Footer.tsx": [
+      "/home/user/chinamart/src/components/Layout.tsx"
+    ],
+    "/home/user/chinamart/src/components/Header.tsx": [
+      "/home/user/chinamart/src/components/Layout.tsx"
+    ],
+    "/home/user/chinamart/src/components/Layout.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/components/ProductCard.tsx": [
+      "/home/user/chinamart/src/pages/CatalogPage.tsx",
+      "/home/user/chinamart/src/pages/HomePage.tsx"
+    ],
+    "/home/user/chinamart/src/context/AuthContext.tsx": [
+      "/home/user/chinamart/src/App.tsx",
+      "/home/user/chinamart/src/components/Header.tsx",
+      "/home/user/chinamart/src/pages/AddProductPage.tsx",
+      "/home/user/chinamart/src/pages/LoginPage.tsx",
+      "/home/user/chinamart/src/pages/ProfilePage.tsx",
+      "/home/user/chinamart/src/pages/RegisterPage.tsx",
+      "/home/user/chinamart/src/pages/SellerDashboard.tsx"
+    ],
+    "/home/user/chinamart/src/context/CartContext.tsx": [
+      "/home/user/chinamart/src/App.tsx",
+      "/home/user/chinamart/src/components/Header.tsx",
+      "/home/user/chinamart/src/components/ProductCard.tsx",
+      "/home/user/chinamart/src/data/mockData.ts",
+      "/home/user/chinamart/src/pages/CartPage.tsx",
+      "/home/user/chinamart/src/pages/CatalogPage.tsx",
+      "/home/user/chinamart/src/pages/CheckoutPage.tsx",
+      "/home/user/chinamart/src/pages/ProductPage.tsx",
+      "/home/user/chinamart/src/pages/SellerDashboard.tsx"
+    ],
+    "/home/user/chinamart/src/context/ToastContext.tsx": [
+      "/home/user/chinamart/src/App.tsx",
+      "/home/user/chinamart/src/components/ProductCard.tsx",
+      "/home/user/chinamart/src/pages/AddProductPage.tsx",
+      "/home/user/chinamart/src/pages/CheckoutPage.tsx",
+      "/home/user/chinamart/src/pages/LoginPage.tsx",
+      "/home/user/chinamart/src/pages/ProductPage.tsx",
+      "/home/user/chinamart/src/pages/ProfilePage.tsx",
+      "/home/user/chinamart/src/pages/RegisterPage.tsx"
+    ],
+    "/home/user/chinamart/src/data/mockData.ts": [
+      "/home/user/chinamart/src/pages/AddProductPage.tsx",
+      "/home/user/chinamart/src/pages/CatalogPage.tsx",
+      "/home/user/chinamart/src/pages/HomePage.tsx",
+      "/home/user/chinamart/src/pages/ProductPage.tsx",
+      "/home/user/chinamart/src/pages/RegisterPage.tsx",
+      "/home/user/chinamart/src/pages/SellerDashboard.tsx"
+    ],
+    "/home/user/chinamart/src/main.tsx": [],
+    "/home/user/chinamart/src/pages/AddProductPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/CartPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/CatalogPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/CheckoutPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/HomePage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/LoginPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/OrdersPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/ProductPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/ProfilePage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/RegisterPage.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/pages/SellerDashboard.tsx": [
+      "/home/user/chinamart/src/App.tsx"
+    ],
+    "/home/user/chinamart/src/styles/globals.css": [
+      "/home/user/chinamart/src/main.tsx"
+    ],
+    "/home/user/chinamart/vite.config.ts": []
+  },
+  "cachedExports": [],
+  "projectRulesScan": {
+    "rules": [],
+    "hasCustomRules": false
+  },
+  "projectIndex": {
+    "entryCount": 26
+  },
+  "startupScan": {
+    "cwd": "/home/user/chinamart",
+    "scanRoot": "/home/user/chinamart",
+    "projectRoot": "/home/user/chinamart",
+    "canWarmCaches": true,
+    "sourceFileCount": 23
+  },
+  "languageProfile": {
+    "present": {
+      "jsts": true,
+      "python": false,
+      "go": false,
+      "rust": false,
+      "cxx": false,
+      "cmake": false,
+      "fish": false,
+      "shell": false,
+      "json": false,
+      "markdown": false,
+      "css": false,
+      "yaml": false,
+      "sql": false,
+      "ruby": false,
+      "html": false,
+      "docker": false,
+      "php": false,
+      "powershell": false,
+      "prisma": false,
+      "csharp": false,
+      "fsharp": false,
+      "java": false,
+      "kotlin": false,
+      "swift": false,
+      "dart": false,
+      "lua": false,
+      "zig": false,
+      "haskell": false,
+      "elixir": false,
+      "gleam": false,
+      "ocaml": false,
+      "clojure": false,
+      "terraform": false,
+      "nix": false,
+      "toml": false
+    },
+    "configured": {
+      "jsts": true
+    },
+    "counts": {
+      "jsts": 23
+    },
+    "detectedKinds": [
+      "jsts"
+    ]
+  }
+}

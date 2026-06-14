@@ -1,298 +1,351 @@
-import type { Product } from '../context/CartContext'
+import type { Product } from "../context/CartContext";
 
 export const categories = [
-  { id: 'electronics', name: 'Электроника', icon: '📱', count: 12400, color: '#fff3e0' },
-  { id: 'clothing', name: 'Одежда', icon: '👗', count: 28600, color: '#e3f2fd' },
-  { id: 'cosmetics', name: 'Косметика', icon: '💄', count: 8200, color: '#f3e5f5' },
-  { id: 'home', name: 'Для дома', icon: '🏠', count: 15800, color: '#e8f5e9' },
-  { id: 'sports', name: 'Спорт', icon: '⚽', count: 6500, color: '#fce4ec' },
-  { id: 'tools', name: 'Инструменты', icon: '🔧', count: 4300, color: '#e0f7fa' }
-]
+	{
+		id: "electronics",
+		name: "Электроника",
+		icon: "📱",
+		count: 12400,
+		color: "#fff3e0",
+	},
+	{
+		id: "clothing",
+		name: "Одежда",
+		icon: "👗",
+		count: 28600,
+		color: "#e3f2fd",
+	},
+	{
+		id: "cosmetics",
+		name: "Косметика",
+		icon: "💄",
+		count: 8200,
+		color: "#f3e5f5",
+	},
+	{ id: "home", name: "Для дома", icon: "🏠", count: 15800, color: "#e8f5e9" },
+	{ id: "sports", name: "Спорт", icon: "⚽", count: 6500, color: "#fce4ec" },
+	{
+		id: "tools",
+		name: "Инструменты",
+		icon: "🔧",
+		count: 4300,
+		color: "#e0f7fa",
+	},
+];
 
 export const products: Product[] = [
-  {
-    id: 'prod_1',
-    sellerId: 'seller_1',
-    sellerName: 'TechGadgets',
-    title: 'Беспроводные наушники с шумоподавлением HiFi Sound Pro',
-    description: 'Премиальные беспроводные наушники с активным шумоподавлением (ANC). До 30 часов воспроизведения, быстрая зарядка USB-C, мультиточечное подключение к двум устройствам одновременно.',
-    price: 3490,
-    oldPrice: 4650,
-    images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600'],
-    category: 'electronics',
-    characteristics: {
-      'Бренд': 'SoundMaster',
-      'Тип': 'Накладные',
-      'Шумоподавление': 'Активное (ANC)',
-      'Автономность': '30 часов',
-      'Интерфейс': 'Bluetooth 5.2',
-      'Вес': '250 г'
-    },
-    stock: 45,
-    rating: 4.8,
-    reviewsCount: 2847,
-    salesCount: 1234,
-    createdAt: '2024-01-15',
-    badge: 'sale'
-  },
-  {
-    id: 'prod_2',
-    sellerId: 'seller_2',
-    sellerName: 'ModaChina',
-    title: 'Стильное худи с капюшоном, хлопок 100%',
-    description: 'Уютное худи из премиального хлопка. Свободный крой, удобный капюшон, вместительные карманы. Идеально для повседневного образа.',
-    price: 1290,
-    images: ['https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600'],
-    category: 'clothing',
-    characteristics: {
-      'Материал': 'Хлопок 100%',
-      'Размеры': 'S, M, L, XL',
-      'Цвет': 'Чёрный, серый, бежевый',
-      'Уход': 'Деликатная стирка'
-    },
-    stock: 120,
-    rating: 4.5,
-    reviewsCount: 1563,
-    salesCount: 3892,
-    createdAt: '2024-02-20',
-    badge: 'hit'
-  },
-  {
-    id: 'prod_3',
-    sellerId: 'seller_3',
-    sellerName: 'GlowBeauty',
-    title: 'Профессиональный набор кистей для макияжа, 12 шт',
-    description: 'Комплект из 12 профессиональных кистей для визажиста. Синтетический ворс, эргономичные ручки, бархатный чехол в комплекте.',
-    price: 890,
-    oldPrice: 1250,
-    images: ['https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600'],
-    category: 'cosmetics',
-    characteristics: {
-      'Количество': '12 кистей',
-      'Материал ворса': 'Синтетика',
-      'Чехол': 'Бархатный',
-      'Упаковка': 'Подарочная'
-    },
-    stock: 85,
-    rating: 4.9,
-    reviewsCount: 4102,
-    salesCount: 5621,
-    createdAt: '2024-01-08'
-  },
-  {
-    id: 'prod_4',
-    sellerId: 'seller_4',
-    sellerName: 'SmartHome',
-    title: 'Умная LED-лампа с управлением по WiFi и голосом',
-    description: 'Смарт-лампа с RGB-подсветкой, управление через приложение Tuya/Smart Life. Поддержка Alexa и Google Assistant. 16 миллионов цветов.',
-    price: 1750,
-    oldPrice: 2400,
-    images: ['https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600'],
-    category: 'electronics',
-    characteristics: {
-      'Мощность': '9W (эквивалент 60W)',
-      'Цоколь': 'E27',
-      'Управление': 'WiFi 2.4GHz',
-      'Голосовые ассистенты': 'Alexa, Google',
-      'Срок службы': '25000 часов'
-    },
-    stock: 67,
-    rating: 4.4,
-    reviewsCount: 892,
-    salesCount: 567,
-    createdAt: '2024-03-01',
-    badge: 'new'
-  },
-  {
-    id: 'prod_5',
-    sellerId: 'seller_2',
-    sellerName: 'ModaChina',
-    title: 'Кроссовки спортивные мужские Ultraboost Air',
-    description: 'Лёгкие и комфортные кроссовки для бега и повседневной носки. Амортизирующая подошва, дышащий материал верха.',
-    price: 2190,
-    images: ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600'],
-    category: 'sports',
-    characteristics: {
-      'Размеры': '39-46',
-      'Материал': 'Сетка + синтетика',
-      'Подошва': 'EVA + резина',
-      'Сезон': 'Весна-лето'
-    },
-    stock: 34,
-    rating: 4.6,
-    reviewsCount: 723,
-    salesCount: 445,
-    createdAt: '2024-02-15'
-  },
-  {
-    id: 'prod_6',
-    sellerId: 'seller_5',
-    sellerName: 'HomeStyle',
-    title: 'Набор постельного белья евро, 6 предметов, сатин',
-    description: 'Роскошный комплект постельного белья из 100% сатина. Включает: пододеяльник, простыню, 4 наволочки. Сертификат OEKO-TEX.',
-    price: 3290,
-    oldPrice: 4590,
-    images: ['https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600'],
-    category: 'home',
-    characteristics: {
-      'Размер': 'Евро',
-      'Ткань': 'Сатин (100% хлопок)',
-      'Комплектация': '6 предметов',
-      'Уход': '60°C'
-    },
-    stock: 28,
-    rating: 4.7,
-    reviewsCount: 1156,
-    salesCount: 892,
-    createdAt: '2024-01-22',
-    badge: 'sale'
-  },
-  {
-    id: 'prod_7',
-    sellerId: 'seller_1',
-    sellerName: 'TechGadgets',
-    title: 'Умные часы fitness-трекер с пульсоксиметром',
-    description: 'Фитнес-браслет с цветным AMOLED-дисплеем. Мониторинг пульса, SpO2, сна, шагов. Водозащита 5ATM.',
-    price: 1890,
-    images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600'],
-    category: 'electronics',
-    characteristics: {
-      'Дисплей': 'AMOLED 0.96"',
-      'Батарея': '7-10 дней',
-      'Водозащита': '5ATM',
-      'Датчики': 'Пульс, SpO2, акселерометр'
-    },
-    stock: 92,
-    rating: 4.3,
-    reviewsCount: 2341,
-    salesCount: 1567,
-    createdAt: '2024-02-28'
-  },
-  {
-    id: 'prod_8',
-    sellerId: 'seller_6',
-    sellerName: 'ToolMaster',
-    title: 'Набор инструментов 82 предмета, кейс + чемодан',
-    description: 'Профессиональный набор инструментов для дома и гаража. Хромованадиевая сталь, эргономичные рукоятки, полный набор головок и отвёрток.',
-    price: 4590,
-    oldPrice: 5990,
-    images: ['https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600'],
-    category: 'tools',
-    characteristics: {
-      'Количество предметов': '82',
-      'Материал': 'CrV сталь',
-      'Рукоятки': 'Двухкомпонентные',
-      'Упаковка': 'Кейс + чемодан'
-    },
-    stock: 15,
-    rating: 4.8,
-    reviewsCount: 456,
-    salesCount: 234,
-    createdAt: '2024-01-30',
-    badge: 'hit'
-  },
-  {
-    id: 'prod_9',
-    sellerId: 'seller_3',
-    sellerName: 'GlowBeauty',
-    title: 'Сыворотка для лица с витамином C 30ml',
-    description: 'Интенсивная сыворотка с 20% витамином C для осветления пигментации и выравнивания тона кожи. Антиоксидантная защита.',
-    price: 690,
-    images: ['https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600'],
-    category: 'cosmetics',
-    characteristics: {
-      'Объём': '30 мл',
-      'Концентрация витамина C': '20%',
-      'Тип кожи': 'Все типы',
-      'SPF': 'Нет'
-    },
-    stock: 156,
-    rating: 4.6,
-    reviewsCount: 1823,
-    salesCount: 2341,
-    createdAt: '2024-03-05',
-    badge: 'new'
-  },
-  {
-    id: 'prod_10',
-    sellerId: 'seller_4',
-    sellerName: 'SmartHome',
-    title: 'Робот-пылесос с лидаром и влажной уборкой',
-    description: 'Умный робот-пылесос с LDS-лидаром для точной навигации. Сухая и влажная уборка, управление через приложение, голосовые оповещения.',
-    price: 8990,
-    oldPrice: 11990,
-    images: ['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600'],
-    category: 'electronics',
-    characteristics: {
-      'Тип уборки': 'Сухая + влажная',
-      'Навигация': 'LDS-лидар',
-      'Мощность': '3000 Pa',
-      'Батарея': '5200 mAh',
-      'Площадь': 'До 200 м²'
-    },
-    stock: 12,
-    rating: 4.7,
-    reviewsCount: 567,
-    salesCount: 189,
-    createdAt: '2024-02-10',
-    badge: 'sale'
-  },
-  {
-    id: 'prod_11',
-    sellerId: 'seller_2',
-    sellerName: 'ModaChina',
-    title: 'Сумка женская кросс-боди, искусственная кожа',
-    description: 'Элегантная сумка-кросс через плечо из качественной искусственной кожи. Регулируемый ремень, несколько отделений.',
-    price: 1590,
-    images: ['https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600'],
-    category: 'clothing',
-    characteristics: {
-      'Материал': 'Экокожа',
-      'Размер': '22×16×8 см',
-      'Отделения': '3 кармана',
-      'Ремень': 'Регулируемый 80-140 см'
-    },
-    stock: 67,
-    rating: 4.4,
-    reviewsCount: 934,
-    salesCount: 678,
-    createdAt: '2024-02-25'
-  },
-  {
-    id: 'prod_12',
-    sellerId: 'seller_5',
-    sellerName: 'HomeStyle',
-    title: 'Кофеварка гейзерная алюминиевая, 6 чашек',
-    description: 'Классическая гейзерная кофеварка из пищевого алюминия. Приготовление 6 чашек итальянского кофе за 5 минут.',
-    price: 1290,
-    images: ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600'],
-    category: 'home',
-    characteristics: {
-      'Объём': '6 чашек (300 мл)',
-      'Материал': 'Алюминий',
-      'Нагревание': 'Плита / газ',
-      'Цвет': 'Чёрный, серебро'
-    },
-    stock: 43,
-    rating: 4.5,
-    reviewsCount: 1234,
-    salesCount: 876,
-    createdAt: '2024-01-18'
-  }
-]
+	{
+		id: "prod_1",
+		sellerId: "seller_1",
+		sellerName: "TechGadgets",
+		title: "Беспроводные наушники с шумоподавлением HiFi Sound Pro",
+		description:
+			"Премиальные беспроводные наушники с активным шумоподавлением (ANC). До 30 часов воспроизведения, быстрая зарядка USB-C, мультиточечное подключение к двум устройствам одновременно.",
+		price: 3490,
+		oldPrice: 4650,
+		images: [
+			"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
+		],
+		category: "electronics",
+		characteristics: {
+			Бренд: "SoundMaster",
+			Тип: "Накладные",
+			Шумоподавление: "Активное (ANC)",
+			Автономность: "30 часов",
+			Интерфейс: "Bluetooth 5.2",
+			Вес: "250 г",
+		},
+		stock: 45,
+		rating: 4.8,
+		reviewsCount: 2847,
+		salesCount: 1234,
+		createdAt: "2024-01-15",
+		badge: "sale",
+	},
+	{
+		id: "prod_2",
+		sellerId: "seller_2",
+		sellerName: "ModaChina",
+		title: "Стильное худи с капюшоном, хлопок 100%",
+		description:
+			"Уютное худи из премиального хлопка. Свободный крой, удобный капюшон, вместительные карманы. Идеально для повседневного образа.",
+		price: 1290,
+		images: ["https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600"],
+		category: "clothing",
+		characteristics: {
+			Материал: "Хлопок 100%",
+			Размеры: "S, M, L, XL",
+			Цвет: "Чёрный, серый, бежевый",
+			Уход: "Деликатная стирка",
+		},
+		stock: 120,
+		rating: 4.5,
+		reviewsCount: 1563,
+		salesCount: 3892,
+		createdAt: "2024-02-20",
+		badge: "hit",
+	},
+	{
+		id: "prod_3",
+		sellerId: "seller_3",
+		sellerName: "GlowBeauty",
+		title: "Профессиональный набор кистей для макияжа, 12 шт",
+		description:
+			"Комплект из 12 профессиональных кистей для визажиста. Синтетический ворс, эргономичные ручки, бархатный чехол в комплекте.",
+		price: 890,
+		oldPrice: 1250,
+		images: [
+			"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600",
+		],
+		category: "cosmetics",
+		characteristics: {
+			Количество: "12 кистей",
+			"Материал ворса": "Синтетика",
+			Чехол: "Бархатный",
+			Упаковка: "Подарочная",
+		},
+		stock: 85,
+		rating: 4.9,
+		reviewsCount: 4102,
+		salesCount: 5621,
+		createdAt: "2024-01-08",
+	},
+	{
+		id: "prod_4",
+		sellerId: "seller_4",
+		sellerName: "SmartHome",
+		title: "Умная LED-лампа с управлением по WiFi и голосом",
+		description:
+			"Смарт-лампа с RGB-подсветкой, управление через приложение Tuya/Smart Life. Поддержка Alexa и Google Assistant. 16 миллионов цветов.",
+		price: 1750,
+		oldPrice: 2400,
+		images: [
+			"https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600",
+		],
+		category: "electronics",
+		characteristics: {
+			Мощность: "9W (эквивалент 60W)",
+			Цоколь: "E27",
+			Управление: "WiFi 2.4GHz",
+			"Голосовые ассистенты": "Alexa, Google",
+			"Срок службы": "25000 часов",
+		},
+		stock: 67,
+		rating: 4.4,
+		reviewsCount: 892,
+		salesCount: 567,
+		createdAt: "2024-03-01",
+		badge: "new",
+	},
+	{
+		id: "prod_5",
+		sellerId: "seller_2",
+		sellerName: "ModaChina",
+		title: "Кроссовки спортивные мужские Ultraboost Air",
+		description:
+			"Лёгкие и комфортные кроссовки для бега и повседневной носки. Амортизирующая подошва, дышащий материал верха.",
+		price: 2190,
+		images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"],
+		category: "sports",
+		characteristics: {
+			Размеры: "39-46",
+			Материал: "Сетка + синтетика",
+			Подошва: "EVA + резина",
+			Сезон: "Весна-лето",
+		},
+		stock: 34,
+		rating: 4.6,
+		reviewsCount: 723,
+		salesCount: 445,
+		createdAt: "2024-02-15",
+	},
+	{
+		id: "prod_6",
+		sellerId: "seller_5",
+		sellerName: "HomeStyle",
+		title: "Набор постельного белья евро, 6 предметов, сатин",
+		description:
+			"Роскошный комплект постельного белья из 100% сатина. Включает: пододеяльник, простыню, 4 наволочки. Сертификат OEKO-TEX.",
+		price: 3290,
+		oldPrice: 4590,
+		images: [
+			"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600",
+		],
+		category: "home",
+		characteristics: {
+			Размер: "Евро",
+			Ткань: "Сатин (100% хлопок)",
+			Комплектация: "6 предметов",
+			Уход: "60°C",
+		},
+		stock: 28,
+		rating: 4.7,
+		reviewsCount: 1156,
+		salesCount: 892,
+		createdAt: "2024-01-22",
+		badge: "sale",
+	},
+	{
+		id: "prod_7",
+		sellerId: "seller_1",
+		sellerName: "TechGadgets",
+		title: "Умные часы fitness-трекер с пульсоксиметром",
+		description:
+			"Фитнес-браслет с цветным AMOLED-дисплеем. Мониторинг пульса, SpO2, сна, шагов. Водозащита 5ATM.",
+		price: 1890,
+		images: [
+			"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600",
+		],
+		category: "electronics",
+		characteristics: {
+			Дисплей: 'AMOLED 0.96"',
+			Батарея: "7-10 дней",
+			Водозащита: "5ATM",
+			Датчики: "Пульс, SpO2, акселерометр",
+		},
+		stock: 92,
+		rating: 4.3,
+		reviewsCount: 2341,
+		salesCount: 1567,
+		createdAt: "2024-02-28",
+	},
+	{
+		id: "prod_8",
+		sellerId: "seller_6",
+		sellerName: "ToolMaster",
+		title: "Набор инструментов 82 предмета, кейс + чемодан",
+		description:
+			"Профессиональный набор инструментов для дома и гаража. Хромованадиевая сталь, эргономичные рукоятки, полный набор головок и отвёрток.",
+		price: 4590,
+		oldPrice: 5990,
+		images: [
+			"https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600",
+		],
+		category: "tools",
+		characteristics: {
+			"Количество предметов": "82",
+			Материал: "CrV сталь",
+			Рукоятки: "Двухкомпонентные",
+			Упаковка: "Кейс + чемодан",
+		},
+		stock: 15,
+		rating: 4.8,
+		reviewsCount: 456,
+		salesCount: 234,
+		createdAt: "2024-01-30",
+		badge: "hit",
+	},
+	{
+		id: "prod_9",
+		sellerId: "seller_3",
+		sellerName: "GlowBeauty",
+		title: "Сыворотка для лица с витамином C 30ml",
+		description:
+			"Интенсивная сыворотка с 20% витамином C для осветления пигментации и выравнивания тона кожи. Антиоксидантная защита.",
+		price: 690,
+		images: [
+			"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600",
+		],
+		category: "cosmetics",
+		characteristics: {
+			Объём: "30 мл",
+			"Концентрация витамина C": "20%",
+			"Тип кожи": "Все типы",
+			SPF: "Нет",
+		},
+		stock: 156,
+		rating: 4.6,
+		reviewsCount: 1823,
+		salesCount: 2341,
+		createdAt: "2024-03-05",
+		badge: "new",
+	},
+	{
+		id: "prod_10",
+		sellerId: "seller_4",
+		sellerName: "SmartHome",
+		title: "Робот-пылесос с лидаром и влажной уборкой",
+		description:
+			"Умный робот-пылесос с LDS-лидаром для точной навигации. Сухая и влажная уборка, управление через приложение, голосовые оповещения.",
+		price: 8990,
+		oldPrice: 11990,
+		images: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600"],
+		category: "electronics",
+		characteristics: {
+			"Тип уборки": "Сухая + влажная",
+			Навигация: "LDS-лидар",
+			Мощность: "3000 Pa",
+			Батарея: "5200 mAh",
+			Площадь: "До 200 м²",
+		},
+		stock: 12,
+		rating: 4.7,
+		reviewsCount: 567,
+		salesCount: 189,
+		createdAt: "2024-02-10",
+		badge: "sale",
+	},
+	{
+		id: "prod_11",
+		sellerId: "seller_2",
+		sellerName: "ModaChina",
+		title: "Сумка женская кросс-боди, искусственная кожа",
+		description:
+			"Элегантная сумка-кросс через плечо из качественной искусственной кожи. Регулируемый ремень, несколько отделений.",
+		price: 1590,
+		images: ["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600"],
+		category: "clothing",
+		characteristics: {
+			Материал: "Экокожа",
+			Размер: "22×16×8 см",
+			Отделения: "3 кармана",
+			Ремень: "Регулируемый 80-140 см",
+		},
+		stock: 67,
+		rating: 4.4,
+		reviewsCount: 934,
+		salesCount: 678,
+		createdAt: "2024-02-25",
+	},
+	{
+		id: "prod_12",
+		sellerId: "seller_5",
+		sellerName: "HomeStyle",
+		title: "Кофеварка гейзерная алюминиевая, 6 чашек",
+		description:
+			"Классическая гейзерная кофеварка из пищевого алюминия. Приготовление 6 чашек итальянского кофе за 5 минут.",
+		price: 1290,
+		images: [
+			"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600",
+		],
+		category: "home",
+		characteristics: {
+			Объём: "6 чашек (300 мл)",
+			Материал: "Алюминий",
+			Нагревание: "Плита / газ",
+			Цвет: "Чёрный, серебро",
+		},
+		stock: 43,
+		rating: 4.5,
+		reviewsCount: 1234,
+		salesCount: 876,
+		createdAt: "2024-01-18",
+	},
+];
 
 export function getProductsByCategory(category: string): Product[] {
-  return products.filter(p => p.category === category)
+	return products.filter((p) => p.category === category);
 }
 
 export function getProductById(id: string): Product | undefined {
-  return products.find(p => p.id === id)
+	return products.find((p) => p.id === id);
 }
 
 export function searchProducts(query: string): Product[] {
-  const q = query.toLowerCase()
-  return products.filter(p => 
-    p.title.toLowerCase().includes(q) || 
-    p.description.toLowerCase().includes(q)
-  )
+	const q = query.toLowerCase();
+	return products.filter(
+		(p) =>
+			p.title.toLowerCase().includes(q) ||
+			p.description.toLowerCase().includes(q),
+	);
 }

@@ -260,3 +260,57 @@ function calculateOrder(productPrice: number, quantity: number) {
   return { subtotal, buyerCommission, sellerRevenue, total };
 }
 ```
+
+## Mobile App (Capacitor)
+
+### Overview
+Приложение ChinaMart упаковано через Capacitor для мобильных платформ Android и iOS.
+
+### App Configuration
+- **App ID**: com.chinamart.app
+- **App Name**: ChinaMart
+- **Version**: 1.0.0
+- **Min Android SDK**: 22
+- **Target Android SDK**: 34
+
+### Capacitor Plugins
+- `@capacitor/haptics` — вибрация при действиях
+- `@capacitor/status-bar` — управление статусной строкой
+- `@capacitor/splash-screen` — заставка при запуске
+
+### Build Outputs
+- **Android APK**: `android/app/build/outputs/apk/debug/app-debug.apk`
+- **iOS Project**: `ios/App/` (Xcode workspace)
+
+### Mobile Features
+- Адаптивный дизайн для мобильных экранов
+- Нативные жесты и анимации
+- Push-уведомления (требуется интеграция FCM/APNs)
+- Офлайн-режим (опционально)
+
+### Publishing
+
+#### Google Play Store
+1. Собрать релизный AAB: `./gradlew assembleRelease`
+2. Подписать приложение keystore
+3. Создать Developer Account на Google Play Console
+4. Загрузить AAB, заполнить информацию о приложении
+5. Отправить на проверку
+
+#### App Store
+1. Открыть `ios/App/ChinaMart.xcworkspace` в Xcode
+2. Настроить Provisioning Profile
+3. Собрать релиз: `xcodebuild -workspace App.xcworkspace -scheme App -configuration Release`
+4. Загрузить через Xcode или Transporter
+
+### Icons & Assets
+- Иконки Android: `android/app/src/main/res/drawable-*`
+- Иконки iOS: `ios/App/App/Assets.xcassets/AppIcon.appiconset/`
+- Splash screens: Android `drawable-land-*` / iOS `Splash.imageset/`
+
+### Recommendations System
+На странице товара реализованы 4 блока рекомендаций:
+1. **🏪 Другие товары продавца** — товары от того же продавца
+2. **🔥 Часто покупают вместе** — случайные товары для cross-sell
+3. **👆 Похожие товары** — товары из той же категории
+4. **⭐ Популярные товары** — топ по количеству продаж

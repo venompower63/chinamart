@@ -1,194 +1,214 @@
-import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { products as allProducts, categories } from '../data/mockData'
-import ProductCard from '../components/ProductCard'
-import type { Product } from '../context/CartContext'
-import { Grid, List } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { products as allProducts, categories } from "../data/mockData";
+import ProductCard from "../components/ProductCard";
+import type { Product } from "../context/CartContext";
+import { Grid, List } from "lucide-react";
 
 export default function CatalogPage() {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts)
-  const [sortBy, setSortBy] = useState('popular')
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+	const [searchParams, setSearchParams] = useSearchParams();
+	const [filteredProducts, setFilteredProducts] =
+		useState<Product[]>(allProducts);
+	const [sortBy, setSortBy] = useState("popular");
+	const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-  const categoryParam = searchParams.get('category') || ''
-  const searchParam = searchParams.get('search') || ''
-  const minPrice = parseInt(searchParams.get('minPrice') || '0')
-  const maxPrice = parseInt(searchParams.get('maxPrice') || '999999')
+	const categoryParam = searchParams.get("category") || "";
+	const searchParam = searchParams.get("search") || "";
+	const minPrice = parseInt(searchParams.get("minPrice") || "0");
+	const maxPrice = parseInt(searchParams.get("maxPrice") || "999999");
 
-  useEffect(() => {
-    let result = [...allProducts]
+	useEffect(() => {
+		let result = [...allProducts];
 
-    // Filter by category
-    if (categoryParam) {
-      result = result.filter(p => p.category === categoryParam)
-    }
+		// Filter by category
+		if (categoryParam) {
+			result = result.filter((p) => p.category === categoryParam);
+		}
 
-    // Filter by search
-    if (searchParam) {
-      const q = searchParam.toLowerCase()
-      result = result.filter(p => 
-        p.title.toLowerCase().includes(q) || 
-        p.description.toLowerCase().includes(q)
-      )
-    }
+		// Filter by search
+		if (searchParam) {
+			const q = searchParam.toLowerCase();
+			result = result.filter(
+				(p) =>
+					p.title.toLowerCase().includes(q) ||
+					p.description.toLowerCase().includes(q),
+			);
+		}
 
-    // Filter by price
-    result = result.filter(p => p.price >= minPrice && p.price <= maxPrice)
+		// Filter by price
+		result = result.filter((p) => p.price >= minPrice && p.price <= maxPrice);
 
-    // Sort
-    switch (sortBy) {
-      case 'price-asc':
-        result.sort((a, b) => a.price - b.price)
-        break
-      case 'price-desc':
-        result.sort((a, b) => b.price - a.price)
-        break
-      case 'rating':
-        result.sort((a, b) => b.rating - a.rating)
-        break
-      case 'new':
-        result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-        break
-      default:
-        result.sort((a, b) => b.salesCount - a.salesCount)
-    }
+		// Sort
+		switch (sortBy) {
+			case "price-asc":
+				result.sort((a, b) => a.price - b.price);
+				break;
+			case "price-desc":
+				result.sort((a, b) => b.price - a.price);
+				break;
+			case "rating":
+				result.sort((a, b) => b.rating - a.rating);
+				break;
+			case "new":
+				result.sort(
+					(a, b) =>
+						new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+				);
+				break;
+			default:
+				result.sort((a, b) => b.salesCount - a.salesCount);
+		}
 
-    setFilteredProducts(result)
-  }, [categoryParam, searchParam, sortBy, minPrice, maxPrice])
+		setFilteredProducts(result);
+	}, [categoryParam, searchParam, sortBy, minPrice, maxPrice]);
 
-  const activeCategory = categories.find(c => c.id === categoryParam)
+	const activeCategory = categories.find((c) => c.id === categoryParam);
 
-  return (
-    <div className="catalog-page">
-      <div className="container">
-        {/* Breadcrumbs */}
-        <nav className="breadcrumbs">
-          <a href="/">Главная</a>
-          <span>/</span>
-          <span>{activeCategory?.name || 'Каталог'}</span>
-        </nav>
+	return (
+		<div className="catalog-page">
+			<div className="container">
+				{/* Breadcrumbs */}
+				<nav className="breadcrumbs">
+					<a href="/">Главная</a>
+					<span>/</span>
+					<span>{activeCategory?.name || "Каталог"}</span>
+				</nav>
 
-        <div className="catalog-header">
-          <h1>{searchParam ? `Результаты поиска: "${searchParam}"` : (activeCategory?.name || 'Все товары')}</h1>
-          <p>Найдено {filteredProducts.length} товаров</p>
-        </div>
+				<div className="catalog-header">
+					<h1>
+						{searchParam
+							? `Результаты поиска: "${searchParam}"`
+							: activeCategory?.name || "Все товары"}
+					</h1>
+					<p>Найдено {filteredProducts.length} товаров</p>
+				</div>
 
-        <div className="catalog-layout">
-          {/* Filters Sidebar */}
-          <aside className="filters-sidebar">
-            <div className="filter-section">
-              <h3>Категории</h3>
-              <div className="filter-options">
-                <label className={`filter-option ${!categoryParam ? 'active' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="category" 
-                    checked={!categoryParam}
-                    onChange={() => setSearchParams({})}
-                  />
-                  Все категории
-                </label>
-                {categories.map(cat => (
-                  <label 
-                    key={cat.id} 
-                    className={`filter-option ${categoryParam === cat.id ? 'active' : ''}`}
-                  >
-                    <input 
-                      type="radio" 
-                      name="category" 
-                      checked={categoryParam === cat.id}
-                      onChange={() => setSearchParams({ category: cat.id })}
-                    />
-                    {cat.icon} {cat.name}
-                  </label>
-                ))}
-              </div>
-            </div>
+				<div className="catalog-layout">
+					{/* Filters Sidebar */}
+					<aside className="filters-sidebar">
+						<div className="filter-section">
+							<h3>Категории</h3>
+							<div className="filter-options">
+								<label
+									className={`filter-option ${!categoryParam ? "active" : ""}`}
+								>
+									<input
+										type="radio"
+										name="category"
+										checked={!categoryParam}
+										onChange={() => setSearchParams({})}
+									/>
+									Все категории
+								</label>
+								{categories.map((cat) => (
+									<label
+										key={cat.id}
+										className={`filter-option ${categoryParam === cat.id ? "active" : ""}`}
+									>
+										<input
+											type="radio"
+											name="category"
+											checked={categoryParam === cat.id}
+											onChange={() => setSearchParams({ category: cat.id })}
+										/>
+										{cat.icon} {cat.name}
+									</label>
+								))}
+							</div>
+						</div>
 
-            <div className="filter-section">
-              <h3>Цена</h3>
-              <div className="price-range">
-                <input 
-                  type="number" 
-                  placeholder="От" 
-                  value={minPrice || ''}
-                  onChange={e => setSearchParams(prev => {
-                    const newParams = new URLSearchParams(prev)
-                    if (e.target.value) {
-                      newParams.set('minPrice', e.target.value)
-                    } else {
-                      newParams.delete('minPrice')
-                    }
-                    return newParams
-                  })}
-                />
-                <span>—</span>
-                <input 
-                  type="number" 
-                  placeholder="До" 
-                  value={maxPrice < 999999 ? maxPrice : ''}
-                  onChange={e => setSearchParams(prev => {
-                    const newParams = new URLSearchParams(prev)
-                    if (e.target.value) {
-                      newParams.set('maxPrice', e.target.value)
-                    } else {
-                      newParams.delete('maxPrice')
-                    }
-                    return newParams
-                  })}
-                />
-              </div>
-            </div>
-          </aside>
+						<div className="filter-section">
+							<h3>Цена</h3>
+							<div className="price-range">
+								<input
+									type="number"
+									placeholder="От"
+									value={minPrice || ""}
+									onChange={(e) =>
+										setSearchParams((prev) => {
+											const newParams = new URLSearchParams(prev);
+											if (e.target.value) {
+												newParams.set("minPrice", e.target.value);
+											} else {
+												newParams.delete("minPrice");
+											}
+											return newParams;
+										})
+									}
+								/>
+								<span>—</span>
+								<input
+									type="number"
+									placeholder="До"
+									value={maxPrice < 999999 ? maxPrice : ""}
+									onChange={(e) =>
+										setSearchParams((prev) => {
+											const newParams = new URLSearchParams(prev);
+											if (e.target.value) {
+												newParams.set("maxPrice", e.target.value);
+											} else {
+												newParams.delete("maxPrice");
+											}
+											return newParams;
+										})
+									}
+								/>
+							</div>
+						</div>
+					</aside>
 
-          {/* Products */}
-          <div className="products-section">
-            <div className="products-toolbar">
-              <div className="sort-select">
-                <label>Сортировка:</label>
-                <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
-                  <option value="popular">По популярности</option>
-                  <option value="price-asc">Сначала дешевле</option>
-                  <option value="price-desc">Сначала дороже</option>
-                  <option value="rating">По рейтингу</option>
-                  <option value="new">Сначала новые</option>
-                </select>
-              </div>
+					{/* Products */}
+					<div className="products-section">
+						<div className="products-toolbar">
+							<div className="sort-select">
+								<label>Сортировка:</label>
+								<select
+									value={sortBy}
+									onChange={(e) => setSortBy(e.target.value)}
+								>
+									<option value="popular">По популярности</option>
+									<option value="price-asc">Сначала дешевле</option>
+									<option value="price-desc">Сначала дороже</option>
+									<option value="rating">По рейтингу</option>
+									<option value="new">Сначала новые</option>
+								</select>
+							</div>
 
-              <div className="view-toggle">
-                <button 
-                  className={viewMode === 'grid' ? 'active' : ''}
-                  onClick={() => setViewMode('grid')}
-                >
-                  <Grid size={20} />
-                </button>
-                <button 
-                  className={viewMode === 'list' ? 'active' : ''}
-                  onClick={() => setViewMode('list')}
-                >
-                  <List size={20} />
-                </button>
-              </div>
-            </div>
+							<div className="view-toggle">
+								<button
+									className={viewMode === "grid" ? "active" : ""}
+									onClick={() => setViewMode("grid")}
+								>
+									<Grid size={20} />
+								</button>
+								<button
+									className={viewMode === "list" ? "active" : ""}
+									onClick={() => setViewMode("list")}
+								>
+									<List size={20} />
+								</button>
+							</div>
+						</div>
 
-            {filteredProducts.length > 0 ? (
-              <div className={`products-${viewMode}`}>
-                {filteredProducts.map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            ) : (
-              <div className="empty-state">
-                <p>Товары не найдены</p>
-                <button onClick={() => setSearchParams({})}>Сбросить фильтры</button>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+						{filteredProducts.length > 0 ? (
+							<div className={`products-${viewMode}`}>
+								{filteredProducts.map((product) => (
+									<ProductCard key={product.id} product={product} />
+								))}
+							</div>
+						) : (
+							<div className="empty-state">
+								<p>Товары не найдены</p>
+								<button onClick={() => setSearchParams({})}>
+									Сбросить фильтры
+								</button>
+							</div>
+						)}
+					</div>
+				</div>
+			</div>
 
-      <style>{`
+			<style>{`
         .catalog-page {
           padding: 24px 0 60px;
         }
@@ -413,6 +433,6 @@ export default function CatalogPage() {
           }
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

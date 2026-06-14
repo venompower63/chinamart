@@ -1,95 +1,105 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
-import { useToast } from '../context/ToastContext'
-import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useToast } from "../context/ToastContext";
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
-  const { login } = useAuth()
-  const { showToast } = useToast()
-  const navigate = useNavigate()
+	const { login } = useAuth();
+	const { showToast } = useToast();
+	const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  })
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
+	const [formData, setFormData] = useState({
+		email: "",
+		password: "",
+	});
+	const [showPassword, setShowPassword] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setIsLoading(true)
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setError("");
+		setIsLoading(true);
 
-    try {
-      await login(formData.email, formData.password)
-      showToast('success', 'Добро пожаловать!')
-      navigate('/')
-    } catch (err) {
-      setError((err as Error).message)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+		try {
+			await login(formData.email, formData.password);
+			showToast("success", "Добро пожаловать!");
+			navigate("/");
+		} catch (err) {
+			setError((err as Error).message);
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
-  return (
-    <div className="auth-page">
-      <div className="auth-container">
-        <div className="auth-header">
-          <h1>Вход в аккаунт</h1>
-          <p>Войдите, чтобы получить доступ к покупкам и продажам</p>
-        </div>
+	return (
+		<div className="auth-page">
+			<div className="auth-container">
+				<div className="auth-header">
+					<h1>Вход в аккаунт</h1>
+					<p>Войдите, чтобы получить доступ к покупкам и продажам</p>
+				</div>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          {error && <div className="error-message">{error}</div>}
+				<form onSubmit={handleSubmit} className="auth-form">
+					{error && <div className="error-message">{error}</div>}
 
-          <div className="form-group">
-            <label>Email</label>
-            <div className="input-wrapper">
-              <Mail size={20} />
-              <input
-                type="email"
-                required
-                value={formData.email}
-                onChange={e => setFormData({...formData, email: e.target.value})}
-                placeholder="mail@example.com"
-              />
-            </div>
-          </div>
+					<div className="form-group">
+						<label>Email</label>
+						<div className="input-wrapper">
+							<Mail size={20} />
+							<input
+								type="email"
+								required
+								value={formData.email}
+								onChange={(e) =>
+									setFormData({ ...formData, email: e.target.value })
+								}
+								placeholder="mail@example.com"
+							/>
+						</div>
+					</div>
 
-          <div className="form-group">
-            <label>Пароль</label>
-            <div className="input-wrapper">
-              <Lock size={20} />
-              <input
-                type={showPassword ? 'text' : 'password'}
-                required
-                value={formData.password}
-                onChange={e => setFormData({...formData, password: e.target.value})}
-                placeholder="Введите пароль"
-              />
-              <button 
-                type="button" 
-                className="toggle-password"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
-            </div>
-          </div>
+					<div className="form-group">
+						<label>Пароль</label>
+						<div className="input-wrapper">
+							<Lock size={20} />
+							<input
+								type={showPassword ? "text" : "password"}
+								required
+								value={formData.password}
+								onChange={(e) =>
+									setFormData({ ...formData, password: e.target.value })
+								}
+								placeholder="Введите пароль"
+							/>
+							<button
+								type="button"
+								className="toggle-password"
+								onClick={() => setShowPassword(!showPassword)}
+							>
+								{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+							</button>
+						</div>
+					</div>
 
-          <button type="submit" className="btn btn-primary" disabled={isLoading}>
-            {isLoading ? 'Вход...' : 'Войти'}
-          </button>
-        </form>
+					<button
+						type="submit"
+						className="btn btn-primary"
+						disabled={isLoading}
+					>
+						{isLoading ? "Вход..." : "Войти"}
+					</button>
+				</form>
 
-        <div className="auth-footer">
-          <p>Нет аккаунта? <Link to="/register">Зарегистрироваться</Link></p>
-        </div>
-      </div>
+				<div className="auth-footer">
+					<p>
+						Нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
+					</p>
+				</div>
+			</div>
 
-      <style>{`
+			<style>{`
         .auth-page {
           min-height: calc(100vh - 200px);
           display: flex;
@@ -239,6 +249,6 @@ export default function LoginPage() {
           color: var(--primary);
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

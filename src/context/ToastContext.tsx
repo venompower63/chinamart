@@ -1,52 +1,63 @@
-import { createContext, useContext, useState, type ReactNode, useCallback } from 'react'
+import {
+	createContext,
+	useContext,
+	useState,
+	type ReactNode,
+	useCallback,
+} from "react";
 
 interface Toast {
-  id: string
-  type: 'success' | 'error' | 'info'
-  message: string
+	id: string;
+	type: "success" | "error" | "info";
+	message: string;
 }
 
 interface ToastContextType {
-  toasts: Toast[]
-  showToast: (type: Toast['type'], message: string) => void
-  removeToast: (id: string) => void
+	toasts: Toast[];
+	showToast: (type: Toast["type"], message: string) => void;
+	removeToast: (id: string) => void;
 }
 
-const ToastContext = createContext<ToastContextType | null>(null)
+const ToastContext = createContext<ToastContextType | null>(null);
 
 export function ToastProvider({ children }: { children: ReactNode }) {
-  const [toasts, setToasts] = useState<Toast[]>([])
+	const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const showToast = useCallback((type: Toast['type'], message: string) => {
-    const id = `toast_${Date.now()}`
-    setToasts(prev => [...prev, { id, type, message }])
-    
-    setTimeout(() => {
-      setToasts(prev => prev.filter(t => t.id !== id))
-    }, 3000)
-  }, [])
+	const showToast = useCallback((type: Toast["type"], message: string) => {
+		const id = `toast_${Date.now()}`;
+		setToasts((prev) => [...prev, { id, type, message }]);
 
-  const removeToast = useCallback((id: string) => {
-    setToasts(prev => prev.filter(t => t.id !== id))
-  }, [])
+		setTimeout(() => {
+			setToasts((prev) => prev.filter((t) => t.id !== id));
+		}, 3000);
+	}, []);
 
-  return (
-    <ToastContext.Provider value={{ toasts, showToast, removeToast }}>
-      {children}
-      <div className="toast-container">
-        {toasts.map(toast => (
-          <div key={toast.id} className={`toast toast-${toast.type}`}>
-            <span className="toast-icon">
-              {toast.type === 'success' && '✓'}
-              {toast.type === 'error' && '✕'}
-              {toast.type === 'info' && 'ℹ'}
-            </span>
-            <span className="toast-message">{toast.message}</span>
-            <button className="toast-close" onClick={() => removeToast(toast.id)}>×</button>
-          </div>
-        ))}
-      </div>
-      <style>{`
+	const removeToast = useCallback((id: string) => {
+		setToasts((prev) => prev.filter((t) => t.id !== id));
+	}, []);
+
+	return (
+		<ToastContext.Provider value={{ toasts, showToast, removeToast }}>
+			{children}
+			<div className="toast-container">
+				{toasts.map((toast) => (
+					<div key={toast.id} className={`toast toast-${toast.type}`}>
+						<span className="toast-icon">
+							{toast.type === "success" && "✓"}
+							{toast.type === "error" && "✕"}
+							{toast.type === "info" && "ℹ"}
+						</span>
+						<span className="toast-message">{toast.message}</span>
+						<button
+							className="toast-close"
+							onClick={() => removeToast(toast.id)}
+						>
+							×
+						</button>
+					</div>
+				))}
+			</div>
+			<style>{`
         .toast-container {
           position: fixed;
           bottom: 24px;
@@ -120,14 +131,14 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           }
         }
       `}</style>
-    </ToastContext.Provider>
-  )
+		</ToastContext.Provider>
+	);
 }
 
 export function useToast() {
-  const context = useContext(ToastContext)
-  if (!context) {
-    throw new Error('useToast must be used within ToastProvider')
-  }
-  return context
+	const context = useContext(ToastContext);
+	if (!context) {
+		throw new Error("useToast must be used within ToastProvider");
+	}
+	return context;
 }

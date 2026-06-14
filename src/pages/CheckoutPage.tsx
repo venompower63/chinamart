@@ -1,298 +1,373 @@
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { useCart } from '../context/CartContext'
-import { useToast } from '../context/ToastContext'
-import { ArrowLeft, CreditCard, Truck, Check } from 'lucide-react'
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { useToast } from "../context/ToastContext";
+import { ArrowLeft, CreditCard, Truck, Check } from "lucide-react";
 
 export default function CheckoutPage() {
-  const { items, subtotal, buyerCommission, total, clearCart } = useCart()
+	const { items, subtotal, buyerCommission, total, clearCart } = useCart();
 
-  const { showToast } = useToast()
-  const navigate = useNavigate()
+	const { showToast } = useToast();
+	const navigate = useNavigate();
 
-  const [step, setStep] = useState(1)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState({
-    city: '',
-    street: '',
-    house: '',
-    apartment: '',
-    postalCode: '',
-    deliveryMethod: 'standard',
-    paymentMethod: 'card'
-  })
+	const [step, setStep] = useState(1);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [formData, setFormData] = useState({
+		city: "",
+		street: "",
+		house: "",
+		apartment: "",
+		postalCode: "",
+		deliveryMethod: "standard",
+		paymentMethod: "card",
+	});
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setIsSubmitting(true);
 
-    // Simulate order creation
-    await new Promise(resolve => setTimeout(resolve, 1500))
+		// Simulate order creation
+		await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const order = {
-      id: `ORD-${Date.now()}`,
-      items: items,
-      total: total,
-      buyerCommission: buyerCommission,
-      createdAt: new Date().toISOString(),
-      status: 'pending',
-      address: `${formData.city}, ${formData.street}, д. ${formData.house}${formData.apartment ? ', кв. ' + formData.apartment : ''}`
-    }
+		const order = {
+			id: `ORD-${Date.now()}`,
+			items: items,
+			total: total,
+			buyerCommission: buyerCommission,
+			createdAt: new Date().toISOString(),
+			status: "pending",
+			address: `${formData.city}, ${formData.street}, д. ${formData.house}${formData.apartment ? ", кв. " + formData.apartment : ""}`,
+		};
 
-    // Save order
-    const orders = JSON.parse(localStorage.getItem('chinamart_orders') || '[]')
-    orders.unshift(order)
-    localStorage.setItem('chinamart_orders', JSON.stringify(orders))
+		// Save order
+		const orders = JSON.parse(localStorage.getItem("chinamart_orders") || "[]");
+		orders.unshift(order);
+		localStorage.setItem("chinamart_orders", JSON.stringify(orders));
 
-    clearCart()
-    setIsSubmitting(false)
-    showToast('success', 'Заказ успешно оформлен!')
-    navigate('/orders')
-  }
+		clearCart();
+		setIsSubmitting(false);
+		showToast("success", "Заказ успешно оформлен!");
+		navigate("/orders");
+	};
 
-  if (items.length === 0) {
-    return (
-      <div className="checkout-page">
-        <div className="container">
-          <div className="empty-checkout">
-            <h2>Ваша корзина пуста</h2>
-            <Link to="/catalog" className="btn btn-primary">Перейти в каталог</Link>
-          </div>
-        </div>
-      </div>
-    )
-  }
+	if (items.length === 0) {
+		return (
+			<div className="checkout-page">
+				<div className="container">
+					<div className="empty-checkout">
+						<h2>Ваша корзина пуста</h2>
+						<Link to="/catalog" className="btn btn-primary">
+							Перейти в каталог
+						</Link>
+					</div>
+				</div>
+			</div>
+		);
+	}
 
-  return (
-    <div className="checkout-page">
-      <div className="container">
-        <Link to="/cart" className="back-link">
-          <ArrowLeft size={20} />
-          Вернуться в корзину
-        </Link>
+	return (
+		<div className="checkout-page">
+			<div className="container">
+				<Link to="/cart" className="back-link">
+					<ArrowLeft size={20} />
+					Вернуться в корзину
+				</Link>
 
-        <h1>Оформление заказа</h1>
+				<h1>Оформление заказа</h1>
 
-        {/* Steps */}
-        <div className="checkout-steps">
-          <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
-            <span className="step-number">{step > 1 ? <Check size={16} /> : '1'}</span>
-            <span className="step-label">Адрес</span>
-          </div>
-          <div className="step-line" />
-          <div className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
-            <span className="step-number">{step > 2 ? <Check size={16} /> : '2'}</span>
-            <span className="step-label">Доставка</span>
-          </div>
-          <div className="step-line" />
-          <div className={`step ${step >= 3 ? 'active' : ''}`}>
-            <span className="step-number">3</span>
-            <span className="step-label">Оплата</span>
-          </div>
-        </div>
+				{/* Steps */}
+				<div className="checkout-steps">
+					<div
+						className={`step ${step >= 1 ? "active" : ""} ${step > 1 ? "completed" : ""}`}
+					>
+						<span className="step-number">
+							{step > 1 ? <Check size={16} /> : "1"}
+						</span>
+						<span className="step-label">Адрес</span>
+					</div>
+					<div className="step-line" />
+					<div
+						className={`step ${step >= 2 ? "active" : ""} ${step > 2 ? "completed" : ""}`}
+					>
+						<span className="step-number">
+							{step > 2 ? <Check size={16} /> : "2"}
+						</span>
+						<span className="step-label">Доставка</span>
+					</div>
+					<div className="step-line" />
+					<div className={`step ${step >= 3 ? "active" : ""}`}>
+						<span className="step-number">3</span>
+						<span className="step-label">Оплата</span>
+					</div>
+				</div>
 
-        <div className="checkout-layout">
-          <form className="checkout-form" onSubmit={handleSubmit}>
-            {/* Step 1: Address */}
-            <div className={`form-section ${step === 1 ? 'active' : ''}`}>
-              <h2>Адрес доставки</h2>
-              <div className="form-grid">
-                <div className="form-group">
-                  <label>Город *</label>
-                  <input 
-                    type="text" 
-                    required
-                    value={formData.city}
-                    onChange={e => setFormData({...formData, city: e.target.value})}
-                    placeholder="Москва"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Почтовый индекс *</label>
-                  <input 
-                    type="text" 
-                    required
-                    value={formData.postalCode}
-                    onChange={e => setFormData({...formData, postalCode: e.target.value})}
-                    placeholder="123456"
-                  />
-                </div>
-                <div className="form-group full">
-                  <label>Улица *</label>
-                  <input 
-                    type="text" 
-                    required
-                    value={formData.street}
-                    onChange={e => setFormData({...formData, street: e.target.value})}
-                    placeholder="ул. Примерная"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Дом *</label>
-                  <input 
-                    type="text" 
-                    required
-                    value={formData.house}
-                    onChange={e => setFormData({...formData, house: e.target.value})}
-                    placeholder="1"
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Квартира</label>
-                  <input 
-                    type="text" 
-                    value={formData.apartment}
-                    onChange={e => setFormData({...formData, apartment: e.target.value})}
-                    placeholder="101"
-                  />
-                </div>
-              </div>
-              <button 
-                type="button" 
-                className="btn btn-primary"
-                onClick={() => setStep(2)}
-              >
-                Продолжить
-              </button>
-            </div>
+				<div className="checkout-layout">
+					<form className="checkout-form" onSubmit={handleSubmit}>
+						{/* Step 1: Address */}
+						<div className={`form-section ${step === 1 ? "active" : ""}`}>
+							<h2>Адрес доставки</h2>
+							<div className="form-grid">
+								<div className="form-group">
+									<label>Город *</label>
+									<input
+										type="text"
+										required
+										value={formData.city}
+										onChange={(e) =>
+											setFormData({ ...formData, city: e.target.value })
+										}
+										placeholder="Москва"
+									/>
+								</div>
+								<div className="form-group">
+									<label>Почтовый индекс *</label>
+									<input
+										type="text"
+										required
+										value={formData.postalCode}
+										onChange={(e) =>
+											setFormData({ ...formData, postalCode: e.target.value })
+										}
+										placeholder="123456"
+									/>
+								</div>
+								<div className="form-group full">
+									<label>Улица *</label>
+									<input
+										type="text"
+										required
+										value={formData.street}
+										onChange={(e) =>
+											setFormData({ ...formData, street: e.target.value })
+										}
+										placeholder="ул. Примерная"
+									/>
+								</div>
+								<div className="form-group">
+									<label>Дом *</label>
+									<input
+										type="text"
+										required
+										value={formData.house}
+										onChange={(e) =>
+											setFormData({ ...formData, house: e.target.value })
+										}
+										placeholder="1"
+									/>
+								</div>
+								<div className="form-group">
+									<label>Квартира</label>
+									<input
+										type="text"
+										value={formData.apartment}
+										onChange={(e) =>
+											setFormData({ ...formData, apartment: e.target.value })
+										}
+										placeholder="101"
+									/>
+								</div>
+							</div>
+							<button
+								type="button"
+								className="btn btn-primary"
+								onClick={() => setStep(2)}
+							>
+								Продолжить
+							</button>
+						</div>
 
-            {/* Step 2: Delivery */}
-            <div className={`form-section ${step === 2 ? 'active' : ''}`}>
-              <h2>Способ доставки</h2>
-              <div className="delivery-options">
-                <label className={`delivery-option ${formData.deliveryMethod === 'standard' ? 'selected' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="delivery" 
-                    value="standard"
-                    checked={formData.deliveryMethod === 'standard'}
-                    onChange={e => setFormData({...formData, deliveryMethod: e.target.value})}
-                  />
-                  <div className="option-content">
-                    <Truck size={24} />
-                    <div>
-                      <strong>Стандартная доставка</strong>
-                      <p>10-14 рабочих дней</p>
-                    </div>
-                  </div>
-                  <span className="option-price">Бесплатно</span>
-                </label>
-                <label className={`delivery-option ${formData.deliveryMethod === 'express' ? 'selected' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="delivery" 
-                    value="express"
-                    checked={formData.deliveryMethod === 'express'}
-                    onChange={e => setFormData({...formData, deliveryMethod: e.target.value})}
-                  />
-                  <div className="option-content">
-                    <Truck size={24} />
-                    <div>
-                      <strong>Экспресс-доставка</strong>
-                      <p>5-7 рабочих дней</p>
-                    </div>
-                  </div>
-                  <span className="option-price">+500 ₽</span>
-                </label>
-              </div>
-              <div className="form-buttons">
-                <button type="button" className="btn btn-secondary" onClick={() => setStep(1)}>
-                  Назад
-                </button>
-                <button type="button" className="btn btn-primary" onClick={() => setStep(3)}>
-                  Продолжить
-                </button>
-              </div>
-            </div>
+						{/* Step 2: Delivery */}
+						<div className={`form-section ${step === 2 ? "active" : ""}`}>
+							<h2>Способ доставки</h2>
+							<div className="delivery-options">
+								<label
+									className={`delivery-option ${formData.deliveryMethod === "standard" ? "selected" : ""}`}
+								>
+									<input
+										type="radio"
+										name="delivery"
+										value="standard"
+										checked={formData.deliveryMethod === "standard"}
+										onChange={(e) =>
+											setFormData({
+												...formData,
+												deliveryMethod: e.target.value,
+											})
+										}
+									/>
+									<div className="option-content">
+										<Truck size={24} />
+										<div>
+											<strong>Стандартная доставка</strong>
+											<p>10-14 рабочих дней</p>
+										</div>
+									</div>
+									<span className="option-price">Бесплатно</span>
+								</label>
+								<label
+									className={`delivery-option ${formData.deliveryMethod === "express" ? "selected" : ""}`}
+								>
+									<input
+										type="radio"
+										name="delivery"
+										value="express"
+										checked={formData.deliveryMethod === "express"}
+										onChange={(e) =>
+											setFormData({
+												...formData,
+												deliveryMethod: e.target.value,
+											})
+										}
+									/>
+									<div className="option-content">
+										<Truck size={24} />
+										<div>
+											<strong>Экспресс-доставка</strong>
+											<p>5-7 рабочих дней</p>
+										</div>
+									</div>
+									<span className="option-price">+500 ₽</span>
+								</label>
+							</div>
+							<div className="form-buttons">
+								<button
+									type="button"
+									className="btn btn-secondary"
+									onClick={() => setStep(1)}
+								>
+									Назад
+								</button>
+								<button
+									type="button"
+									className="btn btn-primary"
+									onClick={() => setStep(3)}
+								>
+									Продолжить
+								</button>
+							</div>
+						</div>
 
-            {/* Step 3: Payment */}
-            <div className={`form-section ${step === 3 ? 'active' : ''}`}>
-              <h2>Способ оплаты</h2>
-              <div className="payment-options">
-                <label className={`payment-option ${formData.paymentMethod === 'card' ? 'selected' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="payment" 
-                    value="card"
-                    checked={formData.paymentMethod === 'card'}
-                    onChange={e => setFormData({...formData, paymentMethod: e.target.value})}
-                  />
-                  <div className="option-content">
-                    <CreditCard size={24} />
-                    <div>
-                      <strong>Банковская карта</strong>
-                      <p>Visa, Mastercard, МИР</p>
-                    </div>
-                  </div>
-                </label>
-                <label className={`payment-option ${formData.paymentMethod === 'balance' ? 'selected' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="payment" 
-                    value="balance"
-                    checked={formData.paymentMethod === 'balance'}
-                    onChange={e => setFormData({...formData, paymentMethod: e.target.value})}
-                  />
-                  <div className="option-content">
-                    <CreditCard size={24} />
-                    <div>
-                      <strong>Баланс кошелька</strong>
-                      <p>Доступно: 0 ₽</p>
-                    </div>
-                  </div>
-                </label>
-              </div>
-              <div className="form-buttons">
-                <button type="button" className="btn btn-secondary" onClick={() => setStep(2)}>
-                  Назад
-                </button>
-                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                  {isSubmitting ? 'Оформляем...' : `Оплатить ${(total + (formData.deliveryMethod === 'express' ? 500 : 0)).toLocaleString('ru-RU')} ₽`}
-                </button>
-              </div>
-            </div>
-          </form>
+						{/* Step 3: Payment */}
+						<div className={`form-section ${step === 3 ? "active" : ""}`}>
+							<h2>Способ оплаты</h2>
+							<div className="payment-options">
+								<label
+									className={`payment-option ${formData.paymentMethod === "card" ? "selected" : ""}`}
+								>
+									<input
+										type="radio"
+										name="payment"
+										value="card"
+										checked={formData.paymentMethod === "card"}
+										onChange={(e) =>
+											setFormData({
+												...formData,
+												paymentMethod: e.target.value,
+											})
+										}
+									/>
+									<div className="option-content">
+										<CreditCard size={24} />
+										<div>
+											<strong>Банковская карта</strong>
+											<p>Visa, Mastercard, МИР</p>
+										</div>
+									</div>
+								</label>
+								<label
+									className={`payment-option ${formData.paymentMethod === "balance" ? "selected" : ""}`}
+								>
+									<input
+										type="radio"
+										name="payment"
+										value="balance"
+										checked={formData.paymentMethod === "balance"}
+										onChange={(e) =>
+											setFormData({
+												...formData,
+												paymentMethod: e.target.value,
+											})
+										}
+									/>
+									<div className="option-content">
+										<CreditCard size={24} />
+										<div>
+											<strong>Баланс кошелька</strong>
+											<p>Доступно: 0 ₽</p>
+										</div>
+									</div>
+								</label>
+							</div>
+							<div className="form-buttons">
+								<button
+									type="button"
+									className="btn btn-secondary"
+									onClick={() => setStep(2)}
+								>
+									Назад
+								</button>
+								<button
+									type="submit"
+									className="btn btn-primary"
+									disabled={isSubmitting}
+								>
+									{isSubmitting
+										? "Оформляем..."
+										: `Оплатить ${(total + (formData.deliveryMethod === "express" ? 500 : 0)).toLocaleString("ru-RU")} ₽`}
+								</button>
+							</div>
+						</div>
+					</form>
 
-          {/* Order Summary */}
-          <div className="order-summary">
-            <h2>Ваш заказ</h2>
-            <div className="summary-items">
-              {items.map(({ product, quantity }) => (
-                <div key={product.id} className="summary-item">
-                  <img src={product.images[0]} alt={product.title} />
-                  <div className="item-info">
-                    <span className="item-name">{product.title}</span>
-                    <span className="item-qty">×{quantity}</span>
-                  </div>
-                  <span className="item-price">
-                    {(product.price * quantity).toLocaleString('ru-RU')} ₽
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="summary-totals">
-              <div className="summary-row">
-                <span>Товары</span>
-                <span>{subtotal.toLocaleString('ru-RU')} ₽</span>
-              </div>
-              <div className="summary-row">
-                <span>Комиссия (2%)</span>
-                <span>{buyerCommission.toLocaleString('ru-RU')} ₽</span>
-              </div>
-              <div className="summary-row">
-                <span>Доставка</span>
-                <span>{formData.deliveryMethod === 'express' ? '500 ₽' : 'Бесплатно'}</span>
-              </div>
-              <div className="summary-row total">
-                <span>Итого</span>
-                <span>{(total + (formData.deliveryMethod === 'express' ? 500 : 0)).toLocaleString('ru-RU')} ₽</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+					{/* Order Summary */}
+					<div className="order-summary">
+						<h2>Ваш заказ</h2>
+						<div className="summary-items">
+							{items.map(({ product, quantity }) => (
+								<div key={product.id} className="summary-item">
+									<img src={product.images[0]} alt={product.title} />
+									<div className="item-info">
+										<span className="item-name">{product.title}</span>
+										<span className="item-qty">×{quantity}</span>
+									</div>
+									<span className="item-price">
+										{(product.price * quantity).toLocaleString("ru-RU")} ₽
+									</span>
+								</div>
+							))}
+						</div>
+						<div className="summary-totals">
+							<div className="summary-row">
+								<span>Товары</span>
+								<span>{subtotal.toLocaleString("ru-RU")} ₽</span>
+							</div>
+							<div className="summary-row">
+								<span>Комиссия (2%)</span>
+								<span>{buyerCommission.toLocaleString("ru-RU")} ₽</span>
+							</div>
+							<div className="summary-row">
+								<span>Доставка</span>
+								<span>
+									{formData.deliveryMethod === "express"
+										? "500 ₽"
+										: "Бесплатно"}
+								</span>
+							</div>
+							<div className="summary-row total">
+								<span>Итого</span>
+								<span>
+									{(
+										total + (formData.deliveryMethod === "express" ? 500 : 0)
+									).toLocaleString("ru-RU")}{" "}
+									₽
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <style>{`
+			<style>{`
         .checkout-page {
           padding: 24px 0 60px;
         }
@@ -601,6 +676,6 @@ export default function CheckoutPage() {
           }
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

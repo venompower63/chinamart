@@ -1,195 +1,244 @@
-import { Link } from 'react-router-dom'
-import { categories, products } from '../data/mockData'
-import CategoryCard from '../components/CategoryCard'
-import ProductCard from '../components/ProductCard'
-import { Check, TrendingUp, CreditCard, Shield } from 'lucide-react'
+import { Link } from "react-router-dom";
+import { categories, products } from "../data/mockData";
+import CategoryCard from "../components/CategoryCard";
+import ProductCard from "../components/ProductCard";
+import { Check, TrendingUp, CreditCard, Shield } from "lucide-react";
 
 export default function HomePage() {
-  const popularProducts = products.slice(0, 4)
+	const popularProducts = products.slice(0, 4);
 
-  return (
-    <div className="home-page">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-inner container">
-          <div className="hero-content">
-            <h1>Маркетплейс проверенных товаров из <span>Китая</span></h1>
-            <p>Прямые поставки от надёжных продавцов. Без посредников — выгодные цены для покупателей и широкая аудитория для продавцов.</p>
-            
-            <div className="hero-buttons">
-              <Link to="/catalog" className="btn-hero-primary">Начать покупки</Link>
-              <Link to="/register" className="btn-hero-secondary">Стать продавцом</Link>
-            </div>
+	return (
+		<div className="home-page">
+			{/* Hero Section */}
+			<section className="hero">
+				<div className="hero-inner container">
+					<div className="hero-content">
+						<h1>
+							Маркетплейс проверенных товаров из <span>Китая</span>
+						</h1>
+						<p>
+							Прямые поставки от надёжных продавцов. Без посредников — выгодные
+							цены для покупателей и широкая аудитория для продавцов.
+						</p>
 
-            <div className="hero-stats">
-              <div className="hero-stat">
-                <div className="stat-number">2.5M+</div>
-                <div className="stat-label">товаров в каталоге</div>
-              </div>
-              <div className="hero-stat">
-                <div className="stat-number">15 000+</div>
-                <div className="stat-label">активных продавцов</div>
-              </div>
-              <div className="hero-stat">
-                <div className="stat-number">98%</div>
-                <div className="stat-label">довольных покупателей</div>
-              </div>
-            </div>
-          </div>
+						<div className="hero-buttons">
+							<Link to="/catalog" className="btn-hero-primary">
+								Начать покупки
+							</Link>
+							<Link to="/register" className="btn-hero-secondary">
+								Стать продавцом
+							</Link>
+						</div>
 
-          <div className="hero-visual">
-            <div className="hero-image">
-              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800" alt="ChinaMart" />
-            </div>
-            <div className="floating-card card-1">
-              <div className="floating-icon success"><Check size={20} /></div>
-              <div className="floating-text">
-                <strong>Заказ доставлен</strong>
-                Электроника, 5 дней
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+						<div className="hero-stats">
+							<div className="hero-stat">
+								<div className="stat-number">2.5M+</div>
+								<div className="stat-label">товаров в каталоге</div>
+							</div>
+							<div className="hero-stat">
+								<div className="stat-number">15 000+</div>
+								<div className="stat-label">активных продавцов</div>
+							</div>
+							<div className="hero-stat">
+								<div className="stat-number">98%</div>
+								<div className="stat-label">довольных покупателей</div>
+							</div>
+						</div>
+					</div>
 
-      {/* Categories Section */}
-      <section className="categories">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Категории товаров</h2>
-            <p className="section-subtitle">Выберите категорию и найдите нужный товар из тысяч предложений</p>
-          </div>
+					<div className="hero-visual">
+						<div className="hero-image">
+							<img
+								src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800"
+								alt="ChinaMart"
+							/>
+						</div>
+						<div className="floating-card card-1">
+							<div className="floating-icon success">
+								<Check size={20} />
+							</div>
+							<div className="floating-text">
+								<strong>Заказ доставлен</strong>
+								Электроника, 5 дней
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-          <div className="categories-grid">
-            {categories.map(cat => (
-              <CategoryCard key={cat.id} category={cat} />
-            ))}
-          </div>
-        </div>
-      </section>
+			{/* Categories Section */}
+			<section className="categories">
+				<div className="container">
+					<div className="section-header">
+						<h2 className="section-title">Категории товаров</h2>
+						<p className="section-subtitle">
+							Выберите категорию и найдите нужный товар из тысяч предложений
+						</p>
+					</div>
 
-      {/* Products Section */}
-      <section className="products">
-        <div className="container">
-          <div className="products-header">
-            <h2 className="section-title">Популярные товары</h2>
-            <Link to="/catalog" className="view-all">Смотреть все →</Link>
-          </div>
+					<div className="categories-grid">
+						{categories.map((cat) => (
+							<CategoryCard key={cat.id} category={cat} />
+						))}
+					</div>
+				</div>
+			</section>
 
-          <div className="products-grid">
-            {popularProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
+			{/* Products Section */}
+			<section className="products">
+				<div className="container">
+					<div className="products-header">
+						<h2 className="section-title">Популярные товары</h2>
+						<Link to="/catalog" className="view-all">
+							Смотреть все →
+						</Link>
+					</div>
 
-      {/* Seller Section */}
-      <section className="seller-section">
-        <div className="seller-inner container">
-          <div className="seller-content">
-            <h2>Станьте продавцом на <span>ChinaMart</span></h2>
-            <p>Получите доступ к миллионам покупателей. Регистрация бесплатная, комиссия только с успешных сделок.</p>
+					<div className="products-grid">
+						{popularProducts.map((product) => (
+							<ProductCard key={product.id} product={product} />
+						))}
+					</div>
+				</div>
+			</section>
 
-            <div className="seller-benefits">
-              <div className="seller-benefit">
-                <div className="benefit-icon">📊</div>
-                <div className="benefit-text">
-                  <h4>Аналитика продаж</h4>
-                  <p>Отслеживайте статистику и поведение покупателей в реальном времени</p>
-                </div>
-              </div>
-              <div className="seller-benefit">
-                <div className="benefit-icon">🚚</div>
-                <div className="benefit-text">
-                  <h4>Интеграция доставки</h4>
-                  <p>Автоматическая обработка заказов и отслеживание посылок</p>
-                </div>
-              </div>
-              <div className="seller-benefit">
-                <div className="benefit-icon">💳</div>
-                <div className="benefit-text">
-                  <h4>Быстрые выплаты</h4>
-                  <p>Получите оплату на свой счёт в течение 3 рабочих дней</p>
-                </div>
-              </div>
-            </div>
+			{/* Seller Section */}
+			<section className="seller-section">
+				<div className="seller-inner container">
+					<div className="seller-content">
+						<h2>
+							Станьте продавцом на <span>ChinaMart</span>
+						</h2>
+						<p>
+							Получите доступ к миллионам покупателей. Регистрация бесплатная,
+							комиссия только с успешных сделок.
+						</p>
 
-            <Link to="/register" className="btn btn-primary">Узнать больше</Link>
-          </div>
+						<div className="seller-benefits">
+							<div className="seller-benefit">
+								<div className="benefit-icon">📊</div>
+								<div className="benefit-text">
+									<h4>Аналитика продаж</h4>
+									<p>
+										Отслеживайте статистику и поведение покупателей в реальном
+										времени
+									</p>
+								</div>
+							</div>
+							<div className="seller-benefit">
+								<div className="benefit-icon">🚚</div>
+								<div className="benefit-text">
+									<h4>Интеграция доставки</h4>
+									<p>Автоматическая обработка заказов и отслеживание посылок</p>
+								</div>
+							</div>
+							<div className="seller-benefit">
+								<div className="benefit-icon">💳</div>
+								<div className="benefit-text">
+									<h4>Быстрые выплаты</h4>
+									<p>Получите оплату на свой счёт в течение 3 рабочих дней</p>
+								</div>
+							</div>
+						</div>
 
-          <div className="seller-image">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600" alt="Seller" />
-          </div>
-        </div>
-      </section>
+						<Link to="/register" className="btn btn-primary">
+							Узнать больше
+						</Link>
+					</div>
 
-      {/* Commission Section */}
-      <section className="commission">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Прозрачные комиссии</h2>
-            <p className="section-subtitle">Никаких скрытых платежей. Платите только за успешные сделки.</p>
-          </div>
+					<div className="seller-image">
+						<img
+							src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600"
+							alt="Seller"
+						/>
+					</div>
+				</div>
+			</section>
 
-          <div className="commission-cards">
-            <div className="commission-card primary">
-              <div className="commission-icon"><TrendingUp size={32} /></div>
-              <h3>Комиссия продавца</h3>
-              <div className="percent">5%</div>
-              <p>Взимается с суммы продажи. Чем больше объём — тем ниже процент.</p>
-            </div>
+			{/* Commission Section */}
+			<section className="commission">
+				<div className="container">
+					<div className="section-header">
+						<h2 className="section-title">Прозрачные комиссии</h2>
+						<p className="section-subtitle">
+							Никаких скрытых платежей. Платите только за успешные сделки.
+						</p>
+					</div>
 
-            <div className="commission-card success">
-              <div className="commission-icon"><Shield size={32} /></div>
-              <h3>Комиссия покупателя</h3>
-              <div className="percent">2%</div>
-              <p>Защита покупателя и страхование доставки. Включено в стоимость.</p>
-            </div>
+					<div className="commission-cards">
+						<div className="commission-card primary">
+							<div className="commission-icon">
+								<TrendingUp size={32} />
+							</div>
+							<h3>Комиссия продавца</h3>
+							<div className="percent">5%</div>
+							<p>
+								Взимается с суммы продажи. Чем больше объём — тем ниже процент.
+							</p>
+						</div>
 
-            <div className="commission-card secondary">
-              <div className="commission-icon"><CreditCard size={32} /></div>
-              <h3>Без скрытых платежей</h3>
-              <div className="percent">0 ₽</div>
-              <p>Регистрация, размещение товаров и базовая аналитика — бесплатно.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+						<div className="commission-card success">
+							<div className="commission-icon">
+								<Shield size={32} />
+							</div>
+							<h3>Комиссия покупателя</h3>
+							<div className="percent">2%</div>
+							<p>
+								Защита покупателя и страхование доставки. Включено в стоимость.
+							</p>
+						</div>
 
-      {/* Trust Section */}
-      <section className="trust">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Почему выбирают нас</h2>
-          </div>
+						<div className="commission-card secondary">
+							<div className="commission-icon">
+								<CreditCard size={32} />
+							</div>
+							<h3>Без скрытых платежей</h3>
+							<div className="percent">0 ₽</div>
+							<p>
+								Регистрация, размещение товаров и базовая аналитика — бесплатно.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
 
-          <div className="trust-grid">
-            <div className="trust-item">
-              <div className="trust-icon"><Check size={24} /></div>
-              <h4>Проверенные продавцы</h4>
-              <p>Верификация каждого магазина перед началом работы</p>
-            </div>
-            <div className="trust-item">
-              <div className="trust-icon"><Shield size={24} /></div>
-              <h4>Безопасные платежи</h4>
-              <p>Деньги хранятся на escrow до подтверждения получения</p>
-            </div>
-            <div className="trust-item">
-              <div className="trust-icon">↩️</div>
-              <h4>Легкий возврат</h4>
-              <p>14 дней на возврат товара без лишних вопросов</p>
-            </div>
-            <div className="trust-item">
-              <div className="trust-icon">💬</div>
-              <h4>Поддержка 24/7</h4>
-              <p>Отвечаем в течение часа в любое время суток</p>
-            </div>
-          </div>
-        </div>
-      </section>
+			{/* Trust Section */}
+			<section className="trust">
+				<div className="container">
+					<div className="section-header">
+						<h2 className="section-title">Почему выбирают нас</h2>
+					</div>
 
-      <style>{`
+					<div className="trust-grid">
+						<div className="trust-item">
+							<div className="trust-icon">
+								<Check size={24} />
+							</div>
+							<h4>Проверенные продавцы</h4>
+							<p>Верификация каждого магазина перед началом работы</p>
+						</div>
+						<div className="trust-item">
+							<div className="trust-icon">
+								<Shield size={24} />
+							</div>
+							<h4>Безопасные платежи</h4>
+							<p>Деньги хранятся на escrow до подтверждения получения</p>
+						</div>
+						<div className="trust-item">
+							<div className="trust-icon">↩️</div>
+							<h4>Легкий возврат</h4>
+							<p>14 дней на возврат товара без лишних вопросов</p>
+						</div>
+						<div className="trust-item">
+							<div className="trust-icon">💬</div>
+							<h4>Поддержка 24/7</h4>
+							<p>Отвечаем в течение часа в любое время суток</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<style>{`
         /* Hero */
         .hero {
           background: linear-gradient(135deg, #1d3557 0%, #0d1b2a 100%);
@@ -691,6 +740,6 @@ export default function HomePage() {
           }
         }
       `}</style>
-    </div>
-  )
+		</div>
+	);
 }

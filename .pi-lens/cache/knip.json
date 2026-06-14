@@ -1,0 +1,241 @@
+{
+  "success": true,
+  "issues": [
+    {
+      "type": "file",
+      "name": "scripts/generate-icons.cjs",
+      "file": "scripts/generate-icons.cjs"
+    },
+    {
+      "type": "file",
+      "name": "dist/assets/index-C8XE_086.js",
+      "file": "dist/assets/index-C8XE_086.js"
+    },
+    {
+      "type": "file",
+      "name": "ios/App/App/public/cordova.js",
+      "file": "ios/App/App/public/cordova.js"
+    },
+    {
+      "type": "file",
+      "name": "ios/App/App/public/cordova_plugins.js",
+      "file": "ios/App/App/public/cordova_plugins.js"
+    },
+    {
+      "type": "file",
+      "name": "ios/App/App/public/assets/index-CiNcezbV.js",
+      "file": "ios/App/App/public/assets/index-CiNcezbV.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/src/main/assets/public/cordova.js",
+      "file": "android/app/src/main/assets/public/cordova.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/src/main/assets/public/cordova_plugins.js",
+      "file": "android/app/src/main/assets/public/cordova_plugins.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/src/main/assets/public/assets/index-C8XE_086.js",
+      "file": "android/app/src/main/assets/public/assets/index-C8XE_086.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova_plugins.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova_plugins.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8XE_086.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8XE_086.js"
+    },
+    {
+      "type": "dependency",
+      "name": "@capacitor/haptics",
+      "file": "package.json",
+      "line": 15
+    },
+    {
+      "type": "dependency",
+      "name": "@capacitor/ios",
+      "file": "package.json",
+      "line": 16
+    },
+    {
+      "type": "dependency",
+      "name": "@capacitor/status-bar",
+      "file": "package.json",
+      "line": 17
+    },
+    {
+      "type": "dependency",
+      "name": "cordova-res",
+      "file": "package.json",
+      "line": 18
+    },
+    {
+      "type": "devDependency",
+      "name": "sharp",
+      "file": "package.json",
+      "line": 28
+    },
+    {
+      "type": "export",
+      "name": "getProductsByCategory",
+      "file": "src/data/mockData.ts",
+      "line": 336
+    },
+    {
+      "type": "export",
+      "name": "searchProducts",
+      "file": "src/data/mockData.ts",
+      "line": 344
+    },
+    {
+      "type": "export",
+      "name": "SellerProfile",
+      "file": "src/context/AuthContext.tsx",
+      "line": 18
+    },
+    {
+      "type": "export",
+      "name": "CartItem",
+      "file": "src/context/CartContext.tsx",
+      "line": 28
+    }
+  ],
+  "unusedExports": [
+    {
+      "type": "export",
+      "name": "getProductsByCategory",
+      "file": "src/data/mockData.ts",
+      "line": 336
+    },
+    {
+      "type": "export",
+      "name": "searchProducts",
+      "file": "src/data/mockData.ts",
+      "line": 344
+    },
+    {
+      "type": "export",
+      "name": "SellerProfile",
+      "file": "src/context/AuthContext.tsx",
+      "line": 18
+    },
+    {
+      "type": "export",
+      "name": "CartItem",
+      "file": "src/context/CartContext.tsx",
+      "line": 28
+    }
+  ],
+  "unusedFiles": [
+    {
+      "type": "file",
+      "name": "scripts/generate-icons.cjs",
+      "file": "scripts/generate-icons.cjs"
+    },
+    {
+      "type": "file",
+      "name": "dist/assets/index-C8XE_086.js",
+      "file": "dist/assets/index-C8XE_086.js"
+    },
+    {
+      "type": "file",
+      "name": "ios/App/App/public/cordova.js",
+      "file": "ios/App/App/public/cordova.js"
+    },
+    {
+      "type": "file",
+      "name": "ios/App/App/public/cordova_plugins.js",
+      "file": "ios/App/App/public/cordova_plugins.js"
+    },
+    {
+      "type": "file",
+      "name": "ios/App/App/public/assets/index-CiNcezbV.js",
+      "file": "ios/App/App/public/assets/index-CiNcezbV.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/src/main/assets/public/cordova.js",
+      "file": "android/app/src/main/assets/public/cordova.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/src/main/assets/public/cordova_plugins.js",
+      "file": "android/app/src/main/assets/public/cordova_plugins.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/src/main/assets/public/assets/index-C8XE_086.js",
+      "file": "android/app/src/main/assets/public/assets/index-C8XE_086.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova_plugins.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/cordova_plugins.js"
+    },
+    {
+      "type": "file",
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8XE_086.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8XE_086.js"
+    }
+  ],
+  "unusedDeps": [
+    {
+      "type": "dependency",
+      "name": "@capacitor/haptics",
+      "file": "package.json",
+      "line": 15
+    },
+    {
+      "type": "dependency",
+      "name": "@capacitor/ios",
+      "file": "package.json",
+      "line": 16
+    },
+    {
+      "type": "dependency",
+      "name": "@capacitor/status-bar",
+      "file": "package.json",
+      "line": 17
+    },
+    {
+      "type": "dependency",
+      "name": "cordova-res",
+      "file": "package.json",
+      "line": 18
+    },
+    {
+      "type": "devDependency",
+      "name": "sharp",
+      "file": "package.json",
+      "line": 28
+    }
+  ],
+  "unlistedDeps": [],
+  "summary": "Found 21 issues"
+}
