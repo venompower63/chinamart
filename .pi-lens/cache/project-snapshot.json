@@ -1,8 +1,8 @@
 {
   "version": 1,
   "projectRoot": "/home/user/chinamart",
-  "generatedAt": "2026-06-14T11:26:26.400Z",
-  "seq": 0,
+  "generatedAt": "2026-06-14T11:47:00.251Z",
+  "seq": 12,
   "files": {
     "/home/user/chinamart/capacitor.config.ts": {
       "path": "/home/user/chinamart/capacitor.config.ts",
@@ -364,15 +364,12 @@
     "rules": [],
     "hasCustomRules": false
   },
-  "projectIndex": {
-    "entryCount": 26
-  },
   "startupScan": {
     "cwd": "/home/user/chinamart",
     "scanRoot": "/home/user/chinamart",
     "projectRoot": "/home/user/chinamart",
     "canWarmCaches": true,
-    "sourceFileCount": 23
+    "sourceFileCount": 24
   },
   "languageProfile": {
     "present": {
@@ -416,10 +413,44 @@
       "jsts": true
     },
     "counts": {
-      "jsts": 23
+      "jsts": 25
     },
     "detectedKinds": [
       "jsts"
     ]
+  },
+  "conventions": {
+    "frameworks": [
+      {
+        "id": "react",
+        "confidence": "high",
+        "signals": [
+          "package.json:dependencies.react",
+          "package.json:dependencies.react-dom",
+          "package.json:devDependencies.@types/react"
+        ]
+      },
+      {
+        "id": "next",
+        "confidence": "low",
+        "signals": [
+          "src/pages/"
+        ]
+      },
+      {
+        "id": "vite",
+        "confidence": "high",
+        "signals": [
+          "package.json:devDependencies.vite",
+          "vite.config.ts"
+        ]
+      }
+    ],
+    "testRunners": [],
+    "buildTools": [
+      "vite",
+      "next"
+    ],
+    "agentDocs": []
   }
 }

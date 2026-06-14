@@ -1,0 +1,96 @@
+{
+  "success": true,
+  "clones": [
+    {
+      "fileA": "./resources/icon.svg",
+      "startA": 1,
+      "fileB": "./resources/splash.svg",
+      "startB": 1,
+      "lines": 8,
+      "tokens": 54
+    },
+    {
+      "fileA": "./src/pages/CheckoutPage.tsx",
+      "startA": 190,
+      "fileB": "./src/pages/CheckoutPage.tsx",
+      "startB": 214,
+      "lines": 12,
+      "tokens": 52
+    },
+    {
+      "fileA": "./src/pages/CheckoutPage.tsx",
+      "startA": 261,
+      "fileB": "./src/pages/CheckoutPage.tsx",
+      "startB": 284,
+      "lines": 12,
+      "tokens": 52
+    },
+    {
+      "fileA": "./src/pages/LoginPage.tsx",
+      "startA": 16,
+      "fileB": "./src/pages/RegisterPage.tsx",
+      "startB": 22,
+      "lines": 7,
+      "tokens": 50
+    },
+    {
+      "fileA": "./src/pages/LoginPage.tsx",
+      "startA": 28,
+      "fileB": "./src/pages/RegisterPage.tsx",
+      "startB": 53,
+      "lines": 13,
+      "tokens": 57
+    },
+    {
+      "fileA": "./src/pages/LoginPage.tsx",
+      "startA": 45,
+      "fileB": "./src/pages/RegisterPage.tsx",
+      "startB": 88,
+      "lines": 19,
+      "tokens": 90
+    },
+    {
+      "fileA": "./src/pages/OrdersPage.tsx",
+      "startA": 32,
+      "fileB": "./src/pages/SellerDashboard.tsx",
+      "startB": 79,
+      "lines": 9,
+      "tokens": 64
+    },
+    {
+      "fileA": "./src/pages/ProductPage.tsx",
+      "startA": 267,
+      "fileB": "./src/pages/ProductPage.tsx",
+      "startB": 296,
+      "lines": 24,
+      "tokens": 166
+    },
+    {
+      "fileA": "./src/pages/ProductPage.tsx",
+      "startA": 267,
+      "fileB": "./src/pages/ProductPage.tsx",
+      "startB": 325,
+      "lines": 24,
+      "tokens": 166
+    },
+    {
+      "fileA": "./src/pages/ProductPage.tsx",
+      "startA": 267,
+      "fileB": "./src/pages/ProductPage.tsx",
+      "startB": 354,
+      "lines": 23,
+      "tokens": 164
+    },
+    {
+      "fileA": "./src/pages/SellerDashboard.tsx",
+      "startA": 270,
+      "fileB": "./src/pages/SellerDashboard.tsx",
+      "startB": 284,
+      "lines": 8,
+      "tokens": 54
+    }
+  ],
+  "duplicatedLines": 148,
+  "totalLines": 8551,
+  "percentage": 1.7307917202666354
+}
