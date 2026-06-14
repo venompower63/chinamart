@@ -246,6 +246,8 @@ export default function HomePage() {
           padding: 80px 0;
           position: relative;
           overflow: hidden;
+          width: 100%;
+          max-width: 100%;
         }
         .hero::before {
           content: '';
@@ -263,6 +265,8 @@ export default function HomePage() {
           gap: 60px;
           align-items: center;
           position: relative;
+          width: 100%;
+          max-width: 100%;
         }
         .hero-content h1 {
           font-size: 48px;
@@ -384,6 +388,9 @@ export default function HomePage() {
         .categories {
           padding: 60px 0;
           background: var(--bg-light);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .section-header {
           text-align: center;
@@ -403,13 +410,18 @@ export default function HomePage() {
         }
         .categories-grid {
           display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          gap: 20px;
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+          gap: 16px;
+          width: 100%;
+          max-width: 100%;
         }
 
         /* Products */
         .products {
           padding: 80px 0;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .products-header {
           display: flex;
@@ -430,20 +442,27 @@ export default function HomePage() {
         }
         .products-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           gap: 24px;
+          width: 100%;
+          max-width: 100%;
         }
 
         /* Seller Section */
         .seller-section {
           padding: 80px 0;
           background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .seller-inner {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 60px;
           align-items: center;
+          width: 100%;
+          max-width: 100%;
         }
         .seller-content h2 {
           font-size: 40px;
@@ -523,12 +542,17 @@ export default function HomePage() {
         .commission {
           padding: 80px 0;
           background: var(--bg-white);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .commission-cards {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 32px;
           margin-top: 48px;
+          width: 100%;
+          max-width: 100%;
         }
         .commission-card {
           background: var(--bg-light);
@@ -595,11 +619,16 @@ export default function HomePage() {
         .trust {
           padding: 60px 0;
           background: var(--bg-light);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .trust-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 24px;
+          width: 100%;
+          max-width: 100%;
         }
         .trust-item {
           background: var(--bg-white);
@@ -634,10 +663,10 @@ export default function HomePage() {
         /* Responsive */
         @media (max-width: 1200px) {
           .products-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
           }
           .categories-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
           }
         }
         @media (max-width: 992px) {
@@ -670,7 +699,7 @@ export default function HomePage() {
             margin-right: auto;
           }
           .trust-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
           }
         }
         @media (max-width: 768px) {
@@ -702,7 +731,7 @@ export default function HomePage() {
             font-size: 28px;
           }
           .categories-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 12px;
           }
           .products {

@@ -95,13 +95,13 @@
       "type": "export",
       "name": "getProductsByCategory",
       "file": "src/data/mockData.ts",
-      "line": 336
+      "line": 390
     },
     {
       "type": "export",
       "name": "searchProducts",
       "file": "src/data/mockData.ts",
-      "line": 344
+      "line": 398
     },
     {
       "type": "export",
@@ -121,13 +121,13 @@
       "type": "export",
       "name": "getProductsByCategory",
       "file": "src/data/mockData.ts",
-      "line": 336
+      "line": 390
     },
     {
       "type": "export",
       "name": "searchProducts",
       "file": "src/data/mockData.ts",
-      "line": 344
+      "line": 398
     },
     {
       "type": "export",

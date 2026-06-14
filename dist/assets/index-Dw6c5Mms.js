@@ -742,11 +742,17 @@ Error generating stack: `+a.message+`
           min-height: 100vh;
           display: flex;
           flex-direction: column;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .main {
           flex: 1;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
-      `})]})}const pn=[{id:"electronics",name:"Электроника",icon:"📱",count:12400,color:"#fff3e0"},{id:"clothing",name:"Одежда",icon:"👗",count:28600,color:"#e3f2fd"},{id:"cosmetics",name:"Косметика",icon:"💄",count:8200,color:"#f3e5f5"},{id:"home",name:"Для дома",icon:"🏠",count:15800,color:"#e8f5e9"},{id:"sports",name:"Спорт",icon:"⚽",count:6500,color:"#fce4ec"},{id:"tools",name:"Инструменты",icon:"🔧",count:4300,color:"#e0f7fa"}],Be=[{id:"prod_1",sellerId:"seller_1",sellerName:"TechGadgets",title:"Беспроводные наушники с шумоподавлением HiFi Sound Pro",description:"Премиальные беспроводные наушники с активным шумоподавлением (ANC). До 30 часов воспроизведения, быстрая зарядка USB-C, мультиточечное подключение к двум устройствам одновременно.",price:3490,oldPrice:4650,images:["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"],category:"electronics",characteristics:{Бренд:"SoundMaster",Тип:"Накладные",Шумоподавление:"Активное (ANC)",Автономность:"30 часов",Интерфейс:"Bluetooth 5.2",Вес:"250 г"},stock:45,rating:4.8,reviewsCount:2847,salesCount:1234,createdAt:"2024-01-15",badge:"sale"},{id:"prod_2",sellerId:"seller_2",sellerName:"ModaChina",title:"Стильное худи с капюшоном, хлопок 100%",description:"Уютное худи из премиального хлопка. Свободный крой, удобный капюшон, вместительные карманы. Идеально для повседневного образа.",price:1290,images:["https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600"],category:"clothing",characteristics:{Материал:"Хлопок 100%",Размеры:"S, M, L, XL",Цвет:"Чёрный, серый, бежевый",Уход:"Деликатная стирка"},stock:120,rating:4.5,reviewsCount:1563,salesCount:3892,createdAt:"2024-02-20",badge:"hit"},{id:"prod_3",sellerId:"seller_3",sellerName:"GlowBeauty",title:"Профессиональный набор кистей для макияжа, 12 шт",description:"Комплект из 12 профессиональных кистей для визажиста. Синтетический ворс, эргономичные ручки, бархатный чехол в комплекте.",price:890,oldPrice:1250,images:["https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600"],category:"cosmetics",characteristics:{Количество:"12 кистей","Материал ворса":"Синтетика",Чехол:"Бархатный",Упаковка:"Подарочная"},stock:85,rating:4.9,reviewsCount:4102,salesCount:5621,createdAt:"2024-01-08"},{id:"prod_4",sellerId:"seller_4",sellerName:"SmartHome",title:"Умная LED-лампа с управлением по WiFi и голосом",description:"Смарт-лампа с RGB-подсветкой, управление через приложение Tuya/Smart Life. Поддержка Alexa и Google Assistant. 16 миллионов цветов.",price:1750,oldPrice:2400,images:["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600"],category:"electronics",characteristics:{Мощность:"9W (эквивалент 60W)",Цоколь:"E27",Управление:"WiFi 2.4GHz","Голосовые ассистенты":"Alexa, Google","Срок службы":"25000 часов"},stock:67,rating:4.4,reviewsCount:892,salesCount:567,createdAt:"2024-03-01",badge:"new"},{id:"prod_5",sellerId:"seller_2",sellerName:"ModaChina",title:"Кроссовки спортивные мужские Ultraboost Air",description:"Лёгкие и комфортные кроссовки для бега и повседневной носки. Амортизирующая подошва, дышащий материал верха.",price:2190,images:["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"],category:"sports",characteristics:{Размеры:"39-46",Материал:"Сетка + синтетика",Подошва:"EVA + резина",Сезон:"Весна-лето"},stock:34,rating:4.6,reviewsCount:723,salesCount:445,createdAt:"2024-02-15"},{id:"prod_6",sellerId:"seller_5",sellerName:"HomeStyle",title:"Набор постельного белья евро, 6 предметов, сатин",description:"Роскошный комплект постельного белья из 100% сатина. Включает: пододеяльник, простыню, 4 наволочки. Сертификат OEKO-TEX.",price:3290,oldPrice:4590,images:["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"],category:"home",characteristics:{Размер:"Евро",Ткань:"Сатин (100% хлопок)",Комплектация:"6 предметов",Уход:"60°C"},stock:28,rating:4.7,reviewsCount:1156,salesCount:892,createdAt:"2024-01-22",badge:"sale"},{id:"prod_7",sellerId:"seller_1",sellerName:"TechGadgets",title:"Умные часы fitness-трекер с пульсоксиметром",description:"Фитнес-браслет с цветным AMOLED-дисплеем. Мониторинг пульса, SpO2, сна, шагов. Водозащита 5ATM.",price:1890,images:["https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"],category:"electronics",characteristics:{Дисплей:'AMOLED 0.96"',Батарея:"7-10 дней",Водозащита:"5ATM",Датчики:"Пульс, SpO2, акселерометр"},stock:92,rating:4.3,reviewsCount:2341,salesCount:1567,createdAt:"2024-02-28"},{id:"prod_8",sellerId:"seller_6",sellerName:"ToolMaster",title:"Набор инструментов 82 предмета, кейс + чемодан",description:"Профессиональный набор инструментов для дома и гаража. Хромованадиевая сталь, эргономичные рукоятки, полный набор головок и отвёрток.",price:4590,oldPrice:5990,images:["https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600"],category:"tools",characteristics:{"Количество предметов":"82",Материал:"CrV сталь",Рукоятки:"Двухкомпонентные",Упаковка:"Кейс + чемодан"},stock:15,rating:4.8,reviewsCount:456,salesCount:234,createdAt:"2024-01-30",badge:"hit"},{id:"prod_9",sellerId:"seller_3",sellerName:"GlowBeauty",title:"Сыворотка для лица с витамином C 30ml",description:"Интенсивная сыворотка с 20% витамином C для осветления пигментации и выравнивания тона кожи. Антиоксидантная защита.",price:690,images:["https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600"],category:"cosmetics",characteristics:{Объём:"30 мл","Концентрация витамина C":"20%","Тип кожи":"Все типы",SPF:"Нет"},stock:156,rating:4.6,reviewsCount:1823,salesCount:2341,createdAt:"2024-03-05",badge:"new"},{id:"prod_10",sellerId:"seller_4",sellerName:"SmartHome",title:"Робот-пылесос с лидаром и влажной уборкой",description:"Умный робот-пылесос с LDS-лидаром для точной навигации. Сухая и влажная уборка, управление через приложение, голосовые оповещения.",price:8990,oldPrice:11990,images:["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600"],category:"electronics",characteristics:{"Тип уборки":"Сухая + влажная",Навигация:"LDS-лидар",Мощность:"3000 Pa",Батарея:"5200 mAh",Площадь:"До 200 м²"},stock:12,rating:4.7,reviewsCount:567,salesCount:189,createdAt:"2024-02-10",badge:"sale"},{id:"prod_11",sellerId:"seller_2",sellerName:"ModaChina",title:"Сумка женская кросс-боди, искусственная кожа",description:"Элегантная сумка-кросс через плечо из качественной искусственной кожи. Регулируемый ремень, несколько отделений.",price:1590,images:["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600"],category:"clothing",characteristics:{Материал:"Экокожа",Размер:"22×16×8 см",Отделения:"3 кармана",Ремень:"Регулируемый 80-140 см"},stock:67,rating:4.4,reviewsCount:934,salesCount:678,createdAt:"2024-02-25"},{id:"prod_12",sellerId:"seller_5",sellerName:"HomeStyle",title:"Кофеварка гейзерная алюминиевая, 6 чашек",description:"Классическая гейзерная кофеварка из пищевого алюминия. Приготовление 6 чашек итальянского кофе за 5 минут.",price:1290,images:["https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600"],category:"home",characteristics:{Объём:"6 чашек (300 мл)",Материал:"Алюминий",Нагревание:"Плита / газ",Цвет:"Чёрный, серебро"},stock:43,rating:4.5,reviewsCount:1234,salesCount:876,createdAt:"2024-01-18"}];function Mh(e){return Be.find(t=>t.id===e)}function Ih({category:e}){return l.jsxs(z,{to:`/catalog?category=${e.id}`,className:"category-card",children:[l.jsx("div",{className:"category-icon",style:{background:e.color},children:e.icon}),l.jsx("div",{className:"category-name",children:e.name}),l.jsxs("div",{className:"category-count",children:[e.count.toLocaleString("ru-RU")," товаров"]}),l.jsx("style",{children:`
+      `})]})}const pn=[{id:"electronics",name:"Электроника",icon:"📱",count:154200,color:"#fff3e0"},{id:"appliances",name:"Бытовая техника",icon:"🏠",count:89200,color:"#e3f2fd"},{id:"clothing",name:"Одежда и обувь",icon:"👗",count:286e3,color:"#fce4ec"},{id:"kids",name:"Детские товары",icon:"🧸",count:67300,color:"#f3e5f5"},{id:"cosmetics",name:"Косметика и гигиена",icon:"💄",count:44800,color:"#fce4ec"},{id:"pets",name:"Зоотовары",icon:"🐾",count:32100,color:"#e8f5e9"},{id:"autoparts",name:"Автозапчасти",icon:"🚗",count:187500,color:"#e0f7fa"},{id:"construction",name:"Строительство и ремонт",icon:"🔧",count:95600,color:"#fff8e1"},{id:"food",name:"Продукты",icon:"🍎",count:28400,color:"#e8f5e9"},{id:"homegarden",name:"Дом и сад",icon:"🌿",count:72300,color:"#c8e6c9"},{id:"sports",name:"Спорт и отдых",icon:"⚽",count:41500,color:"#bbdefb"},{id:"health",name:"Красота и здоровье",icon:"💊",count:53700,color:"#f8bbd9"}],Be=[{id:"prod_1",sellerId:"seller_1",sellerName:"TechGadgets",title:"Беспроводные наушники с шумоподавлением HiFi Sound Pro",description:"Премиальные беспроводные наушники с активным шумоподавлением (ANC). До 30 часов воспроизведения, быстрая зарядка USB-C, мультиточечное подключение к двум устройствам одновременно.",price:3490,oldPrice:4650,images:["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"],category:"electronics",characteristics:{Бренд:"SoundMaster",Тип:"Накладные",Шумоподавление:"Активное (ANC)",Автономность:"30 часов",Интерфейс:"Bluetooth 5.2",Вес:"250 г"},stock:45,rating:4.8,reviewsCount:2847,salesCount:1234,createdAt:"2024-01-15",badge:"sale"},{id:"prod_2",sellerId:"seller_2",sellerName:"ModaChina",title:"Стильное худи с капюшоном, хлопок 100%",description:"Уютное худи из премиального хлопка. Свободный крой, удобный капюшон, вместительные карманы. Идеально для повседневного образа.",price:1290,images:["https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600"],category:"clothing",characteristics:{Материал:"Хлопок 100%",Размеры:"S, M, L, XL",Цвет:"Чёрный, серый, бежевый",Уход:"Деликатная стирка"},stock:120,rating:4.5,reviewsCount:1563,salesCount:3892,createdAt:"2024-02-20",badge:"hit"},{id:"prod_3",sellerId:"seller_3",sellerName:"GlowBeauty",title:"Профессиональный набор кистей для макияжа, 12 шт",description:"Комплект из 12 профессиональных кистей для визажиста. Синтетический ворс, эргономичные ручки, бархатный чехол в комплекте.",price:890,oldPrice:1250,images:["https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600"],category:"cosmetics",characteristics:{Количество:"12 кистей","Материал ворса":"Синтетика",Чехол:"Бархатный",Упаковка:"Подарочная"},stock:85,rating:4.9,reviewsCount:4102,salesCount:5621,createdAt:"2024-01-08"},{id:"prod_4",sellerId:"seller_4",sellerName:"SmartHome",title:"Умная LED-лампа с управлением по WiFi и голосом",description:"Смарт-лампа с RGB-подсветкой, управление через приложение Tuya/Smart Life. Поддержка Alexa и Google Assistant. 16 миллионов цветов.",price:1750,oldPrice:2400,images:["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600"],category:"electronics",characteristics:{Мощность:"9W (эквивалент 60W)",Цоколь:"E27",Управление:"WiFi 2.4GHz","Голосовые ассистенты":"Alexa, Google","Срок службы":"25000 часов"},stock:67,rating:4.4,reviewsCount:892,salesCount:567,createdAt:"2024-03-01",badge:"new"},{id:"prod_5",sellerId:"seller_2",sellerName:"ModaChina",title:"Кроссовки спортивные мужские Ultraboost Air",description:"Лёгкие и комфортные кроссовки для бега и повседневной носки. Амортизирующая подошва, дышащий материал верха.",price:2190,images:["https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"],category:"sports",characteristics:{Размеры:"39-46",Материал:"Сетка + синтетика",Подошва:"EVA + резина",Сезон:"Весна-лето"},stock:34,rating:4.6,reviewsCount:723,salesCount:445,createdAt:"2024-02-15"},{id:"prod_6",sellerId:"seller_5",sellerName:"HomeStyle",title:"Набор постельного белья евро, 6 предметов, сатин",description:"Роскошный комплект постельного белья из 100% сатина. Включает: пододеяльник, простыню, 4 наволочки. Сертификат OEKO-TEX.",price:3290,oldPrice:4590,images:["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"],category:"home",characteristics:{Размер:"Евро",Ткань:"Сатин (100% хлопок)",Комплектация:"6 предметов",Уход:"60°C"},stock:28,rating:4.7,reviewsCount:1156,salesCount:892,createdAt:"2024-01-22",badge:"sale"},{id:"prod_7",sellerId:"seller_1",sellerName:"TechGadgets",title:"Умные часы fitness-трекер с пульсоксиметром",description:"Фитнес-браслет с цветным AMOLED-дисплеем. Мониторинг пульса, SpO2, сна, шагов. Водозащита 5ATM.",price:1890,images:["https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"],category:"electronics",characteristics:{Дисплей:'AMOLED 0.96"',Батарея:"7-10 дней",Водозащита:"5ATM",Датчики:"Пульс, SpO2, акселерометр"},stock:92,rating:4.3,reviewsCount:2341,salesCount:1567,createdAt:"2024-02-28"},{id:"prod_8",sellerId:"seller_6",sellerName:"ToolMaster",title:"Набор инструментов 82 предмета, кейс + чемодан",description:"Профессиональный набор инструментов для дома и гаража. Хромованадиевая сталь, эргономичные рукоятки, полный набор головок и отвёрток.",price:4590,oldPrice:5990,images:["https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600"],category:"tools",characteristics:{"Количество предметов":"82",Материал:"CrV сталь",Рукоятки:"Двухкомпонентные",Упаковка:"Кейс + чемодан"},stock:15,rating:4.8,reviewsCount:456,salesCount:234,createdAt:"2024-01-30",badge:"hit"},{id:"prod_9",sellerId:"seller_3",sellerName:"GlowBeauty",title:"Сыворотка для лица с витамином C 30ml",description:"Интенсивная сыворотка с 20% витамином C для осветления пигментации и выравнивания тона кожи. Антиоксидантная защита.",price:690,images:["https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600"],category:"cosmetics",characteristics:{Объём:"30 мл","Концентрация витамина C":"20%","Тип кожи":"Все типы",SPF:"Нет"},stock:156,rating:4.6,reviewsCount:1823,salesCount:2341,createdAt:"2024-03-05",badge:"new"},{id:"prod_10",sellerId:"seller_4",sellerName:"SmartHome",title:"Робот-пылесос с лидаром и влажной уборкой",description:"Умный робот-пылесос с LDS-лидаром для точной навигации. Сухая и влажная уборка, управление через приложение, голосовые оповещения.",price:8990,oldPrice:11990,images:["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600"],category:"electronics",characteristics:{"Тип уборки":"Сухая + влажная",Навигация:"LDS-лидар",Мощность:"3000 Pa",Батарея:"5200 mAh",Площадь:"До 200 м²"},stock:12,rating:4.7,reviewsCount:567,salesCount:189,createdAt:"2024-02-10",badge:"sale"},{id:"prod_11",sellerId:"seller_2",sellerName:"ModaChina",title:"Сумка женская кросс-боди, искусственная кожа",description:"Элегантная сумка-кросс через плечо из качественной искусственной кожи. Регулируемый ремень, несколько отделений.",price:1590,images:["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600"],category:"clothing",characteristics:{Материал:"Экокожа",Размер:"22×16×8 см",Отделения:"3 кармана",Ремень:"Регулируемый 80-140 см"},stock:67,rating:4.4,reviewsCount:934,salesCount:678,createdAt:"2024-02-25"},{id:"prod_12",sellerId:"seller_5",sellerName:"HomeStyle",title:"Кофеварка гейзерная алюминиевая, 6 чашек",description:"Классическая гейзерная кофеварка из пищевого алюминия. Приготовление 6 чашек итальянского кофе за 5 минут.",price:1290,images:["https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600"],category:"home",characteristics:{Объём:"6 чашек (300 мл)",Материал:"Алюминий",Нагревание:"Плита / газ",Цвет:"Чёрный, серебро"},stock:43,rating:4.5,reviewsCount:1234,salesCount:876,createdAt:"2024-01-18"}];function Mh(e){return Be.find(t=>t.id===e)}function Ih({category:e}){return l.jsxs(z,{to:`/catalog?category=${e.id}`,className:"category-card",children:[l.jsx("div",{className:"category-icon",style:{background:e.color},children:e.icon}),l.jsx("div",{className:"category-name",children:e.name}),l.jsxs("div",{className:"category-count",children:[e.count.toLocaleString("ru-RU")," товаров"]}),l.jsx("style",{children:`
         .category-card {
           background: var(--bg-white);
           border-radius: var(--radius-md);
@@ -803,6 +809,11 @@ Error generating stack: `+a.message+`
           border: 1px solid var(--border);
           transition: all 0.3s;
           display: block;
+          width: 100%;
+          max-width: 100%;
+        }
+        .product-card * {
+          max-width: 100%;
         }
         .product-card:hover {
           transform: translateY(-4px);
@@ -953,6 +964,8 @@ Error generating stack: `+a.message+`
           padding: 80px 0;
           position: relative;
           overflow: hidden;
+          width: 100%;
+          max-width: 100%;
         }
         .hero::before {
           content: '';
@@ -970,6 +983,8 @@ Error generating stack: `+a.message+`
           gap: 60px;
           align-items: center;
           position: relative;
+          width: 100%;
+          max-width: 100%;
         }
         .hero-content h1 {
           font-size: 48px;
@@ -1091,6 +1106,9 @@ Error generating stack: `+a.message+`
         .categories {
           padding: 60px 0;
           background: var(--bg-light);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .section-header {
           text-align: center;
@@ -1110,13 +1128,18 @@ Error generating stack: `+a.message+`
         }
         .categories-grid {
           display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          gap: 20px;
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+          gap: 16px;
+          width: 100%;
+          max-width: 100%;
         }
 
         /* Products */
         .products {
           padding: 80px 0;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .products-header {
           display: flex;
@@ -1137,20 +1160,27 @@ Error generating stack: `+a.message+`
         }
         .products-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           gap: 24px;
+          width: 100%;
+          max-width: 100%;
         }
 
         /* Seller Section */
         .seller-section {
           padding: 80px 0;
           background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .seller-inner {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 60px;
           align-items: center;
+          width: 100%;
+          max-width: 100%;
         }
         .seller-content h2 {
           font-size: 40px;
@@ -1230,12 +1260,17 @@ Error generating stack: `+a.message+`
         .commission {
           padding: 80px 0;
           background: var(--bg-white);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .commission-cards {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 32px;
           margin-top: 48px;
+          width: 100%;
+          max-width: 100%;
         }
         .commission-card {
           background: var(--bg-light);
@@ -1302,11 +1337,16 @@ Error generating stack: `+a.message+`
         .trust {
           padding: 60px 0;
           background: var(--bg-light);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         .trust-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 24px;
+          width: 100%;
+          max-width: 100%;
         }
         .trust-item {
           background: var(--bg-white);
@@ -1341,10 +1381,10 @@ Error generating stack: `+a.message+`
         /* Responsive */
         @media (max-width: 1200px) {
           .products-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
           }
           .categories-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
           }
         }
         @media (max-width: 992px) {
@@ -1377,7 +1417,7 @@ Error generating stack: `+a.message+`
             margin-right: auto;
           }
           .trust-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
           }
         }
         @media (max-width: 768px) {
@@ -1409,7 +1449,7 @@ Error generating stack: `+a.message+`
             font-size: 28px;
           }
           .categories-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 12px;
           }
           .products {
@@ -1449,6 +1489,12 @@ Error generating stack: `+a.message+`
       `})]})}function Dh(){const[e,t]=sh(),[r,n]=w.useState(Be),[i,a]=w.useState("popular"),[o,s]=w.useState("grid"),c=e.get("category")||"",u=e.get("search")||"",h=parseInt(e.get("minPrice")||"0"),f=parseInt(e.get("maxPrice")||"999999");w.useEffect(()=>{let v=[...Be];if(c&&(v=v.filter(y=>y.category===c)),u){const y=u.toLowerCase();v=v.filter(d=>d.title.toLowerCase().includes(y)||d.description.toLowerCase().includes(y))}switch(v=v.filter(y=>y.price>=h&&y.price<=f),i){case"price-asc":v.sort((y,d)=>y.price-d.price);break;case"price-desc":v.sort((y,d)=>d.price-y.price);break;case"rating":v.sort((y,d)=>d.rating-y.rating);break;case"new":v.sort((y,d)=>new Date(d.createdAt).getTime()-new Date(y.createdAt).getTime());break;default:v.sort((y,d)=>d.salesCount-y.salesCount)}n(v)},[c,u,i,h,f]);const g=pn.find(v=>v.id===c);return l.jsxs("div",{className:"catalog-page",children:[l.jsxs("div",{className:"container",children:[l.jsxs("nav",{className:"breadcrumbs",children:[l.jsx("a",{href:"/",children:"Главная"}),l.jsx("span",{children:"/"}),l.jsx("span",{children:(g==null?void 0:g.name)||"Каталог"})]}),l.jsxs("div",{className:"catalog-header",children:[l.jsx("h1",{children:u?`Результаты поиска: "${u}"`:(g==null?void 0:g.name)||"Все товары"}),l.jsxs("p",{children:["Найдено ",r.length," товаров"]})]}),l.jsxs("div",{className:"catalog-layout",children:[l.jsxs("aside",{className:"filters-sidebar",children:[l.jsxs("div",{className:"filter-section",children:[l.jsx("h3",{children:"Категории"}),l.jsxs("div",{className:"filter-options",children:[l.jsxs("label",{className:`filter-option ${c?"":"active"}`,children:[l.jsx("input",{type:"radio",name:"category",checked:!c,onChange:()=>t({})}),"Все категории"]}),pn.map(v=>l.jsxs("label",{className:`filter-option ${c===v.id?"active":""}`,children:[l.jsx("input",{type:"radio",name:"category",checked:c===v.id,onChange:()=>t({category:v.id})}),v.icon," ",v.name]},v.id))]})]}),l.jsxs("div",{className:"filter-section",children:[l.jsx("h3",{children:"Цена"}),l.jsxs("div",{className:"price-range",children:[l.jsx("input",{type:"number",placeholder:"От",value:h||"",onChange:v=>t(y=>{const d=new URLSearchParams(y);return v.target.value?d.set("minPrice",v.target.value):d.delete("minPrice"),d})}),l.jsx("span",{children:"—"}),l.jsx("input",{type:"number",placeholder:"До",value:f<999999?f:"",onChange:v=>t(y=>{const d=new URLSearchParams(y);return v.target.value?d.set("maxPrice",v.target.value):d.delete("maxPrice"),d})})]})]})]}),l.jsxs("div",{className:"products-section",children:[l.jsxs("div",{className:"products-toolbar",children:[l.jsxs("div",{className:"sort-select",children:[l.jsx("label",{children:"Сортировка:"}),l.jsxs("select",{value:i,onChange:v=>a(v.target.value),children:[l.jsx("option",{value:"popular",children:"По популярности"}),l.jsx("option",{value:"price-asc",children:"Сначала дешевле"}),l.jsx("option",{value:"price-desc",children:"Сначала дороже"}),l.jsx("option",{value:"rating",children:"По рейтингу"}),l.jsx("option",{value:"new",children:"Сначала новые"})]})]}),l.jsxs("div",{className:"view-toggle",children:[l.jsx("button",{className:o==="grid"?"active":"",onClick:()=>s("grid"),children:l.jsx(Nh,{size:20})}),l.jsx("button",{className:o==="list"?"active":"",onClick:()=>s("list"),children:l.jsx(Sh,{size:20})})]})]}),r.length>0?l.jsx("div",{className:`products-${o}`,children:r.map(v=>l.jsx(bd,{product:v},v.id))}):l.jsxs("div",{className:"empty-state",children:[l.jsx("p",{children:"Товары не найдены"}),l.jsx("button",{onClick:()=>t({}),children:"Сбросить фильтры"})]})]})]})]}),l.jsx("style",{children:`
         .catalog-page {
           padding: 24px 0 60px;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+        .catalog-page * {
+          max-width: 100%;
         }
         .breadcrumbs {
           display: flex;

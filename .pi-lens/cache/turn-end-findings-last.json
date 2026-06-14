@@ -1,6 +1,6 @@
 {
-  "signature": "SPEC.md::ℹ️ Advisory — no action required this turn:\nCode-quality warnings introduced/touched this turn: 1 across 1 file(s).\nTop rules: pi-lens×1\nDetails written to .pi-lens/cache/code-quality-warnings.json\nNo action required unless you are already refactoring these areas.",
-  "sessionId": "lens-mqdp2nkf-13aba825",
-  "projectSeqStart": 11,
-  "projectSeqEnd": 12
+  "signature": "src/data/mockData.ts::ℹ️ Advisory — no action required this turn:\n⚠️ Newly unused exports in modified files — check if callers need updating (Knip):\n  src/data/mockData.ts:390 — getProductsByCategory\n  src/data/mockData.ts:398 — searchProducts\n",
+  "sessionId": "lens-mqdqfo7n-ba019e88",
+  "projectSeqStart": 13,
+  "projectSeqEnd": 14
 }

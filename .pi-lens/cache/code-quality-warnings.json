@@ -1,38 +1,15 @@
 {
-  "generatedAt": "2026-06-14T11:30:38.331Z",
+  "generatedAt": "2026-06-14T12:03:53.863Z",
   "scope": "turn_delta",
-  "sessionId": "lens-mqdp2nkf-13aba825",
-  "turnIndex": 47,
-  "projectSeqStart": 11,
-  "projectSeqEnd": 12,
+  "sessionId": "lens-mqdqfo7n-ba019e88",
+  "turnIndex": 27,
+  "projectSeqStart": 24,
+  "projectSeqEnd": 25,
   "deltaOnly": true,
-  "files": [
-    {
-      "filePath": "/home/user/chinamart/SPEC.md",
-      "displayPath": "SPEC.md",
-      "fileSeq": 1,
-      "warnings": [
-        {
-          "id": "cq:797a91e1cf",
-          "filePath": "/home/user/chinamart/SPEC.md",
-          "displayPath": "SPEC.md",
-          "severity": "warning",
-          "tool": "pi-lens",
-          "message": "Pi-lens analysis unavailable. Tools for markdown not installed.",
-          "category": "other",
-          "origin": "dispatch"
-        }
-      ]
-    }
-  ],
+  "files": [],
   "summary": {
-    "warnings": 1,
-    "files": 1,
-    "topRules": [
-      {
-        "rule": "pi-lens",
-        "count": 1
-      }
-    ]
+    "warnings": 0,
+    "files": 0,
+    "topRules": []
   }
 }

@@ -90,6 +90,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           border: 1px solid var(--border);
           transition: all 0.3s;
           display: block;
+          width: 100%;
+          max-width: 100%;
+        }
+        .product-card * {
+          max-width: 100%;
         }
         .product-card:hover {
           transform: translateY(-4px);

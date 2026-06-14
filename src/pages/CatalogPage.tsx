@@ -211,6 +211,12 @@ export default function CatalogPage() {
 			<style>{`
         .catalog-page {
           padding: 24px 0 60px;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+        .catalog-page * {
+          max-width: 100%;
         }
         .breadcrumbs {
           display: flex;
