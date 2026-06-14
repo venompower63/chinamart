@@ -1,15 +1,19 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import AmbientMusicPlayer from "./AmbientMusicPlayer";
+import AutoMusicStarter from "./AutoMusicStarter";
 
 export default function Layout() {
 	return (
 		<div className="layout">
+			<AutoMusicStarter />
 			<Header />
 			<main className="main">
 				<Outlet />
 			</main>
 			<Footer />
+			<AmbientMusicPlayer />
 			<style>{`
         .layout {
           min-height: 100vh;
