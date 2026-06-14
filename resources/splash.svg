@@ -2,55 +2,23 @@
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#1a1a2e"/>
-      <stop offset="50%" style="stop-color:#16213e"/>
-      <stop offset="100%" style="stop-color:#0f3460"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
     </linearGradient>
-    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#e63946"/>
-      <stop offset="50%" style="stop-color:#ff6b6b"/>
-      <stop offset="100%" style="stop-color:#e63946"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
   
   <!-- Background -->
   <rect width="1284" height="2778" fill="url(#bgGrad)"/>
   
-  <!-- City silhouette -->
-  <path d="M0 2778 L0 1800 L100 1800 L100 1600 L200 1600 L200 2000 L300 2000 L300 1400 L400 1400 L400 1700 L500 1700 L500 1200 L600 1200 L600 1600 L700 1600 L700 1000 L800 1000 L800 1500 L900 1500 L900 1100 L1000 1100 L1000 1800 L1100 1800 L1100 1400 L1200 1400 L1200 1900 L1284 1900 L1284 2778 Z" fill="#0a0a1a" opacity="0.8"/>
+  <!-- Logo/Image -->
+  <image href="chinahub_icon.jpg" x="142" y="300" width="1000" height="1000" preserveAspectRatio="xMidYMid slice"/>
   
-  <!-- Building highlights -->
-  <rect x="300" y="1500" width="80" height="500" fill="#1a3a5c" opacity="0.5"/>
-  <rect x="500" y="1300" width="80" height="400" fill="#1a3a5c" opacity="0.5"/>
-  <rect x="700" y="1100" width="100" height="400" fill="#1a3a5c" opacity="0.5"/>
-  <rect x="900" y="1200" width="100" height="500" fill="#1a3a5c" opacity="0.5"/>
+  <!-- Overlay gradient for text readability -->
+  <rect x="0" y="1600" width="1284" height="1178" fill="url(#bgGrad)" opacity="0.85"/>
   
-  <!-- Grid lines -->
-  <line x1="0" y1="2200" x2="1284" y2="2200" stroke="#e63946" stroke-width="3" opacity="0.2"/>
-  <line x1="0" y1="1800" x2="1284" y2="1800" stroke="#e63946" stroke-width="3" opacity="0.15"/>
-  <line x1="0" y1="1400" x2="1284" y2="1400" stroke="#e63946" stroke-width="3" opacity="0.1"/>
-  
-  <!-- CHINA text -->
-  <text x="642" y="800" font-family="Arial Black, sans-serif" font-size="280" font-weight="900" fill="url(#textGrad)" text-anchor="middle" filter="url(#glow)">CHINA</text>
-  
-  <!-- HUB text -->
-  <text x="642" y="1150" font-family="Arial Black, sans-serif" font-size="280" font-weight="900" fill="url(#textGrad)" text-anchor="middle" filter="url(#glow)">HUB</text>
-  
-  <!-- Accent underline -->
-  <rect x="300" y="1220" width="684" height="12" fill="#f4a261" rx="6"/>
-  
-  <!-- Decorative elements -->
-  <circle cx="200" cy="300" r="20" fill="#2a9d8f" opacity="0.7"/>
-  <circle cx="1084" cy="300" r="20" fill="#2a9d8f" opacity="0.7"/>
-  <circle cx="150" cy="500" r="12" fill="#f4a261" opacity="0.5"/>
-  <circle cx="1134" cy="500" r="12" fill="#f4a261" opacity="0.5"/>
+  <!-- App Name -->
+  <text x="642" y="1750" font-family="Arial Black, sans-serif" font-size="72" font-weight="900" fill="#e63946" text-anchor="middle" stroke="#f4a261" stroke-width="2">CHINA</text>
+  <text x="642" y="1850" font-family="Arial Black, sans-serif" font-size="72" font-weight="900" fill="#e63946" text-anchor="middle" stroke="#f4a261" stroke-width="2">HUB</text>
   
   <!-- Tagline -->
-  <text x="642" y="2500" font-family="Arial, sans-serif" font-size="48" fill="rgba(255,255,255,0.6)" text-anchor="middle">Маркетплейс китайских товаров</text>
+  <text x="642" y="2500" font-family="Arial, sans-serif" font-size="36" fill="rgba(255,255,255,0.7)" text-anchor="middle">Маркетплейс</text>
 </svg>

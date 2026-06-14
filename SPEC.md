@@ -1,8 +1,8 @@
-# ChinaMart — Маркетплейс китайских товаров
+# ChinaHub — Маркетплейс китайских товаров
 
 ## Concept & Vision
 
-ChinaMart — современный маркетплейс для торговли китайскими товарами с полным циклом: от регистрации продавца до завершения сделки. Платформа объединяет покупателей и проверенных продавцов из Китая, обеспечивая прозрачные комиссии (5% с продавца, 2% с покупателя) и безопасные расчёты через escrow-систему.
+ChinaHub — современный маркетплейс для торговли китайскими товарами с полным циклом: от регистрации продавца до завершения сделки. Платформа объединяет покупателей и проверенных продавцов из Китая, обеспечивая прозрачные комиссии (5% с продавца, 2% с покупателя) и безопасные расчёты через escrow-систему.
 
 ## Design Language
 
@@ -264,11 +264,11 @@ function calculateOrder(productPrice: number, quantity: number) {
 ## Mobile App (Capacitor)
 
 ### Overview
-Приложение ChinaMart упаковано через Capacitor для мобильных платформ Android и iOS.
+Приложение ChinaHub упаковано через Capacitor для мобильных платформ Android и iOS.
 
 ### App Configuration
 - **App ID**: com.chinamart.app
-- **App Name**: ChinaMart
+- **App Name**: ChinaHub
 - **Version**: 1.0.0
 - **Min Android SDK**: 22
 - **Target Android SDK**: 34
@@ -298,7 +298,7 @@ function calculateOrder(productPrice: number, quantity: number) {
 5. Отправить на проверку
 
 #### App Store
-1. Открыть `ios/App/ChinaMart.xcworkspace` в Xcode
+1. Открыть `ios/App/ChinaHub.xcworkspace` в Xcode
 2. Настроить Provisioning Profile
 3. Собрать релиз: `xcodebuild -workspace App.xcworkspace -scheme App -configuration Release`
 4. Загрузить через Xcode или Transporter

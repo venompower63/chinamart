@@ -8,8 +8,8 @@
     },
     {
       "type": "file",
-      "name": "dist/assets/index-Dw6c5Mms.js",
-      "file": "dist/assets/index-Dw6c5Mms.js"
+      "name": "dist/assets/index-C8eZoF9M.js",
+      "file": "dist/assets/index-C8eZoF9M.js"
     },
     {
       "type": "file",
@@ -38,13 +38,13 @@
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
+      "name": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js",
+      "file": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js"
     },
     {
       "type": "file",
-      "name": "android/app/src/main/assets/public/assets/index-Dw6c5Mms.js",
-      "file": "android/app/src/main/assets/public/assets/index-Dw6c5Mms.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
     },
     {
       "type": "file",
@@ -58,8 +58,8 @@
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-Dw6c5Mms.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-Dw6c5Mms.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js"
     },
     {
       "type": "dependency",
@@ -150,8 +150,8 @@
     },
     {
       "type": "file",
-      "name": "dist/assets/index-Dw6c5Mms.js",
-      "file": "dist/assets/index-Dw6c5Mms.js"
+      "name": "dist/assets/index-C8eZoF9M.js",
+      "file": "dist/assets/index-C8eZoF9M.js"
     },
     {
       "type": "file",
@@ -180,13 +180,13 @@
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
+      "name": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js",
+      "file": "android/app/src/main/assets/public/assets/index-C8eZoF9M.js"
     },
     {
       "type": "file",
-      "name": "android/app/src/main/assets/public/assets/index-Dw6c5Mms.js",
-      "file": "android/app/src/main/assets/public/assets/index-Dw6c5Mms.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/native-bridge.js"
     },
     {
       "type": "file",
@@ -200,8 +200,8 @@
     },
     {
       "type": "file",
-      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-Dw6c5Mms.js",
-      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-Dw6c5Mms.js"
+      "name": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js",
+      "file": "android/app/build/intermediates/assets/debug/mergeDebugAssets/public/assets/index-C8eZoF9M.js"
     }
   ],
   "unusedDeps": [

@@ -24,7 +24,7 @@ export default function Header() {
 			<div className="header-inner container">
 				<Link to="/" className="logo">
 					<div className="logo-icon">CM</div>
-					<span>ChinaMart</span>
+					<span>ChinaHub</span>
 				</Link>
 
 				<nav className="nav-desktop">
@@ -118,7 +118,7 @@ export default function Header() {
 							onClick={() => setMobileMenuOpen(false)}
 						>
 							<div className="logo-icon">CM</div>
-							<span>ChinaMart</span>
+							<span>ChinaHub</span>
 						</Link>
 						<button
 							className="close-btn"

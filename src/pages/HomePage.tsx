@@ -50,7 +50,7 @@ export default function HomePage() {
 						<div className="hero-image">
 							<img
 								src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800"
-								alt="ChinaMart"
+								alt="ChinaHub"
 							/>
 						</div>
 						<div className="floating-card card-1">
@@ -107,7 +107,7 @@ export default function HomePage() {
 				<div className="seller-inner container">
 					<div className="seller-content">
 						<h2>
-							Станьте продавцом на <span>ChinaMart</span>
+							Станьте продавцом на <span>ChinaHub</span>
 						</h2>
 						<p>
 							Получите доступ к миллионам покупателей. Регистрация бесплатная,

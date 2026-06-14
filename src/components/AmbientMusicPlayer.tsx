@@ -1,83 +1,86 @@
-import { useAmbientMusic } from '../utils/ambientMusic';
-import { Music, Volume2, VolumeX } from 'lucide-react';
-import { useState } from 'react';
+import { useAmbientMusic } from "../utils/ambientMusic";
+import { Music, Volume2, VolumeX } from "lucide-react";
+import { useState } from "react";
 
 export default function AmbientMusicPlayer() {
-  const { isPlaying, volume, play, stop, setVolume } = useAmbientMusic();
-  const [showControls, setShowControls] = useState(false);
+	const { isPlaying, volume, play, stop, setVolume } = useAmbientMusic();
+	const [showControls, setShowControls] = useState(false);
 
-  const toggleMusic = () => {
-    if (isPlaying) {
-      stop();
-    } else {
-      play();
-    }
-  };
+	const toggleMusic = () => {
+		if (isPlaying) {
+			stop();
+		} else {
+			play();
+		}
+	};
 
-  return (
-    <>
-      {/* Floating button */}
-      <button
-        className="ambient-music-btn"
-        onClick={() => setShowControls(!showControls)}
-        title="Фоновая музыка"
-      >
-        <Music size={20} className={isPlaying ? 'playing' : ''} />
-      </button>
+	return (
+		<>
+			{/* Floating button */}
+			<button
+				className="ambient-music-btn"
+				onClick={() => setShowControls(!showControls)}
+				title="Фоновая музыка"
+			>
+				<Music size={20} className={isPlaying ? "playing" : ""} />
+			</button>
 
-      {/* Controls panel */}
-      {showControls && (
-        <div className="ambient-music-panel">
-          <div className="panel-header">
-            <Music size={18} />
-            <span>Фоновая музыка</span>
-            <button className="close-btn" onClick={() => setShowControls(false)}>
-              ×
-            </button>
-          </div>
-          
-          <div className="panel-content">
-            <p className="music-title">Традиционная китайская музыка</p>
-            <p className="music-description">
-              Расслабляющие мелодии в духе торговли и процветания
-            </p>
+			{/* Controls panel */}
+			{showControls && (
+				<div className="ambient-music-panel">
+					<div className="panel-header">
+						<Music size={18} />
+						<span>Фоновая музыка</span>
+						<button
+							className="close-btn"
+							onClick={() => setShowControls(false)}
+						>
+							×
+						</button>
+					</div>
 
-            <div className="controls">
-              <button
-                className={`play-btn ${isPlaying ? 'active' : ''}`}
-                onClick={toggleMusic}
-              >
-                {isPlaying ? (
-                  <>
-                    <VolumeX size={18} />
-                    Выключить
-                  </>
-                ) : (
-                  <>
-                    <Volume2 size={18} />
-                    Включить
-                  </>
-                )}
-              </button>
+					<div className="panel-content">
+						<p className="music-title">Традиционная китайская музыка</p>
+						<p className="music-description">
+							Расслабляющие мелодии в духе торговли и процветания
+						</p>
 
-              {isPlaying && (
-                <div className="volume-control">
-                  <label>Громкость</label>
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={volume * 100}
-                    onChange={(e) => setVolume(Number(e.target.value) / 100)}
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+						<div className="controls">
+							<button
+								className={`play-btn ${isPlaying ? "active" : ""}`}
+								onClick={toggleMusic}
+							>
+								{isPlaying ? (
+									<>
+										<VolumeX size={18} />
+										Выключить
+									</>
+								) : (
+									<>
+										<Volume2 size={18} />
+										Включить
+									</>
+								)}
+							</button>
 
-      <style>{`
+							{isPlaying && (
+								<div className="volume-control">
+									<label>Громкость</label>
+									<input
+										type="range"
+										min="0"
+										max="100"
+										value={volume * 100}
+										onChange={(e) => setVolume(Number(e.target.value) / 100)}
+									/>
+								</div>
+							)}
+						</div>
+					</div>
+				</div>
+			)}
+
+			<style>{`
         .ambient-music-btn {
           position: fixed;
           bottom: 100px;
@@ -256,6 +259,6 @@ export default function AmbientMusicPlayer() {
           }
         }
       `}</style>
-    </>
-  );
+		</>
+	);
 }
