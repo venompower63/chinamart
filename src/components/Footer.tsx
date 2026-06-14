@@ -7,7 +7,7 @@ export default function Footer() {
 				<div className="footer-grid">
 					<div className="footer-brand">
 						<Link to="/" className="logo">
-							<div className="logo-icon">CM</div>
+							<div className="logo-icon">CH</div>
 							<span>ChinaHub</span>
 						</Link>
 						<p>
@@ -47,7 +47,7 @@ export default function Footer() {
 				</div>
 
 				<div className="footer-bottom">
-					<p>© 2024 ChinaHub. Все права защищены.</p>
+					<p>© 2026 ChinaHub. Все права защищены.</p>
 					<div className="footer-socials">
 						<a href="#" aria-label="Telegram">
 							📱

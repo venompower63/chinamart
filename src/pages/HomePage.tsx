@@ -13,6 +13,7 @@ export default function HomePage() {
 			<section className="hero">
 				<div className="hero-inner container">
 					<div className="hero-content">
+						<div className="hero-badge">ChinaHub</div>
 						<h1>
 							Маркетплейс проверенных товаров из <span>Китая</span>
 						</h1>
@@ -267,6 +268,18 @@ export default function HomePage() {
           position: relative;
           width: 100%;
           max-width: 100%;
+        }
+        .hero-badge {
+          display: inline-block;
+          background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+          color: white;
+          padding: 6px 16px;
+          border-radius: 20px;
+          font-size: 13px;
+          font-weight: 700;
+          margin-bottom: 16px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
         }
         .hero-content h1 {
           font-size: 48px;

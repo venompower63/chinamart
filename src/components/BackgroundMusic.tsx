@@ -1,84 +1,83 @@
-import { useEffect, useRef, useState } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 
 export default function BackgroundMusic() {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isMuted, setIsMuted] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+	const audioRef = useRef<HTMLAudioElement>(null);
+	const [isMuted, setIsMuted] = useState(false);
+	const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
+	useEffect(() => {
+		const audio = audioRef.current;
+		if (!audio) return;
 
-    // Настройка аудио
-    audio.volume = 0.15; // Тихий, приятный звук (15%)
-    audio.loop = true; // Зациклить
+		// Настройка аудио
+		audio.volume = 0.08; // Очень тихий, приятный звук (8%)
+		audio.loop = true; // Зациклить
 
-    // Попытка воспроизвести после загрузки
-    const playAudio = async () => {
-      try {
-        await audio.play();
-        setIsLoaded(true);
-      } catch (error) {
-        // Autoplay blocked - will play on first interaction
-        console.log('Autoplay blocked, waiting for interaction');
-      }
-    };
+		// Попытка воспроизвести после загрузки
+		const playAudio = async () => {
+			try {
+				await audio.play();
+				setIsLoaded(true);
+			} catch (error) {
+				// Autoplay blocked - will play on first interaction
+				console.log("Autoplay blocked, waiting for interaction");
+			}
+		};
 
-    // Слушатель на первое взаимодействие пользователя
-    const handleInteraction = () => {
-      if (!isLoaded && audio.paused) {
-        audio.play().then(() => {
-          setIsLoaded(true);
-        }).catch(console.log);
-      }
-    };
+		// Слушатель на первое взаимодействие пользователя
+		const handleInteraction = () => {
+			if (!isLoaded && audio.paused) {
+				audio
+					.play()
+					.then(() => {
+						setIsLoaded(true);
+					})
+					.catch(console.log);
+			}
+		};
 
-    // Запускаем при загрузке страницы (может сработать)
-    playAudio();
+		// Запускаем при загрузке страницы (может сработать)
+		playAudio();
 
-    // Слушаем любое взаимодействие
-    document.addEventListener('click', handleInteraction, { once: true });
-    document.addEventListener('touchstart', handleInteraction, { once: true });
+		// Слушаем любое взаимодействие
+		document.addEventListener("click", handleInteraction, { once: true });
+		document.addEventListener("touchstart", handleInteraction, { once: true });
 
-    return () => {
-      document.removeEventListener('click', handleInteraction);
-      document.removeEventListener('touchstart', handleInteraction);
-    };
-  }, [isLoaded]);
+		return () => {
+			document.removeEventListener("click", handleInteraction);
+			document.removeEventListener("touchstart", handleInteraction);
+		};
+	}, [isLoaded]);
 
-  const toggleMute = () => {
-    const audio = audioRef.current;
-    if (audio) {
-      if (isMuted) {
-        audio.volume = 0.15;
-        audio.play().catch(console.log);
-        setIsMuted(false);
-      } else {
-        audio.pause();
-        setIsMuted(true);
-      }
-    }
-  };
+	const toggleMute = () => {
+		const audio = audioRef.current;
+		if (audio) {
+			if (isMuted) {
+				audio.volume = 0.08;
+				audio.play().catch(console.log);
+				setIsMuted(false);
+			} else {
+				audio.pause();
+				setIsMuted(true);
+			}
+		}
+	};
 
-  return (
-    <>
-      <audio
-        ref={audioRef}
-        src="/background-music.mp3"
-        preload="auto"
-      />
-      
-      {/* Кнопка управления музыкой */}
-      <button
-        className="music-control-btn"
-        onClick={toggleMute}
-        title={isMuted ? "Включить музыку" : "Выключить музыку"}
-      >
-        {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-      </button>
+	return (
+		<>
+			<audio ref={audioRef} src="/background-music.mp3" preload="auto" />
 
-      <style>{`
+			{/* Кнопка управления музыкой */}
+			<button
+				className="music-control-btn"
+				onClick={toggleMute}
+				title={isMuted ? "Включить музыку" : "Выключить музыку"}
+			>
+				{isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+			</button>
+
+			<style>{`
         .music-control-btn {
           position: fixed;
           bottom: 24px;
@@ -116,6 +115,6 @@ export default function BackgroundMusic() {
           }
         }
       `}</style>
-    </>
-  );
+		</>
+	);
 }

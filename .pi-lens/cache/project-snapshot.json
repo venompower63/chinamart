@@ -1,8 +1,8 @@
 {
   "version": 1,
   "projectRoot": "/home/user/chinamart",
-  "generatedAt": "2026-06-14T12:43:32.546Z",
-  "seq": 54,
+  "generatedAt": "2026-06-14T13:44:47.721Z",
+  "seq": 60,
   "files": {
     "/home/user/chinamart/capacitor.config.ts": {
       "path": "/home/user/chinamart/capacitor.config.ts",
@@ -411,7 +411,7 @@
     "scanRoot": "/home/user/chinamart",
     "projectRoot": "/home/user/chinamart",
     "canWarmCaches": true,
-    "sourceFileCount": 27
+    "sourceFileCount": 28
   },
   "languageProfile": {
     "present": {
@@ -455,7 +455,7 @@
       "jsts": true
     },
     "counts": {
-      "jsts": 28
+      "jsts": 29
     },
     "detectedKinds": [
       "jsts"
